@@ -1,22 +1,21 @@
-@extends('layouts.master')
-@section('title', 'Endless - Premium Laravel Admin Template')
-@section('styles')
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/datatables.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chartist.css') }}">
+<?php $__env->startSection('title', 'Endless - Premium Laravel Admin Template'); ?>
+<?php $__env->startSection('styles'); ?>
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/datatables.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/chartist.css')); ?>">
     <!-- Plugins css start-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/prism.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/prism.css')); ?>">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/ui-changes.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/ui-changes.css')); ?>">
     <!-- Plugins css Ends-->
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('breadcrumb-title', 'Meals')
-@section('breadcrumb-items')
+<?php $__env->startSection('breadcrumb-title', 'Meals'); ?>
+<?php $__env->startSection('breadcrumb-items'); ?>
     <li class="breadcrumb-item">Dashboard</li>
     <li class="breadcrumb-item active">Meals</li>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
     <!-- Container-fluid starts-->
     <div class="container-fluid">
 
@@ -31,7 +30,7 @@
             <div class="col-sm-12">
                 <h2>Add New Meal</h2>
                 <form action="/addItems" method="POST">
-                    @csrf
+                    <?php echo csrf_field(); ?>
                     <input type="text" name="itemName">
                     <button type="submit">Add Items</button>
                 </form>
@@ -43,13 +42,13 @@
                             <td>item name</td>
                         </tr>
                     </thead>
-                    @foreach ($itemDataArray as $it)
+                    <?php $__currentLoopData = $itemDataArray; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $it): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tbody>
                             <tr>
-                                <td>{{ $it['name'] }}</td>
+                                <td><?php echo e($it['name']); ?></td>
                             </tr>
                         </tbody>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </table>
             </div>
         </div>
@@ -58,8 +57,7 @@
 
         <div class="row">
             <div class="col-sm-12">
-                {{-- <div class="col-sm-1"><button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal"><i
-                class="fa fa-plus" aria-hidden="true"></i> Add New</button></div> --}}
+                
                 <div class="col-sm-12">
                     <table id="example" class="display" style="width:100%">
                         <thead>
@@ -69,29 +67,29 @@
                                 <td>Action</td>
                             </tr>
                         </thead>
-                        @foreach ($meals as $ne)
+                        <?php $__currentLoopData = $meals; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ne): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tbody>
                                 <tr>
-                                    <td>{{ $ne->added_date }}</td>
+                                    <td><?php echo e($ne->added_date); ?></td>
                                     <td>
-                                        @foreach (json_decode($ne->items) as $it)
-                                            {{ $it->name }}<br>
-                                        @endforeach
+                                        <?php $__currentLoopData = json_decode($ne->items); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $it): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <?php echo e($it->name); ?><br>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </td>
                                     <td>
                                         <table>
                                             <tr>
                                                 <td>
-                                                    <button onclick="setNid({{ $ne->id }})" type="button"
+                                                    <button onclick="setNid(<?php echo e($ne->id); ?>)" type="button"
                                                         class="btn btn-success btn-sm" data-toggle="modal"
                                                         data-target="#myModaledit"><i class="fa fa-pencil-square-o"
                                                             aria-hidden="true"></i> Update</button>
                                                 </td>
                                                 <td>
                                                     <form action="/deleteMeal" method="POST">
-                                                        @csrf
+                                                        <?php echo csrf_field(); ?>
                                                         <input type="hidden" name="meal_id" id="meal_id"
-                                                            value="{{ $ne->id }}">
+                                                            value="<?php echo e($ne->id); ?>">
                                                         <button type="submit" class="btn btn-danger btn-sm"><i
                                                                 class="fa fa-trash" aria-hidden="true"></i>
                                                             Delete</button>
@@ -102,7 +100,7 @@
                                     </td>
                                 </tr>
                             </tbody>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </table>
                 </div>
             </div>
@@ -110,23 +108,23 @@
 
     </div>
     <!-- Container-fluid Ends-->
-@endsection
-@section('scripts')
-    <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
-    <script src="{{ asset('assets/js/chart/chartist/chartist.js') }}"></script>
-    <script src="{{ asset('assets/js/chart/knob/knob.min.js') }}"></script>
-    <script src="{{ asset('assets/js/chart/knob/knob-chart.js') }}"></script>
-    <script src="{{ asset('assets/js/prism/prism.min.js') }}"></script>
-    <script src="{{ asset('assets/js/clipboard/clipboard.min.js') }}"></script>
-    <script src="{{ asset('assets/js/counter/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset('assets/js/counter/jquery.counterup.min.js') }}"></script>
-    <script src="{{ asset('assets/js/counter/counter-custom.js') }}"></script>
-    <script src="{{ asset('assets/js/custom-card/custom-card.js') }}"></script>
-    <script src="{{ asset('assets/js/notify/bootstrap-notify.min.js') }}"></script>
-    <script src="{{ asset('assets/js/dashboard/default.js') }}"></script>
-    <script src="{{ asset('assets/js/notify/index.js') }}"></script>
-    <script src="{{ asset('assets/js/height-equal.js') }}"></script>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('scripts'); ?>
+    <script src="<?php echo e(asset('assets/js/datatable/datatables/jquery.dataTables.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/datatable/datatables/datatable.custom.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/chart/chartist/chartist.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/chart/knob/knob.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/chart/knob/knob-chart.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/prism/prism.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/clipboard/clipboard.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/counter/jquery.waypoints.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/counter/jquery.counterup.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/counter/counter-custom.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/custom-card/custom-card.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/notify/bootstrap-notify.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/dashboard/default.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/notify/index.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/height-equal.js')); ?>"></script>
 
     <script>
         $(document).ready(function() {
@@ -136,7 +134,7 @@
 
     </script>
 
-    {{-- start meal add modal --}}
+    
     <div id="myModale" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -148,7 +146,7 @@
                 </div>
                 <div class="modal-body">
                     <form class="" method="POST" action="/addNewMeal">
-                        @csrf
+                        <?php echo csrf_field(); ?>
                         <div class="form-group">
                             <label for="email" class="cols-sm-2 control-label">Date</label>
                             <div class="cols-sm-10">
@@ -171,11 +169,11 @@
                                             <tr>
                                                 <td>item name</td>
                                             </tr>
-                                            @foreach ($itemDataArray as $it)
+                                            <?php $__currentLoopData = $itemDataArray; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $it): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                 <tr>
-                                                    <td>{{ $it['name'] }}</td>
+                                                    <td><?php echo e($it['name']); ?></td>
                                                 </tr>
-                                            @endforeach
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </table>
                                     </div>
                                 </div>
@@ -191,9 +189,9 @@
             </div>
         </div>
     </div>
-    {{-- end meal add modal --}}
+    
 
-    {{-- start meal edit modal --}}
+    
     <div id="myModaledit" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -205,7 +203,7 @@
                 </div>
                 <div class="modal-body">
                     <form class="" method="POST" action="/addNewMeal">
-                        @csrf
+                        <?php echo csrf_field(); ?>
                         <div class="form-group">
                             <label for="email" class="cols-sm-2 control-label">Date</label>
                             <div class="cols-sm-10">
@@ -228,11 +226,11 @@
                                             <tr>
                                                 <td>item name</td>
                                             </tr>
-                                            @foreach ($itemDataArray as $it)
+                                            <?php $__currentLoopData = $itemDataArray; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $it): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                 <tr>
-                                                    <td>{{ $it['name'] }}</td>
+                                                    <td><?php echo e($it['name']); ?></td>
                                                 </tr>
-                                            @endforeach
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </table>
                                     </div>
                                 </div>
@@ -248,5 +246,7 @@
             </div>
         </div>
     </div>
-    {{-- end meal edit modal --}}
-@endsection
+    
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/dilshan/Documents/freelance/epit_de/backEnd/kitaAppBackend/resources/views/kita/meal_add.blade.php ENDPATH**/ ?>

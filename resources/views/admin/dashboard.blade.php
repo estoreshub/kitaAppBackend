@@ -274,7 +274,7 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group form-data-field">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-file-image-o" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
                                     <input type="file" class="form-control modal-input" id="photos[]" name="photos[]" multiple>
                                 </div>
                             </div>

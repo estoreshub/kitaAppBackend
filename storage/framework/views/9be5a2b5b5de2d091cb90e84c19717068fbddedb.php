@@ -1,22 +1,21 @@
-@extends('layouts.master')
-@section('title', 'Endless - Premium Laravel Admin Template')
-@section('styles')
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/datatables.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chartist.css') }}">
+<?php $__env->startSection('title', 'Endless - Premium Laravel Admin Template'); ?>
+<?php $__env->startSection('styles'); ?>
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/datatables.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/chartist.css')); ?>">
     <!-- Plugins css start-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/prism.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/prism.css')); ?>">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/ui-changes.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/ui-changes.css')); ?>">
     <!-- Plugins css Ends-->
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('breadcrumb-title', 'Events / Messages')
-@section('breadcrumb-items')
+<?php $__env->startSection('breadcrumb-title', 'Events / Messages'); ?>
+<?php $__env->startSection('breadcrumb-items'); ?>
     <li class="breadcrumb-item">Dashboard</li>
     <li class="breadcrumb-item active">Events / Messages</li>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
     <!-- Container-fluid starts-->
     <div class="container-fluid">
 
@@ -31,12 +30,12 @@
             <div class="col-sm-12">
                 <h2>Add Kids</h2>
                 <form method="POST" action="/addKidstoTable">
-                    @csrf
+                    <?php echo csrf_field(); ?>
                     <select name="kid_id" required>
                         <option value="0">select kid</option>
-                        @foreach ($kids as $kid)
-                            <option value="{{ $kid->id }}">{{ $kid->first_name }} {{ $kid->last_name }}</option>
-                        @endforeach
+                        <?php $__currentLoopData = $kids; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $kid): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($kid->id); ?>"><?php echo e($kid->first_name); ?> <?php echo e($kid->last_name); ?></option>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
                     <input type="submit" value="Add">
                 </form>
@@ -48,13 +47,13 @@
                     <td>Name</td>
                 </tr>
                     </thead>
-                @foreach ($kidDataArray as $ka)
+                <?php $__currentLoopData = $kidDataArray; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ka): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <tbody>
                     <tr>
-                        <td>{{ $ka['kid_name'] }}</td>
+                        <td><?php echo e($ka['kid_name']); ?></td>
                     </tr>
                     </tbody>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </table>
             </div>
         </div>
@@ -63,8 +62,7 @@
 
         <div class="row">
             <div class="col-sm-12">
-                {{-- <div class="col-sm-1"><button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal"><i
-                class="fa fa-plus" aria-hidden="true"></i> Add New</button></div> --}}
+                
                 <div class="col-sm-12">
                     <table id="example" class="display" style="width:100%">
                         <thead>
@@ -78,42 +76,42 @@
                             <td>Action</td>
                         </tr>
                             </thead>
-                        @foreach ($events as $gr)
+                        <?php $__currentLoopData = $events; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $gr): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tbody>
                             <tr>
-                                <td>{{ $gr->added_date }}</td>
-                                <td>{{ $gr->title }}</td>
-                                <td>{{ $gr->description }}</td>
-                                @if ($gr->event_type == 1)
+                                <td><?php echo e($gr->added_date); ?></td>
+                                <td><?php echo e($gr->title); ?></td>
+                                <td><?php echo e($gr->description); ?></td>
+                                <?php if($gr->event_type == 1): ?>
                                     <td>event</td>
-                                @endif
-                                @if ($gr->event_type == 2)
+                                <?php endif; ?>
+                                <?php if($gr->event_type == 2): ?>
                                     <td>message</td>
-                                @endif
+                                <?php endif; ?>
                                 <td>
-                                    @foreach(json_decode($gr->images) as $im)
-                                    <img style="width:120px;height:120px;" src="{{ $im->imagePath }}"/><br>
-                                    @endforeach
+                                    <?php $__currentLoopData = json_decode($gr->images); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $im): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <img style="width:120px;height:120px;" src="<?php echo e($im->imagePath); ?>"/><br>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </td>
                                 <td>
-                                    @foreach(json_decode($gr->users) as $us)
-                                    kid id - {{$us->kid_id}} , kid name - {{$us->kid_name}}<br>
-                                    @endforeach
+                                    <?php $__currentLoopData = json_decode($gr->users); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $us): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    kid id - <?php echo e($us->kid_id); ?> , kid name - <?php echo e($us->kid_name); ?><br>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </td>
                                 <td>
-                                    <!--<button disabled="" onclick="setNid({{ $gr->id }})" type="button" class="btn btn-success btn-md"
+                                    <!--<button disabled="" onclick="setNid(<?php echo e($gr->id); ?>)" type="button" class="btn btn-success btn-md"
                                         data-toggle="modal" data-target="#myModale"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Update</button>-->
 
                                     <form action="/deleteEvent" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="event_id" id="event_id" value="{{ $gr->id }}">
+                                        <?php echo csrf_field(); ?>
+                                        <input type="hidden" name="event_id" id="event_id" value="<?php echo e($gr->id); ?>">
                                         <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i>
                                             Delete</button>
                                     </form>
                                 </td>
                             </tr>
                             </tbody>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </table>
                 </div>
             </div>
@@ -121,23 +119,23 @@
 
     </div>
     <!-- Container-fluid Ends-->
-@endsection
-@section('scripts')
-    <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
-    <script src="{{ asset('assets/js/chart/chartist/chartist.js') }}"></script>
-    <script src="{{ asset('assets/js/chart/knob/knob.min.js') }}"></script>
-    <script src="{{ asset('assets/js/chart/knob/knob-chart.js') }}"></script>
-    <script src="{{ asset('assets/js/prism/prism.min.js') }}"></script>
-    <script src="{{ asset('assets/js/clipboard/clipboard.min.js') }}"></script>
-    <script src="{{ asset('assets/js/counter/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset('assets/js/counter/jquery.counterup.min.js') }}"></script>
-    <script src="{{ asset('assets/js/counter/counter-custom.js') }}"></script>
-    <script src="{{ asset('assets/js/custom-card/custom-card.js') }}"></script>
-    <script src="{{ asset('assets/js/notify/bootstrap-notify.min.js') }}"></script>
-    <script src="{{ asset('assets/js/dashboard/default.js') }}"></script>
-    <script src="{{ asset('assets/js/notify/index.js') }}"></script>
-    <script src="{{ asset('assets/js/height-equal.js') }}"></script>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('scripts'); ?>
+    <script src="<?php echo e(asset('assets/js/datatable/datatables/jquery.dataTables.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/datatable/datatables/datatable.custom.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/chart/chartist/chartist.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/chart/knob/knob.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/chart/knob/knob-chart.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/prism/prism.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/clipboard/clipboard.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/counter/jquery.waypoints.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/counter/jquery.counterup.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/counter/counter-custom.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/custom-card/custom-card.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/notify/bootstrap-notify.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/dashboard/default.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/notify/index.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/height-equal.js')); ?>"></script>
 
     <script>
        	$(document).ready(function() {
@@ -209,7 +207,7 @@
     }
     </script>
 
-    {{-- start event add modal --}}
+    
     <div id="myModale" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -221,7 +219,7 @@
                 </div>
                 <div class="modal-body">
                     <form enctype="multipart/form-data" method="POST" action="/addNewEvent">
-                        @csrf
+                        <?php echo csrf_field(); ?>
                         <div class="form-group">
                             <label for="email" class="cols-sm-2 control-label">Date</label>
                             <div class="cols-sm-10">
@@ -319,11 +317,11 @@
                                         <tr>
                                             <td>Name</td>
                                         </tr>
-                                        @foreach ($kidDataArray as $ka)
+                                        <?php $__currentLoopData = $kidDataArray; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ka): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <tr>
-                                                <td>{{ $ka['kid_name'] }}</td>
+                                                <td><?php echo e($ka['kid_name']); ?></td>
                                             </tr>
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </table>
                                 </div>
                             </div>
@@ -338,9 +336,11 @@
             </div>
         </div>
     </div>
-    {{-- end event add modal --}}
-@endsection
+    
+<?php $__env->stopSection(); ?>
 
 
 
 
+
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/dilshan/Documents/freelance/epit_de/backEnd/kitaAppBackend/resources/views/kita/event_add.blade.php ENDPATH**/ ?>

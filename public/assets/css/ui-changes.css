@@ -28,3 +28,9 @@
 .close-button {
     font-size: 2.3rem;
 }
+
+.add-button {
+    color: white !important;
+    border: 2px solid #2494d3 !important;
+    background-color: #2596d3 !important;
+}

@@ -120,6 +120,8 @@ new dashboard
 <!-- Plugins css start-->
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/prism.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/kita-app-user.css')}}">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/ui-changes.css') }}">
 <!-- Plugins css Ends-->
 @endsection
 

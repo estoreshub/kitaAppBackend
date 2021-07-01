@@ -4,14 +4,15 @@
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/chartist.css')); ?>">
     <!-- Plugins css start-->
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/prism.css')); ?>">
+
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/ui-changes.css')); ?>">
     <!-- Plugins css Ends-->
 <?php $__env->stopSection(); ?>
 
-<?php $__env->startSection('breadcrumb-title', 'Parents'); ?>
+<?php $__env->startSection('breadcrumb-title', 'Kids'); ?>
 <?php $__env->startSection('breadcrumb-items'); ?>
     <li class="breadcrumb-item">Dashboard</li>
-    <li class="breadcrumb-item active">Parents</li>
+    <li class="breadcrumb-item active">Kids</li>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -20,7 +21,7 @@
 
         <div class="row">
             <div class="col-sm-12" style="text-align: right">
-                <button type="button" class="btn btn-primary btn-md add-new-button" data-toggle="modal" data-target="#myModal" style="color: white !important;border: 2px solid #2494d3 !important;background-color: #2596d3 !important;"> Add New</button>
+                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" style="color: white !important;border: 2px solid #2494d3 !important;background-color: #2596d3 !important;"> Add New</button>
             </div>
         </div>
         <br>
@@ -34,26 +35,24 @@
                             <tr>
                                 <td style="font-weight: bold;">First Name</td>
                                 <td style="font-weight: bold;">Last Name</td>
-                                <td style="font-weight: bold;">Email</td>
-                                <td style="font-weight: bold;">Telephone</td>
+                                <td style="font-weight: bold;">Year</td>
                                 <td style="font-weight: bold;">Parent Type</td>
-                                <td style="font-weight: bold;">Notification Access</td>
-                                <td style="font-weight: bold;">Email Allow</td>
-                                <td style="float:left;margin-left:4rem ;font-weight: bold;">Action</td>
+                                <td style="font-weight: bold;">Parent</td>
+                                <td style="font-weight: bold;">Group</td>
+                                <td style="float:right;margin-right:6rem ;font-weight: bold;">Action</td>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
                     </table>
                 </div>
             </div>
@@ -89,7 +88,7 @@
 
             $('#example').DataTable({
                 "ajax": {
-                    "url": "/getParentDetails",
+                    "url": "/getKidDetails",
                     "type": "post",
                     "dataSrc": ""
                 },
@@ -100,30 +99,27 @@
                         "data": "last_name"
                     },
                     {
-                        "data": "email"
-                    },
-                    {
-                        "data": "telephone"
+                        "data": "year"
                     },
                     {
                         "data": "parent_type"
                     },
                     {
-                        "data": "notification_access"
+                        "data": "parent_id"
                     },
                     {
-                        "data": "email_allow"
+                        "data": "group_id"
                     }
                 ],
                 "columnDefs": [{
-                    "targets": 7,
+                    "targets": 6,
                     "name": "parent_id",
                     "data": "id",
                     "width": "60%",
                     "render": function(data, type, full, meta) {
                         return "<table style=\"float:right;\"><tr><td><button type=\"button\" class=\"btn btn-success btn-sm\" data-toggle=\"modal\" data-target=\"#myModale\" onclick=\"setNid(" +
                             data +
-                            ")\" > <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> Update</button></td><td><form action=\"deleteParent\" method=\"GET\"><input type=\"hidden\" name=\"parent_id\" id=\"parent_id\" value=" +
+                            ")\" > <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> Update</button></td><td><form action=\"deleteKid\" method=\"GET\"><input type=\"hidden\" name=\"kids_id\" id=\"kids_id\" value=" +
                             data +
                             "><button type=\"submit\" class=\"btn btn-danger btn-sm\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i>Delete</button></form></td></tr></table>";
                     },
@@ -135,35 +131,25 @@
         });
 
         function setNid(val) {
-            document.getElementById("pa_id").value = val;
+            document.getElementById("k_id").value = val;
 
             myObj = {
                 "_token": "<?php echo csrf_token(); ?>",
-                "parent_id": document.getElementById("pa_id").value
+                "kid_id": document.getElementById("k_id").value
             }
 
             $.ajax({
                 type: 'POST',
-                url: '/getParentData',
+                url: '/getKidsData',
                 data: myObj,
                 success: function(data) {
                     var jsonObj = JSON.parse(data);
                     document.getElementById("fnames").value = jsonObj.first_name;
                     document.getElementById("lnames").value = jsonObj.last_name;
-                    document.getElementById("emails").value = jsonObj.email;
-                    document.getElementById("teles").value = jsonObj.telephone;
+                    document.getElementById("years").value = jsonObj.year;
                     document.getElementById("typess").value = jsonObj.parent_type;
-                    if (jsonObj.notification_access == 1) {
-                        document.getElementById("notis").checked = true;
-                    } else if (jsonObj.notification_access == 0) {
-                        document.getElementById("notis").checked = false;
-                    }
-
-                    if (jsonObj.email_allow == 1) {
-                        document.getElementById("emas").checked = true;
-                    } else if (jsonObj.email_allow == 0) {
-                        document.getElementById("emas").checked = false;
-                    }
+                    document.getElementById("parentss").value = jsonObj.parent_id;
+                    document.getElementById("groupss").value = jsonObj.group_id;
                 }
             });
         }
@@ -176,19 +162,19 @@
 
             <!-- Modal content-->
             <div class="modal-content" style="border-radius: 1rem;width: 650px;">
-                <div class="modal-header modal-header-new">
-                    <h3>Add New Parent</h3>
+                <div class="modal-header  modal-header-new">
+                    <h3>Add New Kid</h3>
                     <button type="button" class="close close-button" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <form class="" method="POST" action="/addNewParent">
+                    <form class="" method="POST" action="/addNewKid">
                         <?php echo csrf_field(); ?>
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon  modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
                                     <input type="text" class="form-control modal-input" name="fname" id="fname"
-                                        placeholder="Enter your First Name" />
+                                        placeholder="Enter first Name" />
                                 </div>
                             </div>
                         </div>
@@ -198,7 +184,7 @@
                                 <div class="input-group">
                                     <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
                                     <input type="text" class="form-control modal-input" name="lname" id="lname"
-                                        placeholder="Enter your Last Name" />
+                                        placeholder="Enter Last Name" />
                                 </div>
                             </div>
                         </div>
@@ -206,20 +192,9 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-envelope fa"
-                                            aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control modal-input" name="email" id="email"
-                                        placeholder="Enter your Email" />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="cols-sm-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-phone" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control modal-input" name="tele" id="tele"
-                                        placeholder="Enter your Telephone" />
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control modal-input" name="year" id="year"
+                                        placeholder="Enter Year" />
                                 </div>
                             </div>
                         </div>
@@ -229,7 +204,7 @@
                                 <div class="input-group">
                                     <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
                                     <select class="form-control modal-input" name="types" id="types">
-                                        <option value="0">select type</option>
+                                        <option value="0">select parent type</option>
                                         <option value="1">Mother</option>
                                         <option value="2">Father</option>
                                         <option value="3">Other</option>
@@ -239,13 +214,35 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="name" class="cols-sm-2 control-label" style="font-size;">Notification Access</label>
-                            <input type="checkbox" id="noti" name="noti">
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <select class="form-control modal-input" name="parents" id="parents">
+                                        <option value="0">select parent</option>
+                                        <?php $__currentLoopData = $parents; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pr): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($pr->id); ?>"><?php echo e($pr->first_name); ?>
+
+                                                <?php echo e($pr->last_name); ?>
+
+                                            </option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="name" class="cols-sm-2 control-label" style="font-size;">Email Allow</label>
-                            <input type="checkbox" id="ema" name="ema">
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <select class="form-control modal-input" name="groups" id="groups">
+                                        <option value="0">select group</option>
+                                        <?php $__currentLoopData = $groups; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $gr): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($gr->id); ?>"><?php echo e($gr->name); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="form-group register-button">
@@ -259,6 +256,7 @@
     </div>
     
 
+
     
     <div id="myModale" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -266,54 +264,42 @@
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3>Edit Parent Details</h3>
+                    <h3>Edit Kid Details</h3>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <form class="" method="POST" action="/editParent">
+                    <form class="" method="POST" action="/editKid">
                         <?php echo csrf_field(); ?>
                         <div class="form-group">
-                            <label for="name" class="cols-sm-2 control-label">Your First Name</label>
+                            <label for="name" class="cols-sm-2 control-label">First Name</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
                                     <input type="text" class="form-control" name="fnames" id="fnames"
-                                        placeholder="Enter your First Name" />
-                                    <input type="hidden" name="pa_id" id="pa_id" />
+                                        placeholder="Enter first Name" />
+                                    <input type="hidden" name="k_id" id="k_id" />
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="name" class="cols-sm-2 control-label">Your Last Name</label>
+                            <label for="name" class="cols-sm-2 control-label">Last Name</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
                                     <input type="text" class="form-control" name="lnames" id="lnames"
-                                        placeholder="Enter your Last Name" />
+                                        placeholder="Enter Last Name" />
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="email" class="cols-sm-2 control-label">Your Email</label>
-                            <div class="cols-sm-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-envelope fa"
-                                            aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="emails" id="emails"
-                                        placeholder="Enter your Email" />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="name" class="cols-sm-2 control-label">Your Telephone</label>
+                            <label for="name" class="cols-sm-2 control-label">Year</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="teles" id="teles"
-                                        placeholder="Enter your Telephone" />
+                                    <input type="text" class="form-control" name="years" id="years"
+                                        placeholder="Enter Year" />
                                 </div>
                             </div>
                         </div>
@@ -334,17 +320,41 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="name" class="cols-sm-2 control-label">Notification Access</label>
-                            <input type="checkbox" id="notis" name="notis">
+                            <label for="name" class="cols-sm-2 control-label">Parent</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <select class="form-control" name="parentss" id="parentss">
+                                        <option value="0">select parent</option>
+                                        <?php $__currentLoopData = $parents; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pr): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($pr->id); ?>"><?php echo e($pr->first_name); ?>
+
+                                                <?php echo e($pr->last_name); ?>
+
+                                            </option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="name" class="cols-sm-2 control-label">Email Allow</label>
-                            <input type="checkbox" id="emas" name="emas">
+                            <label for="name" class="cols-sm-2 control-label">Group</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <select class="form-control" name="groupss" id="groupss">
+                                        <option value="0">select group</option>
+                                        <?php $__currentLoopData = $groups; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $gr): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($gr->id); ?>"><?php echo e($gr->name); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="form-group ">
-                            <button class="btn btn-success" type="submit">Update </button>
+                            <button class="btn btn-success" type="submit">Add </button>
                         </div>
 
                     </form>
@@ -355,4 +365,4 @@
     
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/dilshan/Documents/freelance/epit_de/backEnd/kitaAppBackend/resources/views/kita/parent_add.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/dilshan/Documents/freelance/epit_de/backEnd/kitaAppBackend/resources/views/kita/kid_add.blade.php ENDPATH**/ ?>

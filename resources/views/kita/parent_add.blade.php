@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chartist.css') }}">
     <!-- Plugins css start-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/prism.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/ui-changes.css') }}">
     <!-- Plugins css Ends-->
 @endsection
 
@@ -20,8 +21,7 @@
 
         <div class="row">
             <div class="col-sm-12" style="text-align: right">
-                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal"><i
-                        class="fa fa-plus" aria-hidden="true"></i> Add New</button>
+                <button type="button" class="btn btn-primary btn-md add-new-button" data-toggle="modal" data-target="#myModal" style="color: white !important;border: 2px solid #2494d3 !important;background-color: #2596d3 !important;"> Add New</button>
             </div>
         </div>
         <br>
@@ -34,14 +34,14 @@
                     <table id="example" class="display" style="width:100%">
                         <thead>
                             <tr>
-                                <td>First Name</td>
-                                <td>Last Name</td>
-                                <td>Email</td>
-                                <td>Telephone</td>
-                                <td>Parent Type</td>
-                                <td>Notification Access</td>
-                                <td>Email Allow</td>
-                                <td>Action</td>
+                                <td style="font-weight: bold;">First Name</td>
+                                <td style="font-weight: bold;">Last Name</td>
+                                <td style="font-weight: bold;">Email</td>
+                                <td style="font-weight: bold;">Telephone</td>
+                                <td style="font-weight: bold;">Parent Type</td>
+                                <td style="font-weight: bold;">Notification Access</td>
+                                <td style="font-weight: bold;">Email Allow</td>
+                                <td style="float:left;margin-left:4rem ;font-weight: bold;">Action</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -123,7 +123,7 @@
                     "data": "id",
                     "width": "60%",
                     "render": function(data, type, full, meta) {
-                        return "<table><tr><td><button type=\"button\" class=\"btn btn-success btn-sm\" data-toggle=\"modal\" data-target=\"#myModale\" onclick=\"setNid(" +
+                        return "<table style=\"float:right;\"><tr><td><button type=\"button\" class=\"btn btn-success btn-sm\" data-toggle=\"modal\" data-target=\"#myModale\" onclick=\"setNid(" +
                             data +
                             ")\" > <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> Update</button></td><td><form action=\"deleteParent\" method=\"GET\"><input type=\"hidden\" name=\"parent_id\" id=\"parent_id\" value=" +
                             data +
@@ -177,65 +177,60 @@
         <div class="modal-dialog">
 
             <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
+            <div class="modal-content" style="border-radius: 1rem;width: 650px;">
+                <div class="modal-header modal-header-new">
                     <h3>Add New Parent</h3>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close close-button" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
                     <form class="" method="POST" action="/addNewParent">
                         @csrf
                         <div class="form-group">
-                            <label for="name" class="cols-sm-2 control-label">Your First Name</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="fname" id="fname"
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control modal-input" name="fname" id="fname"
                                         placeholder="Enter your First Name" />
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="name" class="cols-sm-2 control-label">Your Last Name</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="lname" id="lname"
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control modal-input" name="lname" id="lname"
                                         placeholder="Enter your Last Name" />
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="email" class="cols-sm-2 control-label">Your Email</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-envelope fa"
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-envelope fa"
                                             aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="email" id="email"
+                                    <input type="text" class="form-control modal-input" name="email" id="email"
                                         placeholder="Enter your Email" />
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="name" class="cols-sm-2 control-label">Your Telephone</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="tele" id="tele"
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control modal-input" name="tele" id="tele"
                                         placeholder="Enter your Telephone" />
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="name" class="cols-sm-2 control-label">Parent Type</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <select class="form-control" name="types" id="types">
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <select class="form-control modal-input" name="types" id="types">
                                         <option value="0">select type</option>
                                         <option value="1">Mother</option>
                                         <option value="2">Father</option>
@@ -246,16 +241,16 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="name" class="cols-sm-2 control-label">Notification Access</label>
+                            <label for="name" class="cols-sm-2 control-label" style="font-size;">Notification Access</label>
                             <input type="checkbox" id="noti" name="noti">
                         </div>
 
                         <div class="form-group">
-                            <label for="name" class="cols-sm-2 control-label">Email Allow</label>
+                            <label for="name" class="cols-sm-2 control-label" style="font-size;">Email Allow</label>
                             <input type="checkbox" id="ema" name="ema">
                         </div>
 
-                        <div class="form-group ">
+                        <div class="form-group register-button">
                             <button class="btn btn-success" type="submit">Add </button>
                         </div>
 

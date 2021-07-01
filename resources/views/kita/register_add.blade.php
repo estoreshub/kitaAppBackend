@@ -5,6 +5,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chartist.css') }}">
     <!-- Plugins css start-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/prism.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/ui-changes.css') }}">
     <!-- Plugins css Ends-->
 @endsection
 
@@ -20,8 +22,7 @@
 
         {{-- <div class="row">
             <div class="col-sm-12" style="text-align: right">
-                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal"><i
-                    class="fa fa-plus" aria-hidden="true"></i> Add New</button>
+                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" style="color: white !important;border: 2px solid #2494d3 !important;background-color: #2596d3 !important;">Add New</button>
             </div>
         </div> --}}
         <br>

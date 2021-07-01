@@ -7,6 +7,8 @@ new dashboard
 <!-- Plugins css start-->
 <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/prism.css')); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/kita-app-user.css')); ?>">
+
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/ui-changes.css')); ?>">
 <!-- Plugins css Ends-->
 <?php $__env->stopSection(); ?>
 
