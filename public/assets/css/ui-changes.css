@@ -1,0 +1,30 @@
+.modal-icon {
+    padding-right: 1rem;
+    font-size: 1.5rem;
+}
+
+.modal-input {
+    border-radius: 0.6rem!important;
+}
+
+.modal-header-new {
+    font-weight: bold!important;
+    color: #848484;
+}
+
+.register-button {
+    float: right;
+}
+.register-button button {
+    background-color: #03A9F4 !important;
+    font-size: 1.1rem;
+    border-radius: 0.5rem;
+}
+
+.form-data-field {
+    padding: 0.5rem;
+}
+
+.close-button {
+    font-size: 2.3rem;
+}

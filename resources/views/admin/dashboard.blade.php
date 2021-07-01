@@ -5,13 +5,13 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chartist.css') }}">
     <!-- Plugins css start-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/prism.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/ui-changes.css') }}">
     <!-- Plugins css Ends-->
 @endsection
 
-@section('breadcrumb-title', 'Default')
+@section('breadcrumb-title', 'Home')
 @section('breadcrumb-items')
     <li class="breadcrumb-item">Dashboard</li>
-    <li class="breadcrumb-item active">Default</li>
 @endsection
 
 @section('content')
@@ -19,8 +19,13 @@
     <div class="container-fluid">
         <div class="row" style="text-align: right">
             <div class="col-sm-12">
-                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal"><i
-                        class="fa fa-plus" aria-hidden="true"></i> Add New</button>
+                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" style="color: white !important;
+                                                                                                                           border: 2px solid #2494d3 !important;
+                                                                                                                           background-color: #2596d3 !important;
+                                                                                                                       }
+
+><i
+                        class="fa fa-plus" aria-hidden="true"></i> Add New User</button>
             </div>
         </div>
 
@@ -187,125 +192,116 @@
         <div class="modal-dialog">
 
             <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
+            <div class="modal-content" style="border-radius: 1rem;
+                                                  width: 650px;">
+                <div class="modal-header modal-header-new">
                     <h3>Add New Kita User</h3>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close close-button" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
                     <form class="" method="POST" action="/addNewKita" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label for="name" class="cols-sm-2 control-label">Your First Name</label>
                             <div class="cols-sm-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="fname" id="fname"
+                                <div class="input-group form-data-field">
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control modal-input" name="fname" id="fname"
                                         placeholder="Enter your First Name" />
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="name" class="cols-sm-2 control-label">Your Last Name</label>
                             <div class="cols-sm-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="lname" id="lname"
+                                <div class="input-group form-data-field">
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control modal-input" name="lname" id="lname"
                                         placeholder="Enter your Last Name" />
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="name" class="cols-sm-2 control-label">Kindergarden Name</label>
                             <div class="cols-sm-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="kiname" id="kiname"
+                                <div class="input-group form-data-field">
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-home" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control modal-input" name="kiname" id="kiname"
                                         placeholder="Enter your Kindergarden Name" />
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="name" class="cols-sm-2 control-label">City</label>
                             <div class="cols-sm-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="city" id="city"
+                                <div class="input-group form-data-field">
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-thumb-tack" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control modal-input" name="city" id="city"
                                         placeholder="Enter your City" />
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="name" class="cols-sm-2 control-label">State / Province</label>
                             <div class="cols-sm-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="state" id="state"
+                                <div class="input-group form-data-field">
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-location-arrow" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control modal-input" name="state" id="state"
                                         placeholder="Enter your State" />
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="name" class="cols-sm-2 control-label">Postal / Zip Code</label>
                             <div class="cols-sm-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="zip" id="zip"
+                                <div class="input-group form-data-field">
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-globe" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control modal-input" name="zip" id="zip"
                                         placeholder="Enter your Postal/Zip Code" />
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="name" class="cols-sm-2 control-label">Address</label>
                             <div class="cols-sm-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="address" id="address"
+                                <div class="input-group form-data-field">
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-address-card-o" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control modal-input" name="address" id="address"
                                         placeholder="Enter your Address" />
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="name" class="cols-sm-2 control-label">Logo</label>
                             <div class="cols-sm-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="file" class="form-control" id="photos[]" name="photos[]" multiple>
+                                <div class="input-group form-data-field">
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-file-image-o" aria-hidden="true"></i></span>
+                                    <input type="file" class="form-control modal-input" id="photos[]" name="photos[]" multiple>
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="email" class="cols-sm-2 control-label">Your Email</label>
                             <div class="cols-sm-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-envelope fa"
+                                <div class="input-group form-data-field">
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-envelope fa"
                                             aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="email" id="email"
+                                    <input type="text" class="form-control modal-input" name="email" id="email"
                                         placeholder="Enter your Email" />
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="name" class="cols-sm-2 control-label">Your Telephone</label>
                             <div class="cols-sm-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="tele" id="tele"
+                                <div class="input-group form-data-field">
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control modal-input" name="tele" id="tele"
                                         placeholder="Enter your Telephone" />
                                 </div>
                             </div>
                         </div>
 
-                        <div class="form-group ">
+                        <div class="form-group register-button">
                             <button class="btn btn-success" type="submit">Register </button>
                         </div>
                     </form>
@@ -355,7 +351,7 @@
                             <label for="name" class="cols-sm-2 control-label">Kindergarden Name</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon"><i class="fa fa-home" aria-hidden="true"></i></span>
                                     <input type="text" class="form-control" name="kinameU" id="kinameU"
                                         placeholder="Enter your Kindergarden Name" />
                                 </div>

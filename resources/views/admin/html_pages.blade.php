@@ -9,20 +9,16 @@
     <!-- Plugins css Ends-->
 @endsection
 
-@section('breadcrumb-title', 'Default')
+@section('breadcrumb-title', 'Home')
 @section('breadcrumb-items')
-    <li class="breadcrumb-item">Dashboard</li>
-    <li class="breadcrumb-item active">Parent Feedbacks</li>
+    <li class="breadcrumb-item">Html Templates</li>
 @endsection
 
 @section('content')
     <!-- Container-fluid starts-->
     <div class="container-fluid">
         <div class="row" style="text-align: right">
-            <div class="col-sm-12">
-                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal"><i
-                        class="fa fa-plus" aria-hidden="true"></i> Add New</button>
-            </div>
+
         </div>
 
         <br>

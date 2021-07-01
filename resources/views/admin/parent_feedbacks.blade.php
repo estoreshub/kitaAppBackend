@@ -8,20 +8,16 @@
     <!-- Plugins css Ends-->
 @endsection
 
-@section('breadcrumb-title', 'Default')
+@section('breadcrumb-title', 'Home')
 @section('breadcrumb-items')
-    <li class="breadcrumb-item">Dashboard</li>
-    <li class="breadcrumb-item active">Parent Feedbacks</li>
+    <li class="breadcrumb-item">Parent Feedbacks</li>
 @endsection
 
 @section('content')
     <!-- Container-fluid starts-->
     <div class="container-fluid">
         <div class="row" style="text-align: right">
-            <div class="col-sm-12">
-                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal"><i
-                        class="fa fa-plus" aria-hidden="true"></i> Add New</button>
-            </div>
+
         </div>
 
         <br>
@@ -96,7 +92,7 @@
 
     {{-- start kita add modal --}}
     <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog" style="max-width:700px;">
 
             <!-- Modal content-->
             <div class="modal-content">
@@ -133,7 +129,7 @@
                             <label for="name" class="cols-sm-2 control-label">Kindergarden Name</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon"><i class="fa fa-home" aria-hidden="true"></i></span>
                                     <input type="text" class="form-control" name="kiname" id="kiname"
                                         placeholder="Enter your Kindergarden Name" />
                                 </div>
@@ -229,7 +225,7 @@
 
     {{-- start kita edit modal --}}
     <div id="myModalE" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog" style="max-width:700px;">
 
             <!-- Modal content-->
             <div class="modal-content">
@@ -267,7 +263,7 @@
                             <label for="name" class="cols-sm-2 control-label">Kindergarden Name</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon"><i class="fa fa-home" aria-hidden="true"></i></span>
                                     <input type="text" class="form-control" name="kinameU" id="kinameU"
                                         placeholder="Enter your Kindergarden Name" />
                                 </div>

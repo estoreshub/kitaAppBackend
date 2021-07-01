@@ -1,0 +1,1 @@
+<?php /**PATH /home/dilshan/Documents/freelance/epit_de/backEnd/kitaAppBackend/resources/views/footervarview.blade.php ENDPATH**/ ?>
