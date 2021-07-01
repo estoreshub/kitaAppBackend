@@ -1,0 +1,28 @@
+.sidebar-menu-list-items li{
+    font-size: 1.1rem;
+}
+
+.div-topics {
+    height: 150px;
+    border: 2px solid #2596d3!important;
+    background-color: transparent;
+    color: black;
+}
+
+.card-padding {
+    padding: 3rem;
+}
+
+.card-inner {
+    color: white!important;
+    font-size: 1.7rem;
+}
+
+.topic-div-icns {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.topic-board-image {
+    width: 45px;
+}

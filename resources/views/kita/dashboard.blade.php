@@ -119,13 +119,13 @@ new dashboard
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/chartist.css')}}">
 <!-- Plugins css start-->
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/prism.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/kita-app-user.css')}}">
 <!-- Plugins css Ends-->
 @endsection
 
-@section('breadcrumb-title', 'Default')
+@section('breadcrumb-title', 'Home')
 @section('breadcrumb-items')
 <li class="breadcrumb-item">Dashboard</li>
-<li class="breadcrumb-item active">Default</li>
 @endsection
 
 @section('content')
@@ -135,54 +135,60 @@ new dashboard
         <div class="row ui-sortable" id="draggableMultiple" style="text-align: center">
             <div class="col-sm-12 col-xl-6">
               <a href="/new-group">
-                <div class="card">
-                    <div class="card-header">
-                      <h5>Groups</h5>
+                <div class="card div-topics" style="background-color: cadetblue !important;">
+                    <div class="card-padding">
+                     <img class="topic-board-image" src="{{asset('assets/images/kita-user/age-group.png')}}" alt="">
+                      <h5 class="card-inner">Groups</h5>
                     </div>
                   </div>
               </a>
             </div>
             <div class="col-sm-12 col-xl-6">
                 <a href="/new-parent">
-                    <div class="card">
-                        <div class="card-header">
-                          <h5>Parents</h5>
+                    <div class="card div-topics" style="background-color: palevioletred !important;">
+                        <div class="card-padding">
+                       <img class="topic-board-image" src="{{asset('assets/images/kita-user/parents.png')}}" alt="">
+                          <h5 class="card-inner">Parents</h5>
                         </div>
                       </div>
                   </a>
             </div>
             <div class="col-sm-12 col-xl-6">
                 <a href="/new-kid">
-                    <div class="card">
-                        <div class="card-header">
-                          <h5>Kids</h5>
+                    <div class="card div-topics" style="background-color: salmon !important;">
+                        <div class="card-padding">
+                         <img class="topic-board-image" src="{{asset('assets/images/kita-user/boy.png')}}" alt="">
+                          <h5 class="card-inner">Kids</h5>
                         </div>
                       </div>
                   </a>
             </div>
             <div class="col-sm-12 col-xl-6">
                 <a href="/new-news">
-                    <div class="card">
-                        <div class="card-header">
-                          <h5>News</h5>
+                    <div class="card div-topics" style="background-color: darkseagreen !important;">
+                        <div class="card-padding">
+                         <img class="topic-board-image" src="{{asset('assets/images/kita-user/newspaper.png')}}" alt="">
+                          <h5 class="card-inner">News</h5>
                         </div>
                       </div>
                   </a>
             </div>
             <div class="col-sm-12 col-xl-6">
                 <a href="/new-meal">
-                    <div class="card">
-                        <div class="card-header">
-                          <h5>Meals</h5>
+                    <div class="card div-topics" style="background-color: turquoise !important;">
+                        <div class="card-padding">
+                         <img class="topic-board-image" src="{{asset('assets/images/kita-user/breakfast.png')}}" alt="">
+                          <h5 class="card-inner">Meals</h5>
                         </div>
                       </div>
                   </a>
             </div>
             <div class="col-sm-12 col-xl-6">
                 <a href="/block-boards">
-                    <div class="card">
-                        <div class="card-header">
-                          <h5>Block Boards</h5>
+                    <div class="card div-topics" style="background-color: steelblue !important;">
+                        <div class="card-padding">
+                         <img class="topic-board-image" src="{{asset('assets/images/kita-user/shopping-cart.png')}}" alt="">
+                          <h5 class="card-inner">Market Place</h5>
                         </div>
                       </div>
                   </a>
@@ -190,9 +196,10 @@ new dashboard
 
             <div class="col-sm-12 col-xl-6">
                 <a href="/new-event">
-                    <div class="card">
-                        <div class="card-header">
-                          <h5>Events / Messages</h5>
+                    <div class="card div-topics" style="background-color: deepskyblue !important;">
+                        <div class="card-padding">
+                         <img class="topic-board-image" src="{{asset('assets/images/kita-user/chat.png')}}" alt="">
+                          <h5 class="card-inner">Events / Messages</h5>
                         </div>
                       </div>
                   </a>
@@ -200,9 +207,10 @@ new dashboard
 
             <div class="col-sm-12 col-xl-6">
                 <a href="/new-register">
-                    <div class="card">
-                        <div class="card-header">
-                          <h5>Attendance Register</h5>
+                    <div class="card div-topics" style="background-color: slategray !important;">
+                        <div class="card-padding">
+                         <img class="topic-board-image" src="{{asset('assets/images/kita-user/attendance.png')}}" alt="">
+                          <h5 class="card-inner">Attendance Register</h5>
                         </div>
                       </div>
                   </a>

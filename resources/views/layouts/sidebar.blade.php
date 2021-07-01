@@ -1,25 +1,19 @@
 <!-- Page Sidebar Start-->
 <div class="page-sidebar">
   <div class="main-header-left d-none d-lg-block">
-    <div class="logo-wrapper"><a href="{{route('/')}}"><img src="{{asset('assets/images/endless-logo.png')}}" alt=""></a></div>
+    <div class="logo-wrapper" style="justify-content: center;"><a href="{{route('/')}}"><img src="{{asset('assets/images/small_kigapp.png')}}" alt=""></a></div>
   </div>
   <div class="sidebar custom-scrollbar">
-    <div class="sidebar-user text-center">
-      <div><img class="img-60 rounded-circle" src="{{asset('assets/images/user/1.jpg')}}" alt="#">
-        <div class="profile-edit"><a href="edit-profile" target="_blank"><i data-feather="edit"></i></a></div>
-      </div>
-      <h6 class="mt-3 f-14">{{ Session::get('loggedUserName') }}</h6>
-      {{-- <p>General Manager.</p> --}}
-    </div>
+
     <ul class="sidebar-menu">
 
       {{-- <li><a class="sidebar-header {{ Route::currentRouteName()=='blade-components' ? 'active' : '' }}" href="{{route('blade-components')}}"><i data-feather="menu"></i><span>Blade Components</span></a></li> --}}
 
       <li class="">
-        <a class="sidebar-header" href="#"><i data-feather="home"></i><span>Dashboard</span>
+        <a class="sidebar-header" href="#"><span style="font-size: 1.5rem;">Dashboard</span>
           <i class="fa fa-angle-right pull-right"></i>
         </a>
-        <ul class="sidebar-submenu">
+        <ul class="sidebar-submenu sidebar-menu-list-items">
           <li><a href="/new-group"><i class="fa fa-circle"></i>Groups</a></li>
           <li><a href="/new-parent"><i class="fa fa-circle"></i>Parents</a></li>
           <li><a href="/new-kid"><i class="fa fa-circle"></i>Kids</a></li>
@@ -46,9 +40,6 @@
         </div>
         <div class="col-sm-4 text-right p-0"><i class="mr-2" data-feather="settings"></i></div>
       </div>
-    </div>
-    <div class="friend-list-search mt-0">
-      <input type="text" placeholder="search friend"><i class="fa fa-search"></i>
     </div>
     <div class="p-l-30 p-r-30">
       <div class="chat-box">
