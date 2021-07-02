@@ -169,7 +169,7 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/tag.png')); ?>" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="title" id="title"
                                         placeholder="Enter title" />
                                 </div>
@@ -179,7 +179,7 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/policy.png')); ?>" alt=""></span>
                                     <textarea id="des" name="des" class="form-control modal-input" rows="3" cols="50"
                                         placeholder="Enter description "></textarea>
                                 </div>
@@ -189,8 +189,7 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-envelope fa"
-                                            aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/schedule.png')); ?>" alt=""></span>
                                     <input class="form-control modal-input" type="date" id="mydate" name="mydate"
                                         placeholder="Select date">
                                 </div>
@@ -200,7 +199,7 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/image.png')); ?>" alt=""></span>
                                     <input type="file" class="form-control modal-input" id="photos[]" name="photos[]" multiple required>
                                 </div>
                             </div>
@@ -234,7 +233,7 @@
                             <label for="name" class="cols-sm-2 control-label">Title</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/tag.png')); ?>" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="titles" id="titles"
                                         placeholder="Enter title" />
                                     <input type="hidden" name="new_id" id="new_id" />
@@ -246,7 +245,7 @@
                             <label for="name" class="cols-sm-2 control-label">Description</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/policy.png')); ?>" alt=""></span>
                                     <textarea id="dess" name="dess" class="form-control modal-input" rows="3" cols="50"
                                         placeholder="Enter description"></textarea>
                                 </div>
@@ -257,8 +256,7 @@
                             <label for="email" class="cols-sm-2 control-label">Date</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-envelope fa"
-                                            aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/schedule.png')); ?>" alt=""></span>
                                     <input class="form-control modal-input" type="date" id="mydates" name="mydates"
                                         placeholder="Select date">
                                 </div>
@@ -272,7 +270,7 @@
                             <label for="name" class="cols-sm-2 control-label">Image</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/image.png')); ?>" alt=""></span>
                                     <input type="file" class="form-control modal-input" id="photoss[]" name="photoss[]" multiple
                                         required>
                                 </div>

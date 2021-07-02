@@ -187,7 +187,7 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/identity.png')}}" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="fname" id="fname"
                                         placeholder="Enter your First Name" />
                                 </div>
@@ -197,7 +197,7 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/identity.png')}}" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="lname" id="lname"
                                         placeholder="Enter your Last Name" />
                                 </div>
@@ -207,8 +207,7 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-envelope fa"
-                                            aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/gmail.png')}}" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="email" id="email"
                                         placeholder="Enter your Email" />
                                 </div>
@@ -218,7 +217,7 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/telephone.png')}}" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="tele" id="tele"
                                         placeholder="Enter your Telephone" />
                                 </div>
@@ -228,7 +227,7 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/customer-behavior.png')}}" alt=""></span>
                                     <select class="form-control modal-input" name="types" id="types">
                                         <option value="0">select type</option>
                                         <option value="1">Mother</option>
@@ -277,7 +276,7 @@
                             <label for="name" class="cols-sm-2 control-label">Your First Name</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/identity.png')}}" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="fnames" id="fnames"
                                         placeholder="Enter your First Name" />
                                     <input type="hidden" name="pa_id" id="pa_id" />
@@ -289,7 +288,7 @@
                             <label for="name" class="cols-sm-2 control-label">Your Last Name</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/identity.png')}}" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="lnames" id="lnames"
                                         placeholder="Enter your Last Name" />
                                 </div>
@@ -300,8 +299,7 @@
                             <label for="email" class="cols-sm-2 control-label">Your Email</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-envelope fa"
-                                            aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/gmail.png')}}" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="emails" id="emails"
                                         placeholder="Enter your Email" />
                                 </div>
@@ -312,7 +310,7 @@
                             <label for="name" class="cols-sm-2 control-label">Your Telephone</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/telephone.png')}}" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="teles" id="teles"
                                         placeholder="Enter your Telephone" />
                                 </div>
@@ -323,7 +321,7 @@
                             <label for="name" class="cols-sm-2 control-label">Parent Type</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/customer-behavior.png')}}" alt=""></span>
                                     <select class="form-control modal-input" name="typess" id="typess">
                                         <option value="0">select type</option>
                                         <option value="1">Mother</option>

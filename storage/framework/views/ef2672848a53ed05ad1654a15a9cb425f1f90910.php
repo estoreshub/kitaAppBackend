@@ -177,7 +177,7 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-users" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/group.png')); ?>" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="name" id="name"
                                         placeholder="Enter Group Name" />
                                 </div>
@@ -187,7 +187,7 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-sticky-note" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/policy.png')); ?>" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="des" id="des"
                                         placeholder="Enter Description" />
                                 </div>
@@ -197,7 +197,7 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-crosshairs" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/color-picker.png')); ?>" alt=""></span>
                                     
                                     <input type="color" class="form-control modal-input" id="color" name="color" value="#ff0000"
                                         placeholder="Enter Color Code">
@@ -208,7 +208,7 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/image.png')); ?>" alt=""></span>
                                     <input type="file" class="form-control modal-input" id="photos[]" name="photos[]" multiple>
                                 </div>
                             </div>
@@ -243,7 +243,7 @@
                             <label for="name" class="cols-sm-2 control-label">Group Name</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/group.png')); ?>" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="names" id="names"
                                         placeholder="Enter Group Name" />
                                     <input type="hidden" name="gr_id" id="gr_id" />
@@ -255,7 +255,7 @@
                             <label for="name" class="cols-sm-2 control-label">Description</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-sticky-note" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/policy.png')); ?>" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="dess" id="dess"
                                         placeholder="Enter Description" />
                                 </div>
@@ -266,7 +266,7 @@
                             <label for="name" class="cols-sm-2 control-label">Color</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-crosshairs" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/color-picker.png')); ?>" alt=""></span>
                                     
                                     <input type="color" class="form-control modal-input" id="colors" name="colors" value="#ff0000"
                                         placeholder="Enter Color Code">
@@ -282,7 +282,7 @@
                             <label for="name" class="cols-sm-2 control-label">Image</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/image.png')); ?>" alt=""></span>
                                     <input type="file" class="form-control modal-input" id="photoss[]" name="photoss[]" multiple>
                                 </div>
                             </div>

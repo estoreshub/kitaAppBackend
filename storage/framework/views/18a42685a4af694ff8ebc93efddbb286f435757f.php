@@ -171,7 +171,7 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon  modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon  modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/identity.png')); ?>" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="fname" id="fname"
                                         placeholder="Enter first Name" />
                                 </div>
@@ -181,7 +181,7 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/identity.png')); ?>" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="lname" id="lname"
                                         placeholder="Enter Last Name" />
                                 </div>
@@ -191,7 +191,7 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/calendar.png')); ?>" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="year" id="year"
                                         placeholder="Enter Year" />
                                 </div>
@@ -201,7 +201,7 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/customer-behavior.png')); ?>" alt=""></span>
                                     <select class="form-control modal-input" name="types" id="types">
                                         <option value="0">select parent type</option>
                                         <option value="1">Mother</option>
@@ -215,7 +215,7 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/parents.png')); ?>" alt=""></span>
                                     <select class="form-control modal-input" name="parents" id="parents">
                                         <option value="0">select parent</option>
                                         <?php $__currentLoopData = $parents; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pr): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -233,7 +233,7 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/group.png')); ?>" alt=""></span>
                                     <select class="form-control modal-input" name="groups" id="groups">
                                         <option value="0">select group</option>
                                         <?php $__currentLoopData = $groups; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $gr): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -273,7 +273,7 @@
                             <label for="name" class="cols-sm-2 control-label">First Name</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/identity.png')); ?>" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="fnames" id="fnames"
                                         placeholder="Enter first Name" />
                                     <input type="hidden" name="k_id" id="k_id" />
@@ -285,7 +285,7 @@
                             <label for="name" class="cols-sm-2 control-label">Last Name</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/identity.png')); ?>" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="lnames" id="lnames"
                                         placeholder="Enter Last Name" />
                                 </div>
@@ -296,7 +296,7 @@
                             <label for="name" class="cols-sm-2 control-label">Year</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/calendar.png')); ?>" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="years" id="years"
                                         placeholder="Enter Year" />
                                 </div>
@@ -307,7 +307,7 @@
                             <label for="name" class="cols-sm-2 control-label">Parent Type</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/customer-behavior.png')); ?>" alt=""></span>
                                     <select class="form-control modal-input" name="typess" id="typess">
                                         <option value="0">select type</option>
                                         <option value="1">Mother</option>
@@ -322,7 +322,7 @@
                             <label for="name" class="cols-sm-2 control-label">Parent</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/parents.png')); ?>" alt=""></span>
                                     <select class="form-control modal-input" name="parentss" id="parentss">
                                         <option value="0">select parent</option>
                                         <?php $__currentLoopData = $parents; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pr): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -341,7 +341,7 @@
                             <label for="name" class="cols-sm-2 control-label">Group</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/group.png')); ?>" alt=""></span>
                                     <select class="form-control modal-input" name="groupss" id="groupss">
                                         <option value="0">select group</option>
                                         <?php $__currentLoopData = $groups; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $gr): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
