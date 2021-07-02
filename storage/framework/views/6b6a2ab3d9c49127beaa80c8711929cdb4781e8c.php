@@ -18,52 +18,63 @@
     <!-- Container-fluid starts-->
     <div class="container-fluid">
 
-        <div class="row">
-            <div class="col-sm-12" style="text-align: right">
-                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModale" style="color: white !important;border: 2px solid #2494d3 !important;background-color: #2596d3 !important;"> Add New</button>
-            </div>
-        </div>
+
+
+         <div class="add-kids-event-section">
+         <div class="col-sm-2 add-new-event-topic" style="text-align: left">
+                                                                   Add Meal Items
+                                                               </div>
+         <div class="row">
+                     <div class="col-sm-12" style="text-align: right">
+                         <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModale" style="color: white !important;border: 2px solid #2494d3 !important;background-color: #2596d3 !important;"> Add New</button>
+                     </div>
+                 </div>
+
+         <div class="row" style="text-align: center;">
+
+                     <div class="col-sm-12">
+                         <h2 style="color: #2696d3;">Add New Meal</h2>
+                         <form action="/addItems" method="POST">
+                             <?php echo csrf_field(); ?>
+                             <input type="text" name="itemName" class="modal-input">
+                             <button type="submit"  class="drop-down-add-btn" >Add Items</button>
+                         </form>
+                         <br>
+
+                         <table id="example2" class="display" style="width:100%">
+                             <thead>
+                                 <tr>
+                                     <td>item name</td>
+                                 </tr>
+                             </thead>
+                             <?php $__currentLoopData = $itemDataArray; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $it): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                 <tbody>
+                                     <tr>
+                                         <td><?php echo e($it['name']); ?></td>
+                                     </tr>
+                                 </tbody>
+                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                         </table>
+                     </div>
+                 </div>
+         </div>
+
+
         <br>
 
-        <div class="row" style="text-align: center;">
-            <div class="col-sm-12">
-                <h2>Add New Meal</h2>
-                <form action="/addItems" method="POST">
-                    <?php echo csrf_field(); ?>
-                    <input type="text" name="itemName">
-                    <button type="submit">Add Items</button>
-                </form>
-                <br>
-
-                <table id="example2" class="display" style="width:100%">
-                    <thead>
-                        <tr>
-                            <td>item name</td>
-                        </tr>
-                    </thead>
-                    <?php $__currentLoopData = $itemDataArray; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $it): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <tbody>
-                            <tr>
-                                <td><?php echo e($it['name']); ?></td>
-                            </tr>
-                        </tbody>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </table>
-            </div>
-        </div>
-
-        <br>
-
-        <div class="row">
+        <div class="row add-kids-event-section">
+        <div class="col-sm-12 add-new-event-topic" style="text-align: left;    padding-bottom: 1rem;">
+                                                Existing Meal List
+                                            </div>
             <div class="col-sm-12">
                 
                 <div class="col-sm-12">
                     <table id="example" class="display" style="width:100%">
                         <thead>
                             <tr>
-                                <td>Date</td>
-                                <td>Items</td>
-                                <td>Action</td>
+                                <td style="width:30%">Date</td>
+                                <td style="width:30%">Items</td>
+                                <td style="width:40%">Action</td>
                             </tr>
                         </thead>
                         <?php $__currentLoopData = $meals; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ne): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -138,8 +149,8 @@
         <div class="modal-dialog">
 
             <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
+            <div class="modal-content"  style="border-radius: 1rem;width: 650px;">
+                <div class="modal-header modal-header-new"">
                     <h3>Add New Meal</h3>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
@@ -150,9 +161,9 @@
                             <label for="email" class="cols-sm-2 control-label">Date</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-envelope fa"
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-envelope fa"
                                             aria-hidden="true"></i></span>
-                                    <input class="form-control" type="date" id="mydate" name="mydate"
+                                    <input class="form-control modal-input" type="date" id="mydate" name="mydate"
                                         placeholder="Select date">
                                 </div>
                             </div>
@@ -162,14 +173,15 @@
                             <label for="name" class="cols-sm-2 control-label">Items</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <div style="color: black;font-weight: bold;" id="newInput">
-                                        <table border="1">
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <div style="color: black;font-weight: bold; width: 90%;" id="newInput">
+                                        <table border="1" style="width: 91%;">
                                             <tr>
-                                                <td>item name</td>
+                                                <td style="background-color: #bdbdbd;
+                                                               text-align: center;">Item name</td>
                                             </tr>
                                             <?php $__currentLoopData = $itemDataArray; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $it): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <tr>
+                                                <tr style="text-align: center;">
                                                     <td><?php echo e($it['name']); ?></td>
                                                 </tr>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -179,7 +191,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group ">
+                        <div class="form-group register-button">
                             <button class="btn btn-success" type="submit">Add </button>
                         </div>
 

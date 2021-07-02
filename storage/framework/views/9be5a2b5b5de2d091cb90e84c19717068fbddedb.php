@@ -18,49 +18,57 @@
     <!-- Container-fluid starts-->
     <div class="container-fluid">
 
+        <div class="add-kids-event-section">
         <div class="row">
-            <div class="col-sm-12" style="text-align: right">
-                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModale" style="color: white !important;border: 2px solid #2494d3 !important;background-color: #2596d3 !important;"> Add New</button>
-            </div>
-        </div>
-        <br>
+        <div class="col-sm-2 add-new-event-topic" style="text-align: left">
+                                Add New Event
+                            </div>
+                    <div class="col-sm-10" style="text-align: right">
+                        <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModale" style="color: white !important;border: 2px solid #2494d3 !important;background-color: #2596d3 !important;"> Add New Event</button>
+                    </div>
+                </div>
+                <br>
 
-        <div class="row" style="text-align: center;">
-            <div class="col-sm-12">
-                <h2 style="color: #2696d3;">Add Kids</h2>
-                <form method="POST" action="/addKidstoTable">
-                    <?php echo csrf_field(); ?>
-                    <select name="kid_id" class="drop-down-events" required>
-                        <option value="0">select kid</option>
-                        <?php $__currentLoopData = $kids; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $kid): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <option value="<?php echo e($kid->id); ?>"><?php echo e($kid->first_name); ?> <?php echo e($kid->last_name); ?></option>
+                <div class="row" style="text-align: center;">
+                    <div class="col-sm-12">
+                        <h2 style="color: #2696d3;">Add Kids</h2>
+                        <form method="POST" action="/addKidstoTable">
+                            <?php echo csrf_field(); ?>
+                            <select name="kid_id" class="drop-down-events" required>
+                                <option value="0">select kid</option>
+                                <?php $__currentLoopData = $kids; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $kid): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($kid->id); ?>"><?php echo e($kid->first_name); ?> <?php echo e($kid->last_name); ?></option>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            </select>
+                            <input class="drop-down-add-btn" type="submit" value="Add">
+                        </form>
+                    <br>
+
+                    <table id="example2" class="display" style="width:100%;height:250px;overflow: auto;">
+                        <thead>
+                        <tr>
+                            <td>Name</td>
+                        </tr>
+                            </thead>
+                        <?php $__currentLoopData = $kidDataArray; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ka): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <tbody>
+                            <tr>
+                                <td><?php echo e($ka['kid_name']); ?></td>
+                            </tr>
+                            </tbody>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    </select>
-                    <input class="drop-down-add-btn" type="submit" value="Add">
-                </form>
-            <br>
-
-            <table id="example2" class="display" style="width:100%">
-                <thead>
-                <tr>
-                    <td>Name</td>
-                </tr>
-                    </thead>
-                <?php $__currentLoopData = $kidDataArray; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ka): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <tbody>
-                    <tr>
-                        <td><?php echo e($ka['kid_name']); ?></td>
-                    </tr>
-                    </tbody>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            </table>
-            </div>
+                    </table>
+                    </div>
+                </div>
         </div>
 
         <br>
 
-        <div class="row">
-            <div class="col-sm-12">
+        <div class="row add-kids-event-section">
+        <div class="col-sm-12 add-new-event-topic" style="text-align: left;    padding-bottom: 1rem;">
+                                        Existing Event List
+                                    </div>
+            <div class="col-sm-12" >
                 
                 <div class="col-sm-12">
                     <table id="example" class="display" style="width:100%">
@@ -309,12 +317,12 @@
                         <div class="form-group">
                             <label for="name" class="cols-sm-2 control-label">Users</label>
                             <div class="cols-sm-10">
-                                <div class="input-group">
+                                <div class="input-group" style="max-height:150px;overflow:auto;">
                                     <span class="input-group-addon modal-icon"><i class="fa fa-user fa"
                                             aria-hidden="true"></i></span>
-                                    <table border="1">
+                                    <table border="1" style="width:80%;">
                                         <tr>
-                                            <td>Name</td>
+                                            <td class="addevent-inner-table-header">Name</td>
                                         </tr>
                                         <?php $__currentLoopData = $kidDataArray; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ka): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <tr>

@@ -76,3 +76,29 @@
     font-size: 1.5rem!important;
     color: #2596d3!important;
 }
+
+.add-kids-event-section {
+    background-color: #dddddd;
+    padding: 1rem;
+    border-radius: 0.7rem;
+}
+
+.add-new-event-topic {
+    font-size: 1.2rem;
+    color: #2f3c4e;
+    font-family: monospace;
+}
+
+.existing-event-list {
+
+}
+
+.existing-event-topic {
+
+}
+
+.addevent-inner-table-header {
+    background-color: #efefef;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
