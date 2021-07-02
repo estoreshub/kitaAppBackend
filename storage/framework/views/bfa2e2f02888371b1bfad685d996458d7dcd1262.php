@@ -9,7 +9,6 @@
     <!-- Plugins css Ends-->
 <?php $__env->stopSection(); ?>
 
-<?php $__env->startSection('breadcrumb-title', 'Attendance Register'); ?>
 <?php $__env->startSection('breadcrumb-items'); ?>
     <li class="breadcrumb-item">Dashboard</li>
     <li class="breadcrumb-item active">Attendance Register</li>
@@ -28,12 +27,12 @@
                         <?php echo csrf_field(); ?>
 
                         <div class="form-group">
-                            <label for="email" class="cols-sm-2 control-label">Date</label>
+                            <label for="email" class="cols-sm-2 control-label" style="font-weight:bold;">Date</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-envelope fa"
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-envelope fa"
                                             aria-hidden="true"></i></span>
-                                    <input class="form-control" type="date" id="mydate" name="mydate"
+                                    <input class="form-control modal-input" type="date" id="mydate" name="mydate"
                                         placeholder="Select date">
                                 </div>
                             </div>
@@ -54,11 +53,11 @@
                     <table id="example" class="display" style="width:100%">
                         <thead>
                         <tr>
-                            <td>Kid Name</td>
-                            <td>Group Name</td>
-                            <td>Parent Name</td>
-                            <td>Date</td>
-                            <td>Action</td>
+                            <td style="font-weight:bold;">Kid Name</td>
+                            <td style="font-weight:bold;">Group Name</td>
+                            <td style="font-weight:bold;">Parent Name</td>
+                            <td style="font-weight:bold;">Date</td>
+                            <td style="font-weight:bold;">Action</td>
                         </tr>
                             </thead>
                         <?php $__currentLoopData = $register; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

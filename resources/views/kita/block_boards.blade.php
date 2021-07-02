@@ -10,10 +10,9 @@
     <!-- Plugins css Ends-->
 @endsection
 
-@section('breadcrumb-title', 'Block Boards')
 @section('breadcrumb-items')
     <li class="breadcrumb-item">Dashboard</li>
-    <li class="breadcrumb-item active">Block Boards</li>
+    <li class="breadcrumb-item active">Market Place/li>
 @endsection
 
 @section('content')
@@ -35,12 +34,12 @@
                     <table id="example" class="display" style="width:100%">
                         <thead>
                         <tr>
-                            <td>Title</td>
-                            <td>Description</td>
-                            <td>Images</td>
-                            <td>Comments</td>
-                            <td>Status</td>
-                            <td>Action</td>
+                            <td style="font-weight:bold;">Title</td>
+                            <td style="font-weight:bold;">Description</td>
+                            <td style="font-weight:bold;">Images</td>
+                            <td style="font-weight:bold;">Comments</td>
+                            <td style="font-weight:bold;">Status</td>
+                            <td style="font-weight:bold;">Action</td>
                         </tr>
                             </thead>
                         @foreach ($blocks as $ne)

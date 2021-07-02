@@ -10,10 +10,9 @@
     <!-- Plugins css Ends-->
 @endsection
 
-@section('breadcrumb-title', 'Meals')
 @section('breadcrumb-items')
     <li class="breadcrumb-item">Dashboard</li>
-    <li class="breadcrumb-item active">Meals</li>
+    <li class="breadcrumb-item active">Meal Plans</li>
 @endsection
 
 @section('content')

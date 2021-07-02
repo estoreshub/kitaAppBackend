@@ -8,7 +8,6 @@
     <!-- Plugins css Ends-->
 <?php $__env->stopSection(); ?>
 
-<?php $__env->startSection('breadcrumb-title', 'Parents'); ?>
 <?php $__env->startSection('breadcrumb-items'); ?>
     <li class="breadcrumb-item">Dashboard</li>
     <li class="breadcrumb-item active">Parents</li>
@@ -264,8 +263,8 @@
         <div class="modal-dialog">
 
             <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
+            <div class="modal-content" style="border-radius: 1rem;width: 650px;">
+                <div class="modal-header modal-header-new">
                     <h3>Edit Parent Details</h3>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
@@ -276,8 +275,8 @@
                             <label for="name" class="cols-sm-2 control-label">Your First Name</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="fnames" id="fnames"
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control modal-input" name="fnames" id="fnames"
                                         placeholder="Enter your First Name" />
                                     <input type="hidden" name="pa_id" id="pa_id" />
                                 </div>
@@ -288,8 +287,8 @@
                             <label for="name" class="cols-sm-2 control-label">Your Last Name</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="lnames" id="lnames"
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control modal-input" name="lnames" id="lnames"
                                         placeholder="Enter your Last Name" />
                                 </div>
                             </div>
@@ -299,9 +298,9 @@
                             <label for="email" class="cols-sm-2 control-label">Your Email</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-envelope fa"
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-envelope fa"
                                             aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="emails" id="emails"
+                                    <input type="text" class="form-control modal-input" name="emails" id="emails"
                                         placeholder="Enter your Email" />
                                 </div>
                             </div>
@@ -311,8 +310,8 @@
                             <label for="name" class="cols-sm-2 control-label">Your Telephone</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="teles" id="teles"
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control modal-input" name="teles" id="teles"
                                         placeholder="Enter your Telephone" />
                                 </div>
                             </div>
@@ -322,8 +321,8 @@
                             <label for="name" class="cols-sm-2 control-label">Parent Type</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <select class="form-control" name="typess" id="typess">
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <select class="form-control modal-input" name="typess" id="typess">
                                         <option value="0">select type</option>
                                         <option value="1">Mother</option>
                                         <option value="2">Father</option>
@@ -343,7 +342,7 @@
                             <input type="checkbox" id="emas" name="emas">
                         </div>
 
-                        <div class="form-group ">
+                        <div class="form-group " style="float:right;">
                             <button class="btn btn-success" type="submit">Update </button>
                         </div>
 

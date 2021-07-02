@@ -4,6 +4,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/datatables.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chartist.css') }}">
 	<link type="text/css" rel="stylesheet" href="{{ asset('assets/css/jquery-te-1.4.0.css')}}">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/ui-changes.css') }}">
     <!-- Plugins css start-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/prism.css') }}">
     <!-- Plugins css Ends-->
@@ -17,21 +19,16 @@
 @section('content')
     <!-- Container-fluid starts-->
     <div class="container-fluid">
-        <div class="row" style="text-align: right">
-
-        </div>
-
-        <br>
 
         <div class="row">
             <div class="col-sm-12">
                 <table id="example" class="display" style="width:100%">
                     <thead>
                         <tr>
-                            <td>ID</td>
-                            <td>Page Name</td>
-                            <td>Page Content</td>
-							<td>Action</td>
+                            <td style="font-weight: bold;">ID</td>
+                            <td style="font-weight: bold;">Page Name</td>
+                            <td style="font-weight: bold;">Page Content</td>
+							<td style="font-weight: bold;width: 10%">Action</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -197,7 +194,7 @@
         <div class="modal-dialog">
 
             <!-- Modal content-->
-            <div class="modal-content">
+            <div class="modal-content" style="border-radius: 1rem;width: 650px;">
                 <div class="modal-header">
                     <h3>Edit Page Content</h3>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>

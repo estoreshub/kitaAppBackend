@@ -9,7 +9,6 @@
     <!-- Plugins css Ends-->
 @endsection
 
-@section('breadcrumb-title', 'Groups')
 @section('breadcrumb-items')
     <li class="breadcrumb-item">Dashboard</li>
     <li class="breadcrumb-item active">Groups</li>
@@ -235,8 +234,8 @@
         <div class="modal-dialog">
 
             <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
+            <div class="modal-content" style="border-radius: 1rem;width: 650px;">
+                <div class="modal-header modal-header-new">
                     <h3>Edit Group</h3>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
@@ -247,8 +246,8 @@
                             <label for="name" class="cols-sm-2 control-label">Group Name</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="names" id="names"
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control modal-input" name="names" id="names"
                                         placeholder="Enter Group Name" />
                                     <input type="hidden" name="gr_id" id="gr_id" />
                                 </div>
@@ -259,8 +258,8 @@
                             <label for="name" class="cols-sm-2 control-label">Description</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="dess" id="dess"
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-sticky-note" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control modal-input" name="dess" id="dess"
                                         placeholder="Enter Description" />
                                 </div>
                             </div>
@@ -270,28 +269,30 @@
                             <label for="name" class="cols-sm-2 control-label">Color</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-crosshairs" aria-hidden="true"></i></span>
                                     {{-- <input type="text" class="form-control" name="colors" id="colors"
                                         placeholder="Enter Color Code" /> --}}
-                                    <input type="color" class="form-control" id="colors" name="colors" value="#ff0000"
+                                    <input type="color" class="form-control modal-input" id="colors" name="colors" value="#ff0000"
                                         placeholder="Enter Color Code">
                                 </div>
                             </div>
                         </div>
-
+                        <div class="loading-image-background">
                         <img id="groupImage" alt="" style="width: 150px;height:150px;">
+                        </div>
+
 
                         <div class="form-group">
                             <label for="name" class="cols-sm-2 control-label">Image</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="file" class="form-control" id="photoss[]" name="photoss[]" multiple>
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
+                                    <input type="file" class="form-control modal-input" id="photoss[]" name="photoss[]" multiple>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="form-group ">
+                        <div class="form-group " style="float:right;">
                             <button class="btn btn-success" type="submit">Update </button>
                         </div>
 

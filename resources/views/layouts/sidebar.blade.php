@@ -11,7 +11,7 @@
 
       <li class="">
         <a class="sidebar-header" href="#"><span style="font-size: 1.5rem;">Dashboard</span>
-          <i class="fa fa-angle-right pull-right"></i>
+          <i class="fa fa-angle-right pull-right" style="font-size: 2rem;"></i>
         </a>
         <ul class="sidebar-submenu sidebar-menu-list-items">
           <li><a href="/new-group"><i class="fa fa-circle"></i>Groups</a></li>

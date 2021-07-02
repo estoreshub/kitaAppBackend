@@ -34,3 +34,45 @@
     border: 2px solid #2494d3 !important;
     background-color: #2596d3 !important;
 }
+
+.loading-image-background {
+    text-align: center;
+    background-color: #80808036;
+    border-radius: 1rem;
+    padding: 0.5rem;
+
+}
+
+.drop-down-events {
+    width: 300px;
+    height: 30px;
+    border-radius: 0.4rem;
+    font-size: 1.2rem;
+    color: black;
+}
+
+.drop-down-add-btn {
+    width: 80px;
+    height: 30px;
+    margin-left: 1rem;
+    border-radius: 0.5rem;
+    background-color: #2696d3;
+    border: 1px solid white;
+    color: white;
+}
+
+.breadcrumb-item a svg{
+    height: 25px !important;
+    width: 27px !important;
+    color: #2f3c4e !important;
+}
+
+.breadcrumb-item {
+    font-size: 1.5rem;
+    color: rgb(47 60 78);
+}
+
+.breadcrumb-item.active{
+    font-size: 1.5rem!important;
+    color: #2596d3!important;
+}

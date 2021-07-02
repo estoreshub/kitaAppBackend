@@ -10,7 +10,6 @@
     <!-- Plugins css Ends-->
 @endsection
 
-@section('breadcrumb-title', 'News')
 @section('breadcrumb-items')
     <li class="breadcrumb-item">Dashboard</li>
     <li class="breadcrumb-item active">News</li>
@@ -35,11 +34,11 @@
                     <table id="example" class="display" style="width:100%">
                         <thead>
                             <tr>
-                                <td>Title</td>
-                                <td>Description</td>
-                                <td>Date</td>
-                                <td>Image</td>
-                                <td>Action</td>
+                                <td style="width:20%;font-weight:bold;">Title</td>
+                                <td style="width:20%;font-weight:bold;">Description</td>
+                                <td style="width:20%;font-weight:bold;">Date</td>
+                                <td style="width:20%;font-weight:bold;">Image</td>
+                                <td style="width:20%;font-weight:bold;float:right;margin-right:7rem;">Action</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -118,7 +117,7 @@
                         "data": "id",
                         "width": "60%",
                         "render": function(data, type, full, meta) {
-                            return "<table><tr><td><button type=\"button\" class=\"btn btn-success btn-sm\" data-toggle=\"modal\" data-target=\"#myModale\" onclick=\"setNid(" +
+                            return "<table style=\"float:right;\"><tr><td><button type=\"button\" class=\"btn btn-success btn-sm\" data-toggle=\"modal\" data-target=\"#myModale\" onclick=\"setNid(" +
                                 data +
                                 ")\" > <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> Update</button></td><td><form action=\"deleteNews\" method=\"GET\"><input type=\"hidden\" name=\"news_id\" id=\"news_id\" value=" +
                                 data +
@@ -161,8 +160,8 @@
         <div class="modal-dialog">
 
             <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
+            <div class="modal-content" style="border-radius: 1rem;width: 650px;">
+                <div class="modal-header modal-header-new">
                     <h3>Add New News</h3>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
@@ -170,50 +169,46 @@
                     <form class="" method="POST" enctype=multipart/form-data action="/addNewNews">
                         @csrf
                         <div class="form-group">
-                            <label for="name" class="cols-sm-2 control-label">Title</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="title" id="title"
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control modal-input" name="title" id="title"
                                         placeholder="Enter title" />
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="name" class="cols-sm-2 control-label">Description</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <textarea id="des" name="des" class="form-control" rows="3" cols="50"
-                                        placeholder="Enter description"></textarea>
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <textarea id="des" name="des" class="form-control modal-input" rows="3" cols="50"
+                                        placeholder="Enter description "></textarea>
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="email" class="cols-sm-2 control-label">Date</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-envelope fa"
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-envelope fa"
                                             aria-hidden="true"></i></span>
-                                    <input class="form-control" type="date" id="mydate" name="mydate"
+                                    <input class="form-control modal-input" type="date" id="mydate" name="mydate"
                                         placeholder="Select date">
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="name" class="cols-sm-2 control-label">Image</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="file" class="form-control" id="photos[]" name="photos[]" multiple required>
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input type="file" class="form-control modal-input" id="photos[]" name="photos[]" multiple required>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="form-group ">
+                        <div class="form-group register-button">
                             <button class="btn btn-success" type="submit">Add </button>
                         </div>
 
@@ -229,8 +224,8 @@
         <div class="modal-dialog">
 
             <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
+            <div class="modal-content" style="border-radius: 1rem;width: 650px;">
+                <div class="modal-header modal-header-new">
                     <h3>Edit News</h3>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
@@ -241,8 +236,8 @@
                             <label for="name" class="cols-sm-2 control-label">Title</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="titles" id="titles"
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control modal-input" name="titles" id="titles"
                                         placeholder="Enter title" />
                                     <input type="hidden" name="new_id" id="new_id" />
                                 </div>
@@ -253,8 +248,8 @@
                             <label for="name" class="cols-sm-2 control-label">Description</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <textarea id="dess" name="dess" class="form-control" rows="3" cols="50"
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <textarea id="dess" name="dess" class="form-control modal-input" rows="3" cols="50"
                                         placeholder="Enter description"></textarea>
                                 </div>
                             </div>
@@ -264,28 +259,29 @@
                             <label for="email" class="cols-sm-2 control-label">Date</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-envelope fa"
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-envelope fa"
                                             aria-hidden="true"></i></span>
-                                    <input class="form-control" type="date" id="mydates" name="mydates"
+                                    <input class="form-control modal-input" type="date" id="mydates" name="mydates"
                                         placeholder="Select date">
                                 </div>
                             </div>
                         </div>
-
+                        <div class="loading-image-background">
                         <img id="newsImage" alt="" style="width: 150px;height:150px;">
+                        </div>
 
                         <div class="form-group">
                             <label for="name" class="cols-sm-2 control-label">Image</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="file" class="form-control" id="photoss[]" name="photoss[]" multiple
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input type="file" class="form-control modal-input" id="photoss[]" name="photoss[]" multiple
                                         required>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="form-group ">
+                        <div class="form-group " style="float:right;">
                             <button class="btn btn-success" type="submit">Update </button>
                         </div>
 

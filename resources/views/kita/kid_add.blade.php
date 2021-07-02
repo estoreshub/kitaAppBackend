@@ -10,7 +10,6 @@
     <!-- Plugins css Ends-->
 @endsection
 
-@section('breadcrumb-title', 'Kids')
 @section('breadcrumb-items')
     <li class="breadcrumb-item">Dashboard</li>
     <li class="breadcrumb-item active">Kids</li>
@@ -262,8 +261,8 @@
         <div class="modal-dialog">
 
             <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
+            <div class="modal-content" style="border-radius: 1rem;width: 650px;">
+                <div class="modal-header modal-header-new">
                     <h3>Edit Kid Details</h3>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
@@ -274,8 +273,8 @@
                             <label for="name" class="cols-sm-2 control-label">First Name</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="fnames" id="fnames"
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control modal-input" name="fnames" id="fnames"
                                         placeholder="Enter first Name" />
                                     <input type="hidden" name="k_id" id="k_id" />
                                 </div>
@@ -286,8 +285,8 @@
                             <label for="name" class="cols-sm-2 control-label">Last Name</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="lnames" id="lnames"
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control modal-input" name="lnames" id="lnames"
                                         placeholder="Enter Last Name" />
                                 </div>
                             </div>
@@ -297,8 +296,8 @@
                             <label for="name" class="cols-sm-2 control-label">Year</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="years" id="years"
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control modal-input" name="years" id="years"
                                         placeholder="Enter Year" />
                                 </div>
                             </div>
@@ -308,8 +307,8 @@
                             <label for="name" class="cols-sm-2 control-label">Parent Type</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <select class="form-control" name="typess" id="typess">
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <select class="form-control modal-input" name="typess" id="typess">
                                         <option value="0">select type</option>
                                         <option value="1">Mother</option>
                                         <option value="2">Father</option>
@@ -323,8 +322,8 @@
                             <label for="name" class="cols-sm-2 control-label">Parent</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <select class="form-control" name="parentss" id="parentss">
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <select class="form-control modal-input" name="parentss" id="parentss">
                                         <option value="0">select parent</option>
                                         @foreach ($parents as $pr)
                                             <option value="{{ $pr->id }}">{{ $pr->first_name }}
@@ -340,8 +339,8 @@
                             <label for="name" class="cols-sm-2 control-label">Group</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <select class="form-control" name="groupss" id="groupss">
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <select class="form-control modal-input" name="groupss" id="groupss">
                                         <option value="0">select group</option>
                                         @foreach ($groups as $gr)
                                             <option value="{{ $gr->id }}">{{ $gr->name }}</option>
@@ -351,7 +350,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group ">
+                        <div class="form-group " style="float:right;">
                             <button class="btn btn-success" type="submit">Add </button>
                         </div>
 

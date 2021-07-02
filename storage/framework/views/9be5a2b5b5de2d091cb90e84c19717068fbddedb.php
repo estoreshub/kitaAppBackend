@@ -9,10 +9,9 @@
     <!-- Plugins css Ends-->
 <?php $__env->stopSection(); ?>
 
-<?php $__env->startSection('breadcrumb-title', 'Events / Messages'); ?>
 <?php $__env->startSection('breadcrumb-items'); ?>
     <li class="breadcrumb-item">Dashboard</li>
-    <li class="breadcrumb-item active">Events / Messages</li>
+    <li class="breadcrumb-item active">Events - Messages</li>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -28,16 +27,16 @@
 
         <div class="row" style="text-align: center;">
             <div class="col-sm-12">
-                <h2>Add Kids</h2>
+                <h2 style="color: #2696d3;">Add Kids</h2>
                 <form method="POST" action="/addKidstoTable">
                     <?php echo csrf_field(); ?>
-                    <select name="kid_id" required>
+                    <select name="kid_id" class="drop-down-events" required>
                         <option value="0">select kid</option>
                         <?php $__currentLoopData = $kids; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $kid): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <option value="<?php echo e($kid->id); ?>"><?php echo e($kid->first_name); ?> <?php echo e($kid->last_name); ?></option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
-                    <input type="submit" value="Add">
+                    <input class="drop-down-add-btn" type="submit" value="Add">
                 </form>
             <br>
 
@@ -67,13 +66,13 @@
                     <table id="example" class="display" style="width:100%">
                         <thead>
                         <tr>
-                            <td>Date</td>
-                            <td>Title</td>
-                            <td>Description</td>
-                            <td>Event Type</td>
-                            <td>Images</td>
-                            <td>Users</td>
-                            <td>Action</td>
+                            <td style="font-weight:bold;">Date</td>
+                            <td style="font-weight:bold;">Title</td>
+                            <td style="font-weight:bold;">Description</td>
+                            <td style="font-weight:bold;">Event Type</td>
+                            <td style="font-weight:bold;">Images</td>
+                            <td style="font-weight:bold;">Users</td>
+                            <td style="font-weight:bold;">Action</td>
                         </tr>
                             </thead>
                         <?php $__currentLoopData = $events; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $gr): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -212,8 +211,8 @@
         <div class="modal-dialog">
 
             <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
+            <div class="modal-content" style="border-radius: 1rem;width: 650px;">
+                <div class="modal-header modal-header-new">
                     <h3>Add New Event</h3>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
@@ -224,9 +223,9 @@
                             <label for="email" class="cols-sm-2 control-label">Date</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-envelope fa"
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-envelope fa"
                                             aria-hidden="true"></i></span>
-                                    <input class="form-control" type="date" id="mydate" name="mydate"
+                                    <input class="form-control modal-input" type="date" id="mydate" name="mydate"
                                         placeholder="Select date">
                                 </div>
                             </div>
@@ -236,9 +235,9 @@
                             <label for="email" class="cols-sm-2 control-label">Start Time</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-envelope fa"
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-envelope fa"
                                             aria-hidden="true"></i></span>
-                                    <input class="form-control" type="time" id="startTime" name="startTime"
+                                    <input class="form-control modal-input" type="time" id="startTime" name="startTime"
                                         placeholder="Select Start Time">
                                 </div>
                             </div>
@@ -248,9 +247,9 @@
                             <label for="email" class="cols-sm-2 control-label">End Time</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-envelope fa"
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-envelope fa"
                                             aria-hidden="true"></i></span>
-                                    <input class="form-control" type="time" id="endTime" name="endTime"
+                                    <input class="form-control modal-input" type="time" id="endTime" name="endTime"
                                         placeholder="Select End Time">
                                 </div>
                             </div>
@@ -260,9 +259,9 @@
                             <label for="name" class="cols-sm-2 control-label">Title</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa"
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa"
                                             aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="title" id="title"
+                                    <input type="text" class="form-control modal-input" name="title" id="title"
                                         placeholder="Enter Title" />
                                 </div>
                             </div>
@@ -272,9 +271,9 @@
                             <label for="name" class="cols-sm-2 control-label">Description</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa"
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa"
                                             aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="des" id="des"
+                                    <input type="text" class="form-control modal-input" name="des" id="des"
                                         placeholder="Enter Description" />
                                 </div>
                             </div>
@@ -284,9 +283,9 @@
                             <label for="name" class="cols-sm-2 control-label">Event Type</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa"
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa"
                                             aria-hidden="true"></i></span>
-                                    <select class="form-control" name="types" id="types" onchange="SendSelfNoti()">
+                                    <select class="form-control modal-input" name="types" id="types" onchange="SendSelfNoti()">
                                         <option value="0">select type</option>
                                         <option value="1">Event</option>
                                         <option value="2">Message</option>
@@ -299,9 +298,9 @@
                             <label for="name" class="cols-sm-2 control-label">Images</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa"
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa"
                                             aria-hidden="true"></i></span>
-                                    <input type="file" class="form-control" id="photos[]" name="photos[]" multiple
+                                    <input type="file" class="form-control modal-input" id="photos[]" name="photos[]" multiple
                                         required>
                                 </div>
                             </div>
@@ -311,7 +310,7 @@
                             <label for="name" class="cols-sm-2 control-label">Users</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa"
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa"
                                             aria-hidden="true"></i></span>
                                     <table border="1">
                                         <tr>
@@ -327,7 +326,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group ">
+                        <div class="form-group register-button">
                             <button class="btn btn-success" type="submit">Add </button>
                         </div>
 

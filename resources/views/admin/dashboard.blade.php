@@ -36,14 +36,14 @@
                 <table id="example" class="display" style="width:100%">
                     <thead>
                         <tr>
-                            <td>First Name</td>
-                            <td>Last Name</td>
-                            <td>Kindergarden Name</td>
-                            <td>Address</td>
-                            <td>Logo</td>
-                            <td>Email</td>
-                            <td>Telephone</td>
-                            <td>Action</td>
+                            <td style="font-weight: bold;">First Name</td>
+                            <td style="font-weight: bold;">Last Name</td>
+                            <td style="font-weight: bold;">Kindergarden Name</td>
+                            <td style="font-weight: bold;">Address</td>
+                            <td style="font-weight: bold;">Logo</td>
+                            <td style="font-weight: bold;">Email</td>
+                            <td style="font-weight: bold;">Telephone</td>
+                            <td style="font-weight: bold;">Action</td>
                         </tr>
                     </thead>
                     <tbody>

@@ -27,9 +27,9 @@
                 <table id="example" class="display" style="width:100%">
                     <thead>
                         <tr>
-                            <td>Message / Event</td>
-                            <td>Parent</td>
-                            <td>Feedback</td>
+                            <td style="font-weight: bold;">Message / Event</td>
+                            <td style="font-weight: bold;">Parent</td>
+                            <td style="font-weight: bold;">Feedback</td>
                         </tr>
                     </thead>
                     <tbody>
