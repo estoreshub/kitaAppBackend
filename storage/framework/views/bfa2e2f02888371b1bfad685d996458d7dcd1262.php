@@ -30,8 +30,7 @@
                             <label for="email" class="cols-sm-2 control-label" style="font-weight:bold;">Date</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-envelope fa"
-                                            aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/schedule.png')); ?>" alt=""></span>
                                     <input class="form-control modal-input" type="date" id="mydate" name="mydate"
                                         placeholder="Select date">
                                 </div>

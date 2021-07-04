@@ -40,7 +40,7 @@
                                 <td style="font-weight: bold;">Parent Type</td>
                                 <td style="font-weight: bold;">Parent</td>
                                 <td style="font-weight: bold;">Group</td>
-                                <td style="float:right;margin-right:6rem ;font-weight: bold;">Action</td>
+                                <td style="text-align: center;width:20%;font-weight: bold;">Action</td>
                             </tr>
                         </thead>
                             <tbody>
@@ -118,7 +118,7 @@
                     "data": "id",
                     "width": "60%",
                     "render": function(data, type, full, meta) {
-                        return "<table style=\"float:right;\"><tr><td><button type=\"button\" class=\"btn btn-success btn-sm\" data-toggle=\"modal\" data-target=\"#myModale\" onclick=\"setNid(" +
+                        return "<table class=\"custormize-table\" style=\"float:right;\"><tr><td><button type=\"button\" class=\"btn btn-success btn-sm\" data-toggle=\"modal\" data-target=\"#myModale\" onclick=\"setNid(" +
                             data +
                             ")\" > <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> Update</button></td><td><form action=\"deleteKid\" method=\"GET\"><input type=\"hidden\" name=\"kids_id\" id=\"kids_id\" value=" +
                             data +

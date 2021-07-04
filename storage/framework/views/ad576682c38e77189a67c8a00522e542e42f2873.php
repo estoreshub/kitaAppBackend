@@ -1,4 +1,4 @@
-<?php $__env->startSection('title', 'Endless - Premium Laravel Admin Template'); ?>
+<?php $__env->startSection('title', 'Kiga - App'); ?>
 <?php $__env->startSection('styles'); ?>
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/datatables.css')); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/chartist.css')); ?>">
@@ -36,7 +36,7 @@
                                 <td style="width:20%;font-weight:bold;">Description</td>
                                 <td style="width:20%;font-weight:bold;">Date</td>
                                 <td style="width:20%;font-weight:bold;">Image</td>
-                                <td style="width:20%;font-weight:bold;float:right;margin-right:7rem;">Action</td>
+                                <td style="text-align: center;width:20%;font-weight: bold;">Action</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -115,7 +115,7 @@
                         "data": "id",
                         "width": "60%",
                         "render": function(data, type, full, meta) {
-                            return "<table style=\"float:right;\"><tr><td><button type=\"button\" class=\"btn btn-success btn-sm\" data-toggle=\"modal\" data-target=\"#myModale\" onclick=\"setNid(" +
+                            return "<table class=\"custormize-table\" style=\"float:right;\"><tr><td><button type=\"button\" class=\"btn btn-success btn-sm\" data-toggle=\"modal\" data-target=\"#myModale\" onclick=\"setNid(" +
                                 data +
                                 ")\" > <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> Update</button></td><td><form action=\"deleteNews\" method=\"GET\"><input type=\"hidden\" name=\"news_id\" id=\"news_id\" value=" +
                                 data +

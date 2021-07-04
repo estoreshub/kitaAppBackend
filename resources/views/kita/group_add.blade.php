@@ -37,7 +37,7 @@
                                 <th style="width:20%;">Description</th>
                                 <th style="width:20%;">Color Code</th>
                                 <th style="width:20%;">Image</th>
-                                <th style="width:20%;float:right;margin-right:7rem">Action</th>
+                                <th style="text-align: center;">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -125,7 +125,7 @@
                         "name": "group_id",
                         "data": "id",
                         "render": function(data, type, full, meta) {
-                            return "<table  style=\"float:right;\"><tr><td><button type=\"button\" class=\"btn btn-success btn-sm\" data-toggle=\"modal\" data-target=\"#myModale\" onclick=\"setNid(" +
+                            return "<table class=\"custormize-table\" style=\"float:right;\"><tr><td><button type=\"button\" class=\"btn btn-success btn-sm\" data-toggle=\"modal\" data-target=\"#myModale\" onclick=\"setNid(" +
                                 data +
                                 ")\" > <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> Update</button></td><td><form action=\"deleteGroup\" method=\"GET\"><input type=\"hidden\" name=\"group_id\" id=\"group_id\" value=" +
                                 data +

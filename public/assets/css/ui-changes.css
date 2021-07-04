@@ -102,3 +102,18 @@
     font-weight: bold;
     font-size: 1.1rem;
 }
+
+thead {
+    background-color: #2596d3;
+    color: white;
+}
+
+.custormize-table td{
+    border-top: none !important;
+    background-color: transparent !important;
+}
+
+
+.custormize-table tr{
+    background-color: transparent !important;
+}

@@ -1,4 +1,4 @@
-<?php $__env->startSection('title', 'Endless - Premium Laravel Admin Template'); ?>
+<?php $__env->startSection('title', 'Kiga - App'); ?>
 <?php $__env->startSection('styles'); ?>
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/datatables.css')); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/chartist.css')); ?>">
@@ -69,7 +69,7 @@
             <div class="col-sm-12">
                 
                 <div class="col-sm-12">
-                    <table id="example" class="display" style="width:100%">
+                    <table class="custormize" id="example" class="display" style="width:100%">
                         <thead>
                             <tr>
                                 <td style="width:30%">Date</td>
