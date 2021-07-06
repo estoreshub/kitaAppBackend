@@ -26,9 +26,9 @@ class UserController extends Controller
 {
     public function index()
     {
-		
+
         //Artisan::call('cache:clear');
-		//Artisan::call('config:clear');
+        //Artisan::call('config:clear');
         //$msg=exec('php artisan vendor:publish --provider="Berkayk\OneSignal\OneSignalServiceProvider" --tag="config"');
         //echo $msg;
         //exit();
@@ -120,7 +120,7 @@ class UserController extends Controller
         $photos = $request->file('photos');
 
         if ($request->hasFile('photos')) {
-            $allowedfileExtension = ['jpg', 'png'];
+            $allowedfileExtension = ['jpg', 'png', 'jpeg'];
             foreach ($photos as $photo) {
                 $filename = $photo->getClientOriginalName();
                 $new_file_name = md5($photo->getClientOriginalName());
@@ -300,7 +300,7 @@ class UserController extends Controller
         $photos = $request->file('photos');
 
         if ($request->hasFile('photos')) {
-            $allowedfileExtension = ['jpg', 'png'];
+            $allowedfileExtension = ['jpg', 'png', 'jpeg'];
             foreach ($photos as $photo) {
                 $filename = $photo->getClientOriginalName();
                 $new_file_name = md5($photo->getClientOriginalName());
@@ -484,7 +484,7 @@ class UserController extends Controller
     {
         $photos = $request->file('photos');
         if ($request->hasFile('photos')) {
-            $allowedfileExtension = ['jpg', 'png'];
+            $allowedfileExtension = ['jpg', 'png', 'jpeg'];
             foreach ($photos as $photo) {
                 $filename = $photo->getClientOriginalName();
                 $new_file_name = md5($photo->getClientOriginalName());
@@ -572,12 +572,12 @@ class UserController extends Controller
     {
         $emptyArray = array();
 
-        $itemDataArray = array();
-        if (Session::has('itemData')) {
-            $itemDataArray = Session::get('itemData');
-        } else if (!Session::has('itemData')) {
-            $itemDataArray = $emptyArray;
-        }
+        // $itemDataArray = array();
+        // if (Session::has('itemData')) {
+        //     $itemDataArray = Session::get('itemData');
+        // } else if (!Session::has('itemData')) {
+        //     $itemDataArray = $emptyArray;
+        // }
 
         $timestamp = strtotime($request->mydate);
 
@@ -587,10 +587,15 @@ class UserController extends Controller
         $meal->kita_admin_id = Session::get('loggedUserId');
         $meal->added_date = $request->mydate;
         $meal->day = $day;
-        $meal->items = json_encode($itemDataArray);
+
+        // $arr1 = str_split($request->itemArray);
+        $pieces = explode(",", $request->itemArray);
+        $newar = json_encode($pieces);
+
+        $meal->items = $newar;
         $status = $meal->save();
 
-        Session::forget('itemData');
+        // Session::forget('itemData');
 
         if ($status == 1) {
             return redirect('/new-meal');
@@ -666,24 +671,25 @@ class UserController extends Controller
         }
         $events = DB::table('events')->get();
         $kids = DB::table('kids')->get();
-        if ($events && $kids) {
-            return view('kita/event_add', ['events' => $events, 'kids' => $kids, 'kidDataArray' => $itemDataArray]);
-        } else if (!$events && !$kids) {
-            return view('kita/event_add', ['events' => $emptyArray, 'kids' => $emptyArray, 'kidDataArray' => $itemDataArray]);
+        $groups = DB::table('groups')->get();
+        if ($events && $kids && $groups) {
+            return view('kita/event_add', ['events' => $events, 'kids' => $kids, 'kidDataArray' => $itemDataArray, 'groups' => $groups]);
+        } else if (!$events && !$kids && !$groups) {
+            return view('kita/event_add', ['events' => $emptyArray, 'kids' => $emptyArray, 'kidDataArray' => $itemDataArray, 'groups' => $emptyArray]);
         }
     }
 
     public function add_new_event(Request $request)
     {
-        $itemDataArray = array();
+        $DataArray = array();
 
-        if (Session::has('kidsData')) {
-            $itemDataArray = Session::get('kidsData');
-        }
+        // if (Session::has('kidsData')) {
+        //     $itemDataArray = Session::get('kidsData');
+        // }
 
         $photos = $request->file('photos');
         if ($request->hasFile('photos')) {
-            $allowedfileExtension = ['jpg', 'png'];
+            $allowedfileExtension = ['jpg', 'png', 'jpeg'];
             foreach ($photos as $photo) {
                 $filename = $photo->getClientOriginalName();
                 $new_file_name = md5($photo->getClientOriginalName());
@@ -713,7 +719,7 @@ class UserController extends Controller
 
                     $month = date('M', $timestamp);
                     $myDates = date('d', $timestamp);
-					$myYear = date("Y");
+                    $myYear = date("Y");
 
                     $event = new Events();
                     $event->kita_admin_id = Session::get('loggedUserId');
@@ -722,12 +728,29 @@ class UserController extends Controller
                     $event->end_time = $request->endTime;
                     $event->date = $myDates;
                     $event->month = $month;
-					$event->year = $myYear;
+                    $event->year = $myYear;
                     $event->title = $request->title;
                     $event->description = $request->des;
                     $event->event_type = $request->types;
                     $event->images = json_encode($imageDataArray);
-                    $event->users = json_encode($itemDataArray);
+
+                    if ($request->group_id) {
+                        $kids = DB::table('kids')
+                            ->where('group_id', $request->group_id)
+                            ->get();
+
+                        foreach ($kids as $kd) {
+                            // $data = array(
+                            //     'kid_id' => $kd->id,
+                            //     'kid_name' => $kd->first_name.' '.$kd->last_name,
+                            // );
+                            array_push($DataArray, array('kid_id' => $kd->id,'kid_name'=>$kd->first_name.' '.$kd->last_name));
+                        }
+                        $event->users = json_encode($DataArray);
+                    } else if (!$request->group_id) {
+                        $event->users = $request->kidsArray;
+                    }
+
                     $status = $event->save();
                     Session::forget('kidsData');
                     Session::forget('imageData');
@@ -911,7 +934,7 @@ class UserController extends Controller
             ->where('id', $request->kita_id)
             ->first();
 
-            echo json_encode($users);
+        echo json_encode($users);
         exit();
 
         $emptyArray = array();
@@ -926,7 +949,7 @@ class UserController extends Controller
     {
         $photos = $request->file('photoss');
         if ($request->hasFile('photoss')) {
-            $allowedfileExtension = ['jpg', 'png'];
+            $allowedfileExtension = ['jpg', 'png', 'jpeg'];
             foreach ($photos as $photo) {
                 $filename = $photo->getClientOriginalName();
                 $new_file_name = md5($photo->getClientOriginalName());
@@ -974,7 +997,7 @@ class UserController extends Controller
     {
         $photos = $request->file('photoss');
         if ($request->hasFile('photoss')) {
-            $allowedfileExtension = ['jpg', 'png'];
+            $allowedfileExtension = ['jpg', 'png', 'jpeg'];
             foreach ($photos as $photo) {
                 $filename = $photo->getClientOriginalName();
                 $new_file_name = md5($photo->getClientOriginalName());
@@ -1022,7 +1045,7 @@ class UserController extends Controller
     {
         $photos = $request->file('photoss');
         if ($request->hasFile('photoss')) {
-            $allowedfileExtension = ['jpg', 'png'];
+            $allowedfileExtension = ['jpg', 'png', 'jpeg'];
             foreach ($photos as $photo) {
                 $filename = $photo->getClientOriginalName();
                 $new_file_name = md5($photo->getClientOriginalName());
@@ -1205,14 +1228,15 @@ class UserController extends Controller
 
         return $response;
     }
-	
-	    public function getparentFeedbacks(){
+
+    public function getparentFeedbacks()
+    {
         $feedbacks = DB::table('feedbacks')
-        ->join('events', 'events.id', '=', 'feedbacks.message_id')
-        ->join('parents', 'parents.id', '=', 'feedbacks.parent_id')
-        ->select('feedbacks.feedback as feedback', 'parents.first_name as parentName', 'events.description as message')
-        // ->groupBy('daily_register.id')
-        ->get();
+            ->join('events', 'events.id', '=', 'feedbacks.message_id')
+            ->join('parents', 'parents.id', '=', 'feedbacks.parent_id')
+            ->select('feedbacks.feedback as feedback', 'parents.first_name as parentName', 'events.description as message')
+            // ->groupBy('daily_register.id')
+            ->get();
 
         $emptyArray = array();
         if ($feedbacks) {
@@ -1222,7 +1246,8 @@ class UserController extends Controller
         }
     }
 
-    public function parentFeedbacks(){
+    public function parentFeedbacks()
+    {
         return view('admin/parent_feedbacks');
         // $emptyArray = array();
         // $feedbacks = DB::table('block_boards')->get();
@@ -1232,8 +1257,8 @@ class UserController extends Controller
         //     return view('admin/parent_feedbacks', ['feedbacks' => $emptyArray]);
         // }
     }
-	
-	    public function user_login_parent(Request $request)
+
+    public function user_login_parent(Request $request)
     {
         $userName = 'chamara_054912';
         $password = '2103110549';
@@ -1270,15 +1295,15 @@ class UserController extends Controller
             echo json_encode($data);
         }
     }
-	
-	    public function getAllKids(Request $request)
+
+    public function getAllKids(Request $request)
     {
         $emptyArray = array();
 
         $kids = DB::table('kids')
             ->join('groups', 'groups.id', '=', 'kids.group_id')
             ->select('kids.*', 'groups.name as groupName', 'groups.description as groupDescription')
-            ->where('kids.parent_id', '=',13)
+            ->where('kids.parent_id', '=', 13)
             ->orderBy('kids.id')
             ->get();
 
@@ -1288,17 +1313,18 @@ class UserController extends Controller
             echo json_encode($emptyArray);
         }
     }
-	
-	public function dateRange(){
+
+    public function dateRange()
+    {
         $Date = $this->getDatesFromRange('2021-05-17', '2021-05-20');
 
-        $dateAR=json_encode($Date);
-		foreach(json_decode($dateAR) as $dt){
-		echo $dt.'<br>';
-		}
+        $dateAR = json_encode($Date);
+        foreach (json_decode($dateAR) as $dt) {
+            echo $dt . '<br>';
+        }
     }
-	
-	public function getDatesFromRange($start, $end, $format = 'Y-m-d')
+
+    public function getDatesFromRange($start, $end, $format = 'Y-m-d')
     {
 
         // Declare an empty array
@@ -1321,8 +1347,8 @@ class UserController extends Controller
         // Return the array elements
         return $array;
     }
-	
-	    public function addHtmlPages()
+
+    public function addHtmlPages()
     {
         return view('admin/html_pages');
     }
@@ -1338,8 +1364,8 @@ class UserController extends Controller
             echo json_encode($emptyArray);
         }
     }
-	
-	    public function addNewHTML(Request $request)
+
+    public function addNewHTML(Request $request)
     {
         $html = new htmlPages();
         $html->page_name = $request->pageName;
@@ -1352,8 +1378,8 @@ class UserController extends Controller
             echo "<h1>something went wrong</h1><br><a href='/'>back to home</a>";
         }
     }
-	
-	public function getPageContent(Request $request)
+
+    public function getPageContent(Request $request)
     {
         $emptyArray = array();
         $html = DB::table('html_pages')->where('id', $request->page_id)->first();
@@ -1363,8 +1389,8 @@ class UserController extends Controller
             echo json_encode($emptyArray);
         }
     }
-	
-	    public function editHTMLContent(Request $request)
+
+    public function editHTMLContent(Request $request)
     {
         $status = DB::table('html_pages')
             ->where('id', $request->page_id)
@@ -1378,6 +1404,4 @@ class UserController extends Controller
             echo "<h1>nothing to update</h1><br><a href='/'>back to dashboard</a>";
         }
     }
-	
 }
-

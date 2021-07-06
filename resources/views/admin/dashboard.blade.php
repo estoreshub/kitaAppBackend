@@ -20,12 +20,12 @@
         <div class="row" style="text-align: right">
             <div class="col-sm-12">
                 <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" style="color: white !important;
-                                                                                                                           border: 2px solid #2494d3 !important;
-                                                                                                                           background-color: #2596d3 !important;
-                                                                                                                       }
+                                                                                                                               border: 2px solid #2494d3 !important;
+                                                                                                                               background-color: #2596d3 !important;
+                                                                                                                           }
 
-><i
-                        class="fa fa-plus" aria-hidden="true"></i> Add New User</button>
+    ><i
+                            class=" fa fa-plus" aria-hidden="true"></i> Add New User</button>
             </div>
         </div>
 
@@ -171,7 +171,8 @@
                 data: myObj,
                 success: function(data) {
                     var jsonObj = JSON.parse(data);
-                    document.getElementById("kitaLogo").src = 'http://kitaapp.de.w01b7e22.kasserver.com' + jsonObj.image;
+                    document.getElementById("kitaLogo").src = 'http://kitaapp.de.w01b7e22.kasserver.com' +
+                        jsonObj.image;
                     document.getElementById("fnameU").value = jsonObj.first_name;
                     document.getElementById("lnameU").value = jsonObj.last_name;
                     document.getElementById("kinameU").value = jsonObj.kindergarden_name;
@@ -184,7 +185,6 @@
                 }
             });
         }
-
     </script>
 
     {{-- start kita add modal --}}
@@ -193,7 +193,7 @@
 
             <!-- Modal content-->
             <div class="modal-content" style="border-radius: 1rem;
-                                                  width: 650px;">
+                                                      width: 650px;">
                 <div class="modal-header modal-header-new">
                     <h3>Add New Kita User</h3>
                     <button type="button" class="close close-button" data-dismiss="modal">&times;</button>
@@ -204,9 +204,10 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group form-data-field">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user"
+                                            aria-hidden="true"></i></span>
                                     <input type="text" class="form-control modal-input" name="fname" id="fname"
-                                        placeholder="Enter your First Name" />
+                                        placeholder="Enter your First Name" required/>
                                 </div>
                             </div>
                         </div>
@@ -214,9 +215,10 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group form-data-field">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa"
+                                            aria-hidden="true"></i></span>
                                     <input type="text" class="form-control modal-input" name="lname" id="lname"
-                                        placeholder="Enter your Last Name" />
+                                        placeholder="Enter your Last Name" required/>
                                 </div>
                             </div>
                         </div>
@@ -224,9 +226,10 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group form-data-field">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-home" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-home"
+                                            aria-hidden="true"></i></span>
                                     <input type="text" class="form-control modal-input" name="kiname" id="kiname"
-                                        placeholder="Enter your Kindergarden Name" />
+                                        placeholder="Enter your Kindergarden Name" required/>
                                 </div>
                             </div>
                         </div>
@@ -234,9 +237,10 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group form-data-field">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-thumb-tack" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-thumb-tack"
+                                            aria-hidden="true"></i></span>
                                     <input type="text" class="form-control modal-input" name="city" id="city"
-                                        placeholder="Enter your City" />
+                                        placeholder="Enter your City" required/>
                                 </div>
                             </div>
                         </div>
@@ -244,9 +248,10 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group form-data-field">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-location-arrow" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-location-arrow"
+                                            aria-hidden="true"></i></span>
                                     <input type="text" class="form-control modal-input" name="state" id="state"
-                                        placeholder="Enter your State" />
+                                        placeholder="Enter your State" required/>
                                 </div>
                             </div>
                         </div>
@@ -254,9 +259,10 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group form-data-field">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-globe" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-globe"
+                                            aria-hidden="true"></i></span>
                                     <input type="text" class="form-control modal-input" name="zip" id="zip"
-                                        placeholder="Enter your Postal/Zip Code" />
+                                        placeholder="Enter your Postal/Zip Code" required/>
                                 </div>
                             </div>
                         </div>
@@ -264,9 +270,10 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group form-data-field">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-address-card-o" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-address-card-o"
+                                            aria-hidden="true"></i></span>
                                     <input type="text" class="form-control modal-input" name="address" id="address"
-                                        placeholder="Enter your Address" />
+                                        placeholder="Enter your Address" required/>
                                 </div>
                             </div>
                         </div>
@@ -274,8 +281,10 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group form-data-field">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
-                                    <input type="file" class="form-control modal-input" id="photos[]" name="photos[]" multiple>
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-picture-o"
+                                            aria-hidden="true"></i></span>
+                                    <input accept=".jpg, .png, .jpeg" type="file" class="form-control modal-input"
+                                        id="photos[]" name="photos[]" multiple required>
                                 </div>
                             </div>
                         </div>
@@ -286,7 +295,7 @@
                                     <span class="input-group-addon modal-icon"><i class="fa fa-envelope fa"
                                             aria-hidden="true"></i></span>
                                     <input type="text" class="form-control modal-input" name="email" id="email"
-                                        placeholder="Enter your Email" />
+                                        placeholder="Enter your Email" required/>
                                 </div>
                             </div>
                         </div>
@@ -294,9 +303,10 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group form-data-field">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><i class="fa fa-phone"
+                                            aria-hidden="true"></i></span>
                                     <input type="text" class="form-control modal-input" name="tele" id="tele"
-                                        placeholder="Enter your Telephone" />
+                                        placeholder="Enter your Telephone" required/>
                                 </div>
                             </div>
                         </div>
@@ -409,7 +419,7 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="file" class="form-control" id="photoss[]" name="photoss[]" multiple>
+                                    <input accept=".jpg, .png, .jpeg" type="file" class="form-control" id="photoss[]" name="photoss[]" multiple>
                                 </div>
                             </div>
                         </div>

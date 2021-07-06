@@ -1,0 +1,1 @@
+<?php /**PATH E:\Fiverr Projects\Dilshan\web\Lahiru\kitaAppBackend\resources\views/footervarview.blade.php ENDPATH**/ ?>

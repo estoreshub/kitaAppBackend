@@ -202,7 +202,7 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/image.png')}}" alt=""></span>
-                                    <input type="file" class="form-control modal-input" id="photos[]" name="photos[]" multiple required>
+                                    <input accept=".jpg, .png, .jpeg" type="file" class="form-control modal-input" id="photos[]" name="photos[]" multiple required>
                                 </div>
                             </div>
                         </div>
@@ -273,7 +273,7 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/image.png')}}" alt=""></span>
-                                    <input type="file" class="form-control modal-input" id="photoss[]" name="photoss[]" multiple
+                                    <input accept=".jpg, .png, .jpeg" type="file" class="form-control modal-input" id="photoss[]" name="photoss[]" multiple
                                         required>
                                 </div>
                             </div>
