@@ -1,7 +1,7 @@
 new dashboard
 
 
-<?php $__env->startSection('title', 'Endless - Premium Laravel Admin Template'); ?>
+<?php $__env->startSection('title', 'Kiga - App'); ?>
 <?php $__env->startSection('styles'); ?>
 <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/chartist.css')); ?>">
 <!-- Plugins css start-->
@@ -123,4 +123,8 @@ new dashboard
 <script src="<?php echo e(asset('assets/js/height-equal.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
 
+<<<<<<< HEAD:storage/framework/views/13e353a1a552bb12f3a99d6754b24707f6350abc.php
 <?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\Fiverr Projects\Dilshan\web\Lahiru\kitaAppBackend\resources\views/kita/dashboard.blade.php ENDPATH**/ ?>
+=======
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/dilshan/Documents/freelance/epit_de/backEnd/kitaAppBackend/resources/views/kita/dashboard.blade.php ENDPATH**/ ?>
+>>>>>>> 171800079e09c216be6133b56bd9ed32e1714677:storage/framework/views/67e995f39cc58ee6f71553a5d5ca23f8aff2251e.php

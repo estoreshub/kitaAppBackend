@@ -1,20 +1,19 @@
-@extends('layouts.master')
-@section('title', 'Endless - Premium Laravel Admin Template')
-@section('styles')
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/datatables.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chartist.css') }}">
+<?php $__env->startSection('title', 'Kiga - App'); ?>
+<?php $__env->startSection('styles'); ?>
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/datatables.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/chartist.css')); ?>">
     <!-- Plugins css start-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/prism.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/ui-changes.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/prism.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/ui-changes.css')); ?>">
     <!-- Plugins css Ends-->
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('breadcrumb-items')
+<?php $__env->startSection('breadcrumb-items'); ?>
     <li class="breadcrumb-item">Dashboard</li>
     <li class="breadcrumb-item active">Groups</li>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
     <!-- Container-fluid starts-->
     <div class="container-fluid">
 
@@ -27,8 +26,7 @@
 
         <div class="row">
             <div class="col-sm-12">
-                {{-- <div class="col-sm-1"><button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal"><i
-                class="fa fa-plus" aria-hidden="true"></i> Add New</button></div> --}}
+                
                 <div class="col-sm-12">
                     <table id="example" class="table" style="width:100%">
                         <thead>
@@ -61,23 +59,23 @@
 
     </div>
     <!-- Container-fluid Ends-->
-@endsection
-@section('scripts')
-    <script src="{{ asset('assets/js/chart/chartist/chartist.js') }}"></script>
-    <script src="{{ asset('assets/js/chart/knob/knob.min.js') }}"></script>
-    <script src="{{ asset('assets/js/chart/knob/knob-chart.js') }}"></script>
-    <script src="{{ asset('assets/js/prism/prism.min.js') }}"></script>
-    <script src="{{ asset('assets/js/clipboard/clipboard.min.js') }}"></script>
-    <script src="{{ asset('assets/js/counter/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset('assets/js/counter/jquery.counterup.min.js') }}"></script>
-    <script src="{{ asset('assets/js/counter/counter-custom.js') }}"></script>
-    <script src="{{ asset('assets/js/custom-card/custom-card.js') }}"></script>
-    <script src="{{ asset('assets/js/notify/bootstrap-notify.min.js') }}"></script>
-    <script src="{{ asset('assets/js/dashboard/default.js') }}"></script>
-    <script src="{{ asset('assets/js/notify/index.js') }}"></script>
-    <script src="{{ asset('assets/js/height-equal.js') }}"></script>
-    <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('scripts'); ?>
+    <script src="<?php echo e(asset('assets/js/chart/chartist/chartist.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/chart/knob/knob.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/chart/knob/knob-chart.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/prism/prism.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/clipboard/clipboard.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/counter/jquery.waypoints.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/counter/jquery.counterup.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/counter/counter-custom.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/custom-card/custom-card.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/notify/bootstrap-notify.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/dashboard/default.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/notify/index.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/height-equal.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/datatable/datatables/jquery.dataTables.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/datatable/datatables/datatable.custom.js')); ?>"></script>
 
     <script>
         $(document).ready(function() {
@@ -163,7 +161,7 @@
 
     </script>
 
-    {{-- start group add modal --}}
+    
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -175,11 +173,11 @@
                 </div>
                 <div class="modal-body">
                     <form enctype="multipart/form-data" method="POST" action="/addNewGroup">
-                        @csrf
+                        <?php echo csrf_field(); ?>
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><img style="width: 2rem;" src="{{asset('assets/images/auto-modal/group.png')}}" alt=""></span>
+                                    <span class="input-group-addon modal-icon"><img style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/group.png')); ?>" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="name" id="name"
                                         placeholder="Enter Group Name" />
                                 </div>
@@ -189,7 +187,7 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/policy.png')}}" alt=""></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/policy.png')); ?>" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="des" id="des"
                                         placeholder="Enter Description" />
                                 </div>
@@ -199,9 +197,8 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/color-picker.png')}}" alt=""></span>
-                                    {{-- <input type="text" class="form-control" name="color" id="color"
-                                        placeholder="Enter Color Code" /> --}}
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/color-picker.png')); ?>" alt=""></span>
+                                    
                                     <input type="color" class="form-control modal-input" id="color" name="color" value="#ff0000"
                                         placeholder="Enter Color Code">
                                 </div>
@@ -211,8 +208,8 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/image.png')}}" alt=""></span>
-                                    <input accept=".jpg, .png, .jpeg" type="file" class="form-control modal-input" id="photos[]" name="photos[]" multiple>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/image.png')); ?>" alt=""></span>
+                                    <input type="file" class="form-control modal-input" id="photos[]" name="photos[]" multiple>
                                 </div>
                             </div>
                         </div>
@@ -226,10 +223,10 @@
             </div>
         </div>
     </div>
-    {{-- end group add modal --}}
+    
 
 
-    {{-- start group edit modal --}}
+    
     <div id="myModale" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -241,12 +238,12 @@
                 </div>
                 <div class="modal-body">
                     <form enctype="multipart/form-data" method="POST" action="/editGroup">
-                        @csrf
+                        <?php echo csrf_field(); ?>
                         <div class="form-group">
                             <label for="name" class="cols-sm-2 control-label">Group Name</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/group.png')}}" alt=""></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/group.png')); ?>" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="names" id="names"
                                         placeholder="Enter Group Name" />
                                     <input type="hidden" name="gr_id" id="gr_id" />
@@ -258,7 +255,7 @@
                             <label for="name" class="cols-sm-2 control-label">Description</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/policy.png')}}" alt=""></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/policy.png')); ?>" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="dess" id="dess"
                                         placeholder="Enter Description" />
                                 </div>
@@ -269,9 +266,8 @@
                             <label for="name" class="cols-sm-2 control-label">Color</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/color-picker.png')}}" alt=""></span>
-                                    {{-- <input type="text" class="form-control" name="colors" id="colors"
-                                        placeholder="Enter Color Code" /> --}}
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/color-picker.png')); ?>" alt=""></span>
+                                    
                                     <input type="color" class="form-control modal-input" id="colors" name="colors" value="#ff0000"
                                         placeholder="Enter Color Code">
                                 </div>
@@ -286,8 +282,8 @@
                             <label for="name" class="cols-sm-2 control-label">Image</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/image.png')}}" alt=""></span>
-                                    <input accept=".jpg, .png, .jpeg" type="file" class="form-control modal-input" id="photoss[]" name="photoss[]" multiple>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/image.png')); ?>" alt=""></span>
+                                    <input type="file" class="form-control modal-input" id="photoss[]" name="photoss[]" multiple>
                                 </div>
                             </div>
                         </div>
@@ -301,5 +297,7 @@
             </div>
         </div>
     </div>
-    {{-- end group edit modal --}}
-@endsection
+    
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/dilshan/Documents/freelance/epit_de/backEnd/kitaAppBackend/resources/views/kita/group_add.blade.php ENDPATH**/ ?>

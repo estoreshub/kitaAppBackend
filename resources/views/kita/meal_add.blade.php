@@ -73,7 +73,7 @@
                 {{-- <div class="col-sm-1"><button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal"><i
                 class="fa fa-plus" aria-hidden="true"></i> Add New</button></div> --}}
                 <div class="col-sm-12">
-                    <table id="example" class="display" style="width:100%">
+                    <table class="custormize" id="example" class="display" style="width:100%">
                         <thead>
                             <tr>
                                 <td style="width:30%">Date</td>
