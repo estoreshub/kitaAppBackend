@@ -16,7 +16,7 @@ use DateTime;
 
 class ApiController extends Controller
 {
-	public function getAllEvents(Request $request)
+    public function getAllEvents(Request $request)
     {
         $emptyArray = array();
         $events = DB::table('events')
@@ -28,8 +28,8 @@ class ApiController extends Controller
             echo json_encode($emptyArray);
         }
     }
-	
-	    public function getCalEvents(Request $request)
+
+    public function getCalEvents(Request $request)
     {
         $emptyArray = array();
         $events = DB::table('events')
@@ -42,8 +42,9 @@ class ApiController extends Controller
             echo json_encode($emptyArray);
         }
     }
-	
-	    public function getSelectedEvents(Request $request){
+
+    public function getSelectedEvents(Request $request)
+    {
         $emptyArray = array();
         $events = DB::table('selected_events')
             ->where('kita_admin_id', '=', $request->kitaAdminID)
@@ -56,8 +57,8 @@ class ApiController extends Controller
             echo json_encode($emptyArray);
         }
     }
-	
-	    public function addNewEvent(Request $request)
+
+    public function addNewEvent(Request $request)
     {
         $events = DB::table('events')
             ->where('kita_admin_id', '=', $request->kitaAdminID)
@@ -73,7 +74,7 @@ class ApiController extends Controller
             $event->end_time = $evt->end_time;
             $event->date = $evt->date;
             $event->month = $evt->month;
-			$event->year = $evt->year;
+            $event->year = $evt->year;
             $event->title = $evt->title;
             $event->description = $evt->description;
             $event->event_type = $evt->event_type;
@@ -90,14 +91,14 @@ class ApiController extends Controller
             }
         }
     }
-	
-	public function getAllPosts(Request $request)
+
+    public function getAllPosts(Request $request)
     {
         $emptyArray = array();
 
         $posts = DB::table('posts')
-        ->where('parent_id', '=', $request->parentID)
-        ->get();
+            ->where('parent_id', '=', $request->parentID)
+            ->get();
 
         if ($posts) {
             echo json_encode($posts);
@@ -125,7 +126,7 @@ class ApiController extends Controller
             ->join('groups', 'groups.id', '=', 'kids.group_id')
             ->select('kids.*', 'groups.name as groupName', 'groups.description as groupDescription')
             ->where('kids.parent_id', '=', $request->parentID)
-			->where('kids.status', '=', 1)
+            ->where('kids.status', '=', 1)
             ->orderBy('kids.id')
             ->get();
 
@@ -142,24 +143,24 @@ class ApiController extends Controller
         $kidsData = DB::table('kids')
             ->where('id', $request->kidID)
             ->first();
-		
-		$Date = $this->getDatesFromRange('2021-05-17', '2021-05-20');
 
-        $dateAR=json_encode($Date);
-		foreach(json_decode($dateAR) as $dt){
-			
-		$dr = new DailyRegister();
-        $dr->kita_admin_id = $kidsData->kita_admin_id;
-        $dr->kid_id = $request->kidID;
-        $dr->group_id = $kidsData->group_id;
-        $dr->parent_id = $kidsData->parent_id;
-        $dr->added_date = $dt;
-        $dr->from_date = $request->fromDate;
-        $dr->to_date = $request->toDate;
-        $dr->reason = $request->reason;
-        $dr->status = 0;
-        $status = $dr->save();
-		}
+        $Date = $this->getDatesFromRange('2021-05-17', '2021-05-20');
+
+        $dateAR = json_encode($Date);
+        foreach (json_decode($dateAR) as $dt) {
+
+            $dr = new DailyRegister();
+            $dr->kita_admin_id = $kidsData->kita_admin_id;
+            $dr->kid_id = $request->kidID;
+            $dr->group_id = $kidsData->group_id;
+            $dr->parent_id = $kidsData->parent_id;
+            $dr->added_date = $dt;
+            $dr->from_date = $request->fromDate;
+            $dr->to_date = $request->toDate;
+            $dr->reason = $request->reason;
+            $dr->status = 0;
+            $status = $dr->save();
+        }
 
         if ($status) {
             $msg = "success";
@@ -204,19 +205,19 @@ class ApiController extends Controller
         }
     }
 
- 	public function addNewPost(Request $request)
+    public function addNewPost(Request $request)
     {
-		//$photos = json_encode($request->file('photo'));
-		//echo $photos;
-		//exit();
+        //$photos = json_encode($request->file('photo'));
+        //echo $photos;
+        //exit();
 
-         //if ($request->hasFile("photo")) {
-             //$allowedfileExtension = ['jpg', 'png'];
-             //foreach ($photos as $photo) {
-                 //$filename = $request->filename;
-				 //echo $filename;
-				 //exit();
-                 /*$new_file_name = md5($request->filename);
+        //if ($request->hasFile("photo")) {
+        //$allowedfileExtension = ['jpg', 'png'];
+        //foreach ($photos as $photo) {
+        //$filename = $request->filename;
+        //echo $filename;
+        //exit();
+        /*$new_file_name = md5($request->filename);
                  $extension = $request->filetype;
                  $disk = 'public';
                  $check = in_array($extension, $allowedfileExtension);
@@ -225,38 +226,38 @@ class ApiController extends Controller
                      $filePath = $folder . md5($request->filename) . '.' . $request->filetype;
                      $file = $photo->storeAs($folder, $new_file_name . '.' . $request->filetype, $disk);*/
 
-                     $parentData = DB::table('parents')
-                         ->where('id', $request->parentID)
-                       ->first();
+        $parentData = DB::table('parents')
+            ->where('id', $request->parentID)
+            ->first();
 
-                    $post = new Posts();
-                    $post->parent_id = $request->parentID;
-                    $post->kita_admin_id = $parentData->kita_admin_id;
-                    $post->title = $request->title;
-                    $post->description = $request->description;
-                    $post->image = '';
-                    $post->status = 'available';
-                    $status = $post->save();
+        $post = new Posts();
+        $post->parent_id = $request->parentID;
+        $post->kita_admin_id = $parentData->kita_admin_id;
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $post->image = '';
+        $post->status = 'available';
+        $status = $post->save();
 
-                    if ($status) {
-                         $posts = DB::table('posts')->get();
-                         $msg = "success";
-                         $data = array(
-                             'status' => $msg,
-                             'all_posts' => $posts,
-                         );
-                         echo json_encode($data);
-                     } else if (!$status) {
-                        $emptyArray = array();
-                        $msg = "error";
-                         $data = array(
-                             'status' => $msg,
-                             'all_posts' => $emptyArray,
-                         );
-                         echo json_encode($data);
-                     }
-                 //}
-           // }
+        if ($status) {
+            $posts = DB::table('posts')->get();
+            $msg = "success";
+            $data = array(
+                'status' => $msg,
+                'all_posts' => $posts,
+            );
+            echo json_encode($data);
+        } else if (!$status) {
+            $emptyArray = array();
+            $msg = "error";
+            $data = array(
+                'status' => $msg,
+                'all_posts' => $emptyArray,
+            );
+            echo json_encode($data);
+        }
+        //}
+        // }
         //}
     }
 
@@ -272,7 +273,7 @@ class ApiController extends Controller
             ->where('kita_admin_id', $postData->kita_admin_id)
             ->update([
                 'title' => $request->title, 'description' => $request->description,
-                'image' => '','status'=> $request->status
+                'image' => '', 'status' => $request->status
             ]);
 
         if ($status) {
@@ -371,7 +372,7 @@ class ApiController extends Controller
             $data = array(
                 'status' => $msg,
                 'parent' => $parentDatas,
-				'parentData' => $parentData
+                'parentData' => $parentData
             );
             echo json_encode($data);
         } else if (!$parent) {
@@ -453,7 +454,7 @@ class ApiController extends Controller
             echo json_encode($data);
         }
     }
-	
+
     public function getAllComments(Request $request)
     {
         $emptyArray = array();
@@ -469,8 +470,8 @@ class ApiController extends Controller
             echo json_encode($emptyArray);
         }
     }
-	
-	public function addFeedback(Request $request)
+
+    public function addFeedback(Request $request)
     {
         $parentData = DB::table('parents')
             ->where('id', $request->parentID)
@@ -498,8 +499,8 @@ class ApiController extends Controller
             echo json_encode($data);
         }
     }
-	
-	    public function getPageContent(Request $request)
+
+    public function getPageContent(Request $request)
     {
         $emptyArray = array();
         $pages = DB::table('html_pages')
@@ -512,8 +513,8 @@ class ApiController extends Controller
             echo json_encode($emptyArray);
         }
     }
-	
-		public function getDatesFromRange($start, $end, $format = 'Y-m-d')
+
+    public function getDatesFromRange($start, $end, $format = 'Y-m-d')
     {
 
         // Declare an empty array
@@ -536,8 +537,8 @@ class ApiController extends Controller
         // Return the array elements
         return $array;
     }
-	
-	    public function getAbsentKids(Request $request)
+
+    public function getAbsentKids(Request $request)
     {
         $cDate = date('Y-m-d');
         $emptyArray = array();
@@ -553,15 +554,15 @@ class ApiController extends Controller
             echo json_encode($emptyArray);
         }
     }
-	
-	    public function verifyKid(Request $request)
+
+    public function verifyKid(Request $request)
     {
         $kidsData = DB::table('kids')
             ->where('parent_id', '=', $request->parentID)
             ->where('user_code', '=', $request->kidCode)
             ->get();
 
-        $emptyArray=array();
+        $emptyArray = array();
 
         if ($kidsData) {
             echo json_encode($kidsData);
@@ -569,8 +570,8 @@ class ApiController extends Controller
             echo json_encode($emptyArray);
         }
     }
-	
-	    public function updateKid(Request $request)
+
+    public function updateKid(Request $request)
     {
         $parentData = DB::table('parents')
             ->where('id', '=', $request->parentID)
@@ -596,6 +597,40 @@ class ApiController extends Controller
         } else if (!$parentData) {
             $msg = 'Authentication Error';
             echo json_encode($msg);
+        }
+    }
+
+    public function languageTranslate(Request $request)
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, [
+            CURLOPT_URL => "https://google-translate1.p.rapidapi.com/language/translate/v2",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => "q='" . $request->get('query') . "&target=" . $request->get('targetLang') . "&source=" . $request->get('sourceLang') . "",
+            CURLOPT_HTTPHEADER => [
+                "accept-encoding: application/gzip",
+                "content-type: application/x-www-form-urlencoded",
+                "x-rapidapi-host: google-translate1.p.rapidapi.com",
+                "x-rapidapi-key: 4683aebfd7mshc9006b07df8b58dp1917dcjsn49a6e6f29813"
+            ],
+        ]);
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($err) {
+            echo "cURL Error #:" . $err;
+        } else {
+            echo $response;
         }
     }
 }

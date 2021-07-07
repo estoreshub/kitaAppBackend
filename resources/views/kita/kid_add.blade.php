@@ -120,9 +120,7 @@
                     "render": function(data, type, full, meta) {
                         return "<table class=\"custormize-table\" style=\"float:right;\"><tr><td><button type=\"button\" class=\"btn btn-success btn-sm\" data-toggle=\"modal\" data-target=\"#myModale\" onclick=\"setNid(" +
                             data +
-                            ")\" > <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> Update</button></td><td><form action=\"deleteKid\" method=\"GET\"><input type=\"hidden\" name=\"kids_id\" id=\"kids_id\" value=" +
-                            data +
-                            "><button type=\"submit\" class=\"btn btn-danger btn-sm\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i>Delete</button></form></td></tr></table>";
+                            ")\" > <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> Update</button></td><td><button type=\"button\" onclick=\"deleteConfirm(" +data +")\" class=\"btn btn-danger btn-sm\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i>Delete</button></form></td></tr></table>";
                     },
                     "title": "parentID",
                     "orderable": true,
@@ -155,6 +153,11 @@
             });
         }
 
+        function deleteConfirm(id) {
+            document.getElementById("kids_id").value = id;
+            $('#myModalDelete').modal('show');
+        }
+
     </script>
 
     {{-- start kid add modal --}}
@@ -175,7 +178,7 @@
                                 <div class="input-group">
                                     <span class="input-group-addon  modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/identity.png')}}" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="fname" id="fname"
-                                        placeholder="Enter first Name" />
+                                        placeholder="Enter first Name" required />
                                 </div>
                             </div>
                         </div>
@@ -185,7 +188,7 @@
                                 <div class="input-group">
                                     <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/identity.png')}}" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="lname" id="lname"
-                                        placeholder="Enter Last Name" />
+                                        placeholder="Enter Last Name" required />
                                 </div>
                             </div>
                         </div>
@@ -195,7 +198,7 @@
                                 <div class="input-group">
                                     <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/calendar.png')}}" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="year" id="year"
-                                        placeholder="Enter Year" />
+                                        placeholder="Enter Year" required />
                                 </div>
                             </div>
                         </div>
@@ -204,7 +207,7 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/customer-behavior.png')}}" alt=""></span>
-                                    <select class="form-control modal-input" name="types" id="types">
+                                    <select class="form-control modal-input" name="types" id="types" required >
                                         <option value="0">select parent type</option>
                                         <option value="1">Mother</option>
                                         <option value="2">Father</option>
@@ -218,7 +221,7 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/parents.png')}}" alt=""></span>
-                                    <select class="form-control modal-input" name="parents" id="parents">
+                                    <select class="form-control modal-input" name="parents" id="parents" required >
                                         <option value="0">select parent</option>
                                         @foreach ($parents as $pr)
                                             <option value="{{ $pr->id }}">{{ $pr->first_name }}
@@ -234,7 +237,7 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/group.png')}}" alt=""></span>
-                                    <select class="form-control modal-input" name="groups" id="groups">
+                                    <select class="form-control modal-input" name="groups" id="groups" required >
                                         <option value="0">select group</option>
                                         @foreach ($groups as $gr)
                                             <option value="{{ $gr->id }}">{{ $gr->name }}</option>
@@ -275,7 +278,7 @@
                                 <div class="input-group">
                                     <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/identity.png')}}" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="fnames" id="fnames"
-                                        placeholder="Enter first Name" />
+                                        placeholder="Enter first Name" required />
                                     <input type="hidden" name="k_id" id="k_id" />
                                 </div>
                             </div>
@@ -287,7 +290,7 @@
                                 <div class="input-group">
                                     <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/identity.png')}}" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="lnames" id="lnames"
-                                        placeholder="Enter Last Name" />
+                                        placeholder="Enter Last Name" required />
                                 </div>
                             </div>
                         </div>
@@ -298,7 +301,7 @@
                                 <div class="input-group">
                                     <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/calendar.png')}}" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="years" id="years"
-                                        placeholder="Enter Year" />
+                                        placeholder="Enter Year" required />
                                 </div>
                             </div>
                         </div>
@@ -308,7 +311,7 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/customer-behavior.png')}}" alt=""></span>
-                                    <select class="form-control modal-input" name="typess" id="typess">
+                                    <select class="form-control modal-input" name="typess" id="typess" required >
                                         <option value="0">select type</option>
                                         <option value="1">Mother</option>
                                         <option value="2">Father</option>
@@ -323,7 +326,7 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/parents.png')}}" alt=""></span>
-                                    <select class="form-control modal-input" name="parentss" id="parentss">
+                                    <select class="form-control modal-input" name="parentss" id="parentss" required >
                                         <option value="0">select parent</option>
                                         @foreach ($parents as $pr)
                                             <option value="{{ $pr->id }}">{{ $pr->first_name }}
@@ -340,7 +343,7 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/group.png')}}" alt=""></span>
-                                    <select class="form-control modal-input" name="groupss" id="groupss">
+                                    <select class="form-control modal-input" name="groupss" id="groupss" required >
                                         <option value="0">select group</option>
                                         @foreach ($groups as $gr)
                                             <option value="{{ $gr->id }}">{{ $gr->name }}</option>
@@ -360,4 +363,32 @@
         </div>
     </div>
     {{-- end kita edit modal --}}
+
+            {{-- start delete modal popup --}}
+    <!-- Modal HTML -->
+<div id="myModalDelete" class="modal fade">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header flex-column">
+				<div class="icon-box">
+					<i class="material-icons">&#xE5CD;</i>
+				</div>
+				<h4 class="modal-title w-100">Are you sure?</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body">
+				<p>Do you really want to delete these records? This process cannot be undone.</p>
+			</div>
+			<div class="modal-footer justify-content-center">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <form action="/deleteKid" method="GET">
+                    @csrf
+                    <input type="hidden" name="kids_id" id="kids_id">
+				<button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+			</div>
+		</div>
+	</div>
+</div>
+    {{-- end delete model popup --}}
 @endsection

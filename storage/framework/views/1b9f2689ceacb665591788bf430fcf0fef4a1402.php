@@ -1,21 +1,20 @@
-@extends('layouts.master')
-@section('title', 'Endless - Premium Laravel Admin Template')
-@section('styles')
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/datatables.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chartist.css') }}">
+<?php $__env->startSection('title', 'Endless - Premium Laravel Admin Template'); ?>
+<?php $__env->startSection('styles'); ?>
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/datatables.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/chartist.css')); ?>">
     <!-- Plugins css start-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/prism.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/prism.css')); ?>">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/ui-changes.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/ui-changes.css')); ?>">
     <!-- Plugins css Ends-->
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('breadcrumb-items')
+<?php $__env->startSection('breadcrumb-items'); ?>
     <li class="breadcrumb-item">Dashboard</li>
     <li class="breadcrumb-item active">News</li>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
     <!-- Container-fluid starts-->
     <div class="container-fluid">
 
@@ -28,8 +27,7 @@
 
         <div class="row">
             <div class="col-sm-12">
-                {{-- <div class="col-sm-1"><button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal"><i
-                class="fa fa-plus" aria-hidden="true"></i> Add New</button></div> --}}
+                
                 <div class="col-sm-12">
                     <table id="example" class="display" style="width:100%">
                         <thead>
@@ -58,23 +56,23 @@
 
     </div>
     <!-- Container-fluid Ends-->
-@endsection
-@section('scripts')
-    <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
-    <script src="{{ asset('assets/js/chart/chartist/chartist.js') }}"></script>
-    <script src="{{ asset('assets/js/chart/knob/knob.min.js') }}"></script>
-    <script src="{{ asset('assets/js/chart/knob/knob-chart.js') }}"></script>
-    <script src="{{ asset('assets/js/prism/prism.min.js') }}"></script>
-    <script src="{{ asset('assets/js/clipboard/clipboard.min.js') }}"></script>
-    <script src="{{ asset('assets/js/counter/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset('assets/js/counter/jquery.counterup.min.js') }}"></script>
-    <script src="{{ asset('assets/js/counter/counter-custom.js') }}"></script>
-    <script src="{{ asset('assets/js/custom-card/custom-card.js') }}"></script>
-    <script src="{{ asset('assets/js/notify/bootstrap-notify.min.js') }}"></script>
-    <script src="{{ asset('assets/js/dashboard/default.js') }}"></script>
-    <script src="{{ asset('assets/js/notify/index.js') }}"></script>
-    <script src="{{ asset('assets/js/height-equal.js') }}"></script>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('scripts'); ?>
+    <script src="<?php echo e(asset('assets/js/datatable/datatables/jquery.dataTables.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/datatable/datatables/datatable.custom.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/chart/chartist/chartist.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/chart/knob/knob.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/chart/knob/knob-chart.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/prism/prism.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/clipboard/clipboard.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/counter/jquery.waypoints.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/counter/jquery.counterup.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/counter/counter-custom.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/custom-card/custom-card.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/notify/bootstrap-notify.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/dashboard/default.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/notify/index.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/height-equal.js')); ?>"></script>
 
     <script>
         $(document).ready(function() {
@@ -158,7 +156,7 @@
 
     </script>
 
-    {{-- start kita add modal --}}
+    
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -170,11 +168,11 @@
                 </div>
                 <div class="modal-body">
                     <form class="" method="POST" enctype=multipart/form-data action="/addNewNews">
-                        @csrf
+                        <?php echo csrf_field(); ?>
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/tag.png')}}" alt=""></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/tag.png')); ?>" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="title" id="title"
                                         placeholder="Enter title" required />
                                 </div>
@@ -184,7 +182,7 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/policy.png')}}" alt=""></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/policy.png')); ?>" alt=""></span>
                                     <textarea id="des" name="des" class="form-control modal-input" rows="3" cols="50"
                                         placeholder="Enter description " required ></textarea>
                                 </div>
@@ -194,7 +192,7 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/schedule.png')}}" alt=""></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/schedule.png')); ?>" alt=""></span>
                                     <input class="form-control modal-input" type="date" id="mydate" name="mydate"
                                         placeholder="Select date" required >
                                 </div>
@@ -204,7 +202,7 @@
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/image.png')}}" alt=""></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/image.png')); ?>" alt=""></span>
                                     <input accept=".jpg, .png, .jpeg" type="file" class="form-control modal-input" id="photos[]" name="photos[]" multiple required >
                                 </div>
                             </div>
@@ -219,9 +217,9 @@
             </div>
         </div>
     </div>
-    {{-- end kita add modal --}}
+    
 
-    {{-- start kita edit modal --}}
+    
     <div id="myModale" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -233,12 +231,12 @@
                 </div>
                 <div class="modal-body">
                     <form class="" method="POST" enctype=multipart/form-data action="/editNews">
-                        @csrf
+                        <?php echo csrf_field(); ?>
                         <div class="form-group">
                             <label for="name" class="cols-sm-2 control-label">Title</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/tag.png')}}" alt=""></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/tag.png')); ?>" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="titles" id="titles"
                                         placeholder="Enter title" required />
                                     <input type="hidden" name="new_id" id="new_id" />
@@ -250,7 +248,7 @@
                             <label for="name" class="cols-sm-2 control-label">Description</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/policy.png')}}" alt=""></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/policy.png')); ?>" alt=""></span>
                                     <textarea id="dess" name="dess" class="form-control modal-input" rows="3" cols="50"
                                         placeholder="Enter description" required ></textarea>
                                 </div>
@@ -261,7 +259,7 @@
                             <label for="email" class="cols-sm-2 control-label">Date</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/schedule.png')}}" alt=""></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/schedule.png')); ?>" alt=""></span>
                                     <input class="form-control modal-input" type="date" id="mydates" name="mydates"
                                         placeholder="Select date" required >
                                 </div>
@@ -275,7 +273,7 @@
                             <label for="name" class="cols-sm-2 control-label">Image</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/image.png')}}" alt=""></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="<?php echo e(asset('assets/images/auto-modal/image.png')); ?>" alt=""></span>
                                     <input accept=".jpg, .png, .jpeg" type="file" class="form-control modal-input" id="photoss[]" name="photoss[]" multiple
                                         required >
                                 </div>
@@ -291,9 +289,9 @@
             </div>
         </div>
     </div>
-    {{-- end kita edit modal --}}
+    
 
-            {{-- start delete modal popup --}}
+            
     <!-- Modal HTML -->
 <div id="myModalDelete" class="modal fade">
 	<div class="modal-dialog modal-confirm">
@@ -311,7 +309,7 @@
 			<div class="modal-footer justify-content-center">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 <form action="/deleteNews" method="GET">
-                    @csrf
+                    <?php echo csrf_field(); ?>
                     <input type="hidden" name="news_id" id="news_id">
 				<button type="submit" class="btn btn-danger">Delete</button>
                 </form>
@@ -319,5 +317,7 @@
 		</div>
 	</div>
 </div>
-    {{-- end delete model popup --}}
-@endsection
+    
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\Fiverr Projects\Dilshan\web\Lahiru\kitaAppBackend\resources\views/kita/news_add.blade.php ENDPATH**/ ?>

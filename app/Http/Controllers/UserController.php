@@ -572,13 +572,6 @@ class UserController extends Controller
     {
         $emptyArray = array();
 
-        // $itemDataArray = array();
-        // if (Session::has('itemData')) {
-        //     $itemDataArray = Session::get('itemData');
-        // } else if (!Session::has('itemData')) {
-        //     $itemDataArray = $emptyArray;
-        // }
-
         $timestamp = strtotime($request->mydate);
 
         $day = date('l', $timestamp);
@@ -590,7 +583,7 @@ class UserController extends Controller
 
         // $arr1 = str_split($request->itemArray);
         $pieces = explode(",", $request->itemArray);
-        $newar = json_encode($pieces);
+        $newar = $request->itemArray;
 
         $meal->items = $newar;
         $status = $meal->save();
@@ -601,6 +594,26 @@ class UserController extends Controller
             return redirect('/new-meal');
         } else if ($status == 0) {
             echo "<h1>something went wrong</h1><br><a href='/'>back to dashboard</a>";
+        }
+    }
+
+    public function updateMealData(Request $request)
+    {
+        $timestamp = strtotime($request->mydateu);
+
+        $day = date('l', $timestamp);
+
+        $status = DB::table('meals')
+            ->where('id', $request->me_id)
+            ->where('kita_admin_id', Session::get('loggedUserId'))
+            ->update([
+                'added_date' => $request->mydateu, 'day' => $day, 'items' => $request->itemArrayU
+            ]);
+
+        if ($status) {
+            return redirect('/new-meal');
+        } else if (!$status) {
+            echo "<h1>nothing to update</h1><br><a href='/'>back to dashboard</a>";
         }
     }
 
@@ -744,7 +757,7 @@ class UserController extends Controller
                             //     'kid_id' => $kd->id,
                             //     'kid_name' => $kd->first_name.' '.$kd->last_name,
                             // );
-                            array_push($DataArray, array('kid_id' => $kd->id,'kid_name'=>$kd->first_name.' '.$kd->last_name));
+                            array_push($DataArray, array('kid_id' => $kd->id, 'kid_name' => $kd->first_name . ' ' . $kd->last_name));
                         }
                         $event->users = json_encode($DataArray);
                     } else if (!$request->group_id) {
@@ -924,6 +937,20 @@ class UserController extends Controller
         if ($groups) {
             echo json_encode($groups);
         } else if (!$groups) {
+            echo json_encode($emptyArray);
+        }
+    }
+
+    public function getMealData(Request $request)
+    {
+        $meals = DB::table('meals')
+            ->where('id', $request->meal_id)
+            ->first();
+
+        $emptyArray = array();
+        if ($meals) {
+            echo json_encode($meals);
+        } else if (!$meals) {
             echo json_encode($emptyArray);
         }
     }

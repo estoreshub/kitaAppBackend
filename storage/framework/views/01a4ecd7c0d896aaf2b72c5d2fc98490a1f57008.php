@@ -1,22 +1,21 @@
-@extends('layouts_admin.master')
-@section('title', 'Endless - Premium Laravel Admin Template')
-@section('styles')
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/datatables.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chartist.css') }}">
-	<link type="text/css" rel="stylesheet" href="{{ asset('assets/css/jquery-te-1.4.0.css')}}">
+<?php $__env->startSection('title', 'Endless - Premium Laravel Admin Template'); ?>
+<?php $__env->startSection('styles'); ?>
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/datatables.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/chartist.css')); ?>">
+	<link type="text/css" rel="stylesheet" href="<?php echo e(asset('assets/css/jquery-te-1.4.0.css')); ?>">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/ui-changes.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/ui-changes.css')); ?>">
     <!-- Plugins css start-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/prism.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/prism.css')); ?>">
     <!-- Plugins css Ends-->
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('breadcrumb-title', 'Home')
-@section('breadcrumb-items')
+<?php $__env->startSection('breadcrumb-title', 'Home'); ?>
+<?php $__env->startSection('breadcrumb-items'); ?>
     <li class="breadcrumb-item">Html Templates</li>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
     <!-- Container-fluid starts-->
     <div class="container-fluid">
 
@@ -44,24 +43,24 @@
         </div>
     </div>
     <!-- Container-fluid Ends-->
-@endsection
-@section('scripts')
-    <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
-    <script src="{{ asset('assets/js/chart/chartist/chartist.js') }}"></script>
-    <script src="{{ asset('assets/js/chart/knob/knob.min.js') }}"></script>
-    <script src="{{ asset('assets/js/chart/knob/knob-chart.js') }}"></script>
-    <script src="{{ asset('assets/js/prism/prism.min.js') }}"></script>
-    <script src="{{ asset('assets/js/clipboard/clipboard.min.js') }}"></script>
-    <script src="{{ asset('assets/js/counter/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset('assets/js/counter/jquery.counterup.min.js') }}"></script>
-    <script src="{{ asset('assets/js/counter/counter-custom.js') }}"></script>
-    <script src="{{ asset('assets/js/custom-card/custom-card.js') }}"></script>
-    <script src="{{ asset('assets/js/notify/bootstrap-notify.min.js') }}"></script>
-    <script src="{{ asset('assets/js/dashboard/default.js') }}"></script>
-    <script src="{{ asset('assets/js/notify/index.js') }}"></script>
-    <script src="{{ asset('assets/js/height-equal.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('assets/js/jquery-te-1.4.0.min.js')}}" charset="utf-8"></script>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('scripts'); ?>
+    <script src="<?php echo e(asset('assets/js/datatable/datatables/jquery.dataTables.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/datatable/datatables/datatable.custom.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/chart/chartist/chartist.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/chart/knob/knob.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/chart/knob/knob-chart.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/prism/prism.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/clipboard/clipboard.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/counter/jquery.waypoints.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/counter/jquery.counterup.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/counter/counter-custom.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/custom-card/custom-card.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/notify/bootstrap-notify.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/dashboard/default.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/notify/index.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/height-equal.js')); ?>"></script>
+	<script type="text/javascript" src="<?php echo e(asset('assets/js/jquery-te-1.4.0.min.js')); ?>" charset="utf-8"></script>
 
     <script>
         //$('.jqte-test').jqte();
@@ -145,7 +144,7 @@
 
     </script>
 
-        {{-- start kita add modal --}}
+        
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -157,7 +156,7 @@
                 </div>
                 <div class="modal-body">
                     <form class="" method="POST" action="/addNewHTML" enctype="multipart/form-data">
-                        @csrf
+                        <?php echo csrf_field(); ?>
                         <div class="form-group">
                             <label for="name" class="cols-sm-2 control-label">Page Name</label>
                             <div class="cols-sm-10">
@@ -187,9 +186,9 @@
             </div>
         </div>
     </div>
-    {{-- end kita add modal --}}
+    
 
-    {{-- start kita edit modal --}}
+    
     <div id="myModalE" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -201,7 +200,7 @@
                 </div>
                 <div class="modal-body">
                     <form class="" method="POST" action="/editHTMLContent" enctype="multipart/form-data">
-                        @csrf
+                        <?php echo csrf_field(); ?>
                         <div class="form-group">
                             <label for="name" class="cols-sm-2 control-label">Page Name</label>
                             <div class="cols-sm-10">
@@ -232,5 +231,7 @@
             </div>
         </div>
     </div>
-    {{-- end kita edit modal --}}
-@endsection
+    
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts_admin.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\Fiverr Projects\Dilshan\web\Lahiru\kitaAppBackend\resources\views/admin/html_pages.blade.php ENDPATH**/ ?>

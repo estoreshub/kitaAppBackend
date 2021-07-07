@@ -63,3 +63,5 @@ Route::post('/get_cal_events', 'ApiController@getCalEvents');
 Route::post('/get_all_selected_events', 'ApiController@getSelectedEvents');
 
 Route::post('/add_new_event', 'ApiController@addNewEvent');
+
+Route::post('/language_translate', 'ApiController@languageTranslate');

@@ -1,20 +1,19 @@
-@extends('layouts_admin.master')
-@section('title', 'Endless - Premium Laravel Admin Template')
-@section('styles')
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/datatables.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chartist.css') }}">
+<?php $__env->startSection('title', 'Endless - Premium Laravel Admin Template'); ?>
+<?php $__env->startSection('styles'); ?>
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/datatables.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/chartist.css')); ?>">
     <!-- Plugins css start-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/prism.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/ui-changes.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/prism.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/ui-changes.css')); ?>">
     <!-- Plugins css Ends-->
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('breadcrumb-title', 'Home')
-@section('breadcrumb-items')
+<?php $__env->startSection('breadcrumb-title', 'Home'); ?>
+<?php $__env->startSection('breadcrumb-items'); ?>
     <li class="breadcrumb-item">Dashboard</li>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
     <!-- Container-fluid starts-->
     <div class="container-fluid">
         <div class="row" style="text-align: right">
@@ -63,23 +62,23 @@
         </div>
     </div>
     <!-- Container-fluid Ends-->
-@endsection
-@section('scripts')
-    <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
-    <script src="{{ asset('assets/js/chart/chartist/chartist.js') }}"></script>
-    <script src="{{ asset('assets/js/chart/knob/knob.min.js') }}"></script>
-    <script src="{{ asset('assets/js/chart/knob/knob-chart.js') }}"></script>
-    <script src="{{ asset('assets/js/prism/prism.min.js') }}"></script>
-    <script src="{{ asset('assets/js/clipboard/clipboard.min.js') }}"></script>
-    <script src="{{ asset('assets/js/counter/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset('assets/js/counter/jquery.counterup.min.js') }}"></script>
-    <script src="{{ asset('assets/js/counter/counter-custom.js') }}"></script>
-    <script src="{{ asset('assets/js/custom-card/custom-card.js') }}"></script>
-    <script src="{{ asset('assets/js/notify/bootstrap-notify.min.js') }}"></script>
-    <script src="{{ asset('assets/js/dashboard/default.js') }}"></script>
-    <script src="{{ asset('assets/js/notify/index.js') }}"></script>
-    <script src="{{ asset('assets/js/height-equal.js') }}"></script>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('scripts'); ?>
+    <script src="<?php echo e(asset('assets/js/datatable/datatables/jquery.dataTables.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/datatable/datatables/datatable.custom.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/chart/chartist/chartist.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/chart/knob/knob.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/chart/knob/knob-chart.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/prism/prism.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/clipboard/clipboard.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/counter/jquery.waypoints.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/counter/jquery.counterup.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/counter/counter-custom.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/custom-card/custom-card.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/notify/bootstrap-notify.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/dashboard/default.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/notify/index.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/height-equal.js')); ?>"></script>
 
     <script>
         $(document).ready(function() {
@@ -187,7 +186,7 @@
         }
     </script>
 
-    {{-- start kita add modal --}}
+    
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -200,7 +199,7 @@
                 </div>
                 <div class="modal-body">
                     <form class="" method="POST" action="/addNewKita" enctype="multipart/form-data">
-                        @csrf
+                        <?php echo csrf_field(); ?>
                         <div class="form-group">
                             <div class="cols-sm-10">
                                 <div class="input-group form-data-field">
@@ -319,9 +318,9 @@
             </div>
         </div>
     </div>
-    {{-- end kita add modal --}}
+    
 
-    {{-- start kita edit modal --}}
+    
     <div id="myModalE" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -333,7 +332,7 @@
                 </div>
                 <div class="modal-body">
                     <form class="" method="POST" action="/editKitaUser" enctype="multipart/form-data">
-                        @csrf
+                        <?php echo csrf_field(); ?>
                         <div class="form-group">
                             <label for="name" class="cols-sm-2 control-label">Your First Name</label>
                             <div class="cols-sm-10">
@@ -455,5 +454,7 @@
             </div>
         </div>
     </div>
-    {{-- end kita edit modal --}}
-@endsection
+    
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts_admin.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\Fiverr Projects\Dilshan\web\Lahiru\kitaAppBackend\resources\views/admin/dashboard.blade.php ENDPATH**/ ?>

@@ -86,7 +86,7 @@
                                 <tr>
                                     <td>{{ $ne->added_date }}</td>
                                     <td>
-                                        {{$ne->items}}
+                                        {{ $ne->items }}
                                     </td>
                                     <td>
                                         <table>
@@ -98,12 +98,14 @@
                                                             aria-hidden="true"></i> Update</button>
                                                 </td>
                                                 <td>
-                                                    <form action="/deleteMeal" method="POST">
+                                                    <form action="" method="" id="">
                                                         @csrf
                                                         <input type="hidden" name="meal_id" id="meal_id"
                                                             value="{{ $ne->id }}">
-                                                        <button type="submit" class="btn btn-danger btn-sm"><i
-                                                                class="fa fa-trash" aria-hidden="true"></i>
+                                                        <button onclick="deleteConfirm({{$ne->id}})" data-toggle="modal"
+                                                        data-target="#myModalDelete" type="button"
+                                                            class="btn btn-danger btn-sm"><i class="fa fa-trash"
+                                                                aria-hidden="true"></i>
                                                             Delete</button>
                                                     </form>
                                                 </td>
@@ -158,23 +160,104 @@
         var array = Array();
 
         function add_element_to_array() {
-            array[x] = document.getElementById("itemName").value;
-            //  alert("" + array[x] + " Added at index " + x);
-            x++;
-            document.getElementById("itemName").value = "";
-
-            display_array();
+            var value = document.getElementById('itemName').value;
+            if (value.length == 0) {
+                alert('plese enter a value'); // keep form from submitting
+            } else {
+                addItemsToKidArray(value);
+            }
         }
 
-        function display_array() {
-            var e = "<hr/>";
-
-            for (var y = 0; y < array.length; y++) {
-                e += "" + y + " = " + array[y] + "<br/>";
+        function add_element_to_array_two() {
+            var value = document.getElementById('itemNameB').value;
+            if (value.length == 0) {
+                alert('plese enter a value'); // keep form from submitting
+            } else {
+                addItemsToKidArrayTwo(value);
             }
-            document.getElementById("Result").innerHTML = e;
-            console.log("item Array = " + array);
-            document.getElementById("itemArray").value = array;
+        }
+
+        var obj = [];
+
+        function addItemsToKidArray(val) {
+            const meal = {
+                name: val
+            };
+            obj.push(meal);
+            var newObj = JSON.stringify(obj);
+            console.log('meal object = ' + newObj);
+            document.getElementById("itemArray").value = newObj;
+            display_array(newObj);
+        }
+
+        function addItemsToKidArrayTwo(val) {
+            const meal = {
+                name: val
+            };
+            obj.push(meal);
+            var newObj = JSON.stringify(obj);
+            console.log('meal object = ' + newObj);
+            document.getElementById("itemArrayU").value = newObj;
+            display_array_two(newObj);
+        }
+
+        function display_array(jsonObj) {
+            var json = JSON.parse(jsonObj);
+            var res = "";
+            for (var key in json) {
+                if (json.hasOwnProperty(key)) {
+                    console.log(json[key].name);
+                    res += json[key].name + "<br>";
+                }
+            }
+            document.getElementById("Result").innerHTML = res;
+        }
+
+        function display_array_two(jsonObj) {
+            var json = JSON.parse(jsonObj);
+            var res = "";
+            for (var key in json) {
+                if (json.hasOwnProperty(key)) {
+                    console.log(json[key].name);
+                    res += json[key].name + "<br>";
+                }
+            }
+            document.getElementById("mealResult").innerHTML = res;
+        }
+
+        function setNid(val) {
+            document.getElementById("me_id").value = val;
+
+            myObj = {
+                "_token": "<?php echo csrf_token(); ?>",
+                "meal_id": document.getElementById("me_id").value
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: '/getMealData',
+                data: myObj,
+                success: function(data) {
+                    var jsonObj = JSON.parse(data);
+                    document.getElementById("mydateu").value = jsonObj.added_date;
+
+                    // document.getElementById("mealResult").innerHTML = jsonObj.items;
+
+                    var json = JSON.parse(jsonObj.items);
+                    var rest = "";
+                    for (var key in json) {
+                        if (json.hasOwnProperty(key)) {
+                            console.log(json[key].name);
+                            rest += json[key].name + "<br>";
+                        }
+                    }
+                    document.getElementById("mealResult").innerHTML = rest;
+                }
+            });
+        }
+
+        function deleteConfirm(id) {
+            document.getElementById("meal_id").value = val;
         }
     </script>
 
@@ -246,7 +329,11 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <form class="" method="POST" action="/addNewMeal">
+                    <input type="text" name="itemNameB" id="itemNameB" class="modal-input">
+                    <button type="submit" class="drop-down-add-btn" onclick="add_element_to_array_two()">Add Items</button>
+                    <br>
+                    <br>
+                    <form class="" method="POST" action="/updateMealData">
                         @csrf
                         <div class="form-group">
                             <label for="email" class="cols-sm-2 control-label">Date</label>
@@ -254,8 +341,10 @@
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-envelope fa"
                                             aria-hidden="true"></i></span>
-                                    <input class="form-control" type="date" id="mydate" name="mydate"
-                                        placeholder="Select date">
+                                    <input class="form-control" type="date" id="mydateu" name="mydateu"
+                                        placeholder="Select date" required>
+                                    <input type="hidden" id="me_id" name="me_id">
+                                    <input type="hidden" id="itemArrayU" name="itemArrayU">
                                 </div>
                             </div>
                         </div>
@@ -266,6 +355,7 @@
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
                                     <div style="color: black;font-weight: bold;" id="newInput">
+                                        <div id="mealResult"></div>
                                         {{-- <table border="1">
                                             <tr>
                                                 <td>item name</td>
@@ -282,7 +372,7 @@
                         </div>
 
                         <div class="form-group ">
-                            <button class="btn btn-success" type="button">Update </button>
+                            <button class="btn btn-success" type="submit">Update </button>
                         </div>
 
                     </form>
@@ -291,4 +381,33 @@
         </div>
     </div>
     {{-- end meal edit modal --}}
+
+    {{-- start delete modal popup --}}
+    <!-- Modal HTML -->
+<div id="myModalDelete" class="modal fade">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header flex-column">
+				<div class="icon-box">
+					<i class="material-icons">&#xE5CD;</i>
+				</div>
+				<h4 class="modal-title w-100">Are you sure?</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body">
+				<p>Do you really want to delete these records? This process cannot be undone.</p>
+			</div>
+			<div class="modal-footer justify-content-center">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <form action="/deleteMeal" method="POST">
+                    @csrf
+                    <input type="hidden" name="meal_id" id="meal_id"
+                        value="{{ $ne->id }}">
+				<button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+			</div>
+		</div>
+	</div>
+</div>
+    {{-- end delete model popup --}}
 @endsection

@@ -413,6 +413,8 @@ Route::get('/deleteGroup', 'UserController@deleteGroup');
 
 Route::post('/getGroupData', 'UserController@getGroupData');
 
+Route::post('/getMealData', 'UserController@getMealData');
+
 Route::post('/getKitaData', 'UserController@getKitaData');
 
 Route::post('/editGroup', 'UserController@editGroup');
@@ -448,3 +450,5 @@ Route::post('/addNewHTML', 'UserController@addNewHTML');
 Route::post('/getPageContent', 'UserController@getPageContent');
 
 Route::post('/editHTMLContent', 'UserController@editHTMLContent');
+
+Route::post('/updateMealData', 'UserController@updateMealData');

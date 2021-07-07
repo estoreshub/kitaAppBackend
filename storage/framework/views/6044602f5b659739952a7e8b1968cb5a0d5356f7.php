@@ -113,13 +113,12 @@
                                         <!--<button disabled="" onclick="setNid(<?php echo e($gr->id); ?>)" type="button" class="btn btn-success btn-md"
                                                 data-toggle="modal" data-target="#myModale"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Update</button>-->
 
-                                        <form action="/deleteEvent" method="POST">
+
                                             <?php echo csrf_field(); ?>
-                                            <input type="hidden" name="event_id" id="event_id" value="<?php echo e($gr->id); ?>">
-                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"
+
+                                            <button type="button" onclick="deleteConfirm(<?php echo e($gr->id); ?>)" data-toggle="modal" data-target="#myModalDelete" class="btn btn-danger btn-sm"><i class="fa fa-trash"
                                                     aria-hidden="true"></i>
                                                 Delete</button>
-                                        </form>
                                     </td>
                                 </tr>
                             </tbody>
@@ -241,6 +240,11 @@
             console.log('kid object = '+newObj);
             $('#kidsArray').val(newObj);
         }
+
+        function deleteConfirm(id) {
+            document.getElementById("event_id").value = id;
+            // $('#myModalDelete').modal('show');
+        }
     </script>
 
     
@@ -297,7 +301,7 @@
                                     <span class="input-group-addon modal-icon"><i class="fa fa-envelope fa"
                                             aria-hidden="true"></i></span>
                                     <input class="form-control modal-input" type="date" id="mydate" name="mydate"
-                                        placeholder="Select date">
+                                        placeholder="Select date" required >
                                         <input type="hidden" id="kidsArray" name="kidsArray">
                                 </div>
                             </div>
@@ -310,7 +314,7 @@
                                     <span class="input-group-addon modal-icon"><i class="fa fa-envelope fa"
                                             aria-hidden="true"></i></span>
                                     <input class="form-control modal-input" type="time" id="startTime" name="startTime"
-                                        placeholder="Select Start Time">
+                                        placeholder="Select Start Time" required >
                                 </div>
                             </div>
                         </div>
@@ -322,7 +326,7 @@
                                     <span class="input-group-addon modal-icon"><i class="fa fa-envelope fa"
                                             aria-hidden="true"></i></span>
                                     <input class="form-control modal-input" type="time" id="endTime" name="endTime"
-                                        placeholder="Select End Time">
+                                        placeholder="Select End Time" required >
                                 </div>
                             </div>
                         </div>
@@ -334,7 +338,7 @@
                                     <span class="input-group-addon modal-icon"><i class="fa fa-user fa"
                                             aria-hidden="true"></i></span>
                                     <input type="text" class="form-control modal-input" name="title" id="title"
-                                        placeholder="Enter Title" />
+                                        placeholder="Enter Title" required />
                                 </div>
                             </div>
                         </div>
@@ -346,7 +350,7 @@
                                     <span class="input-group-addon modal-icon"><i class="fa fa-user fa"
                                             aria-hidden="true"></i></span>
                                     <input type="text" class="form-control modal-input" name="des" id="des"
-                                        placeholder="Enter Description" />
+                                        placeholder="Enter Description" required />
                                 </div>
                             </div>
                         </div>
@@ -357,7 +361,7 @@
                                 <div class="input-group">
                                     <span class="input-group-addon modal-icon"><i class="fa fa-user fa"
                                             aria-hidden="true"></i></span>
-                                    <select name="group_id" id="group_id" class="form-control modal-input" required>
+                                    <select name="group_id" id="group_id" class="form-control modal-input" required >
                                         <option value="0">select group</option>
                                         <?php $__currentLoopData = $groups; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $gp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <option value="<?php echo e($gp->id); ?>"><?php echo e($gp->name); ?>
@@ -376,7 +380,7 @@
                                     <span class="input-group-addon modal-icon"><i class="fa fa-user fa"
                                             aria-hidden="true"></i></span>
                                     <select class="form-control modal-input" name="types" id="types"
-                                        onchange="SendSelfNoti()">
+                                        onchange="SendSelfNoti()" required >
                                         <option value="0">select type</option>
                                         <option value="1">Event</option>
                                         <option value="2">Message</option>
@@ -392,7 +396,7 @@
                                     <span class="input-group-addon modal-icon"><i class="fa fa-user fa"
                                             aria-hidden="true"></i></span>
                                     <input accept=".jpg, .png, .jpeg" type="file" class="form-control modal-input"
-                                        id="photos[]" name="photos[]" multiple required>
+                                        id="photos[]" name="photos[]" multiple required >
                                 </div>
                             </div>
                         </div>
@@ -426,6 +430,34 @@
             </div>
         </div>
     </div>
+    
+
+            
+    <!-- Modal HTML -->
+<div id="myModalDelete" class="modal fade">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header flex-column">
+				<div class="icon-box">
+					<i class="material-icons">&#xE5CD;</i>
+				</div>
+				<h4 class="modal-title w-100">Are you sure?</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body">
+				<p>Do you really want to delete these records? This process cannot be undone.</p>
+			</div>
+			<div class="modal-footer justify-content-center">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <form action="/deleteEvent" method="POST">
+                    <?php echo csrf_field(); ?>
+                    <input type="hidden" name="event_id" id="event_id">
+				<button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+			</div>
+		</div>
+	</div>
+</div>
     
 <?php $__env->stopSection(); ?>
 

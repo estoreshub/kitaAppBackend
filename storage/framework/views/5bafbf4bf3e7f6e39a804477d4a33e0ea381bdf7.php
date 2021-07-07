@@ -1,35 +1,29 @@
-@extends('layouts.master')
-@section('title', 'Endless - Premium Laravel Admin Template')
-@section('styles')
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/datatables.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chartist.css') }}">
+<?php $__env->startSection('title', 'Endless - Premium Laravel Admin Template'); ?>
+<?php $__env->startSection('styles'); ?>
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/datatables.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/chartist.css')); ?>">
     <!-- Plugins css start-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/prism.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/prism.css')); ?>">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/ui-changes.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/ui-changes.css')); ?>">
     <!-- Plugins css Ends-->
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('breadcrumb-items')
+<?php $__env->startSection('breadcrumb-items'); ?>
     <li class="breadcrumb-item">Dashboard</li>
     <li class="breadcrumb-item active">Market Place</li>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
     <!-- Container-fluid starts-->
     <div class="container-fluid">
 
-        {{-- <div class="row">
-            <div class="col-sm-12" style="text-align: right">
-                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" style="color: white !important;border: 2px solid #2494d3 !important;background-color: #2596d3 !important;">Add New</button>
-            </div>
-        </div> --}}
+        
         <br>
 
         <div class="row">
             <div class="col-sm-12">
-                {{-- <div class="col-sm-1"><button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal"><i
-                class="fa fa-plus" aria-hidden="true"></i> Add New</button></div> --}}
+                
                 <div class="col-sm-12">
                     <table id="example" class="display" style="width:100%">
                         <thead>
@@ -42,36 +36,36 @@
                             <td style="font-weight:bold;">Action</td>
                         </tr>
                             </thead>
-                        @foreach ($blocks as $ne)
+                        <?php $__currentLoopData = $blocks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ne): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tbody>
                             <tr>
-                                <td>{{ $ne->title }}</td>
-                                <td>{{ $ne->description }}</td>
+                                <td><?php echo e($ne->title); ?></td>
+                                <td><?php echo e($ne->description); ?></td>
                                 <td>
-                                    @foreach(json_decode($ne->images) as $im)
-                                    <img style="width:120px;height:120px;" src="{{$im->image}}"/><br>
-                                    @endforeach
+                                    <?php $__currentLoopData = json_decode($ne->images); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $im): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <img style="width:120px;height:120px;" src="<?php echo e($im->image); ?>"/><br>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </td>
                                 <td>
-                                    @foreach(json_decode($ne->comments) as $com)
-                                    username - {{ $com->username }} , comment - {{ $com->comment }}<br>
-                                    @endforeach
+                                    <?php $__currentLoopData = json_decode($ne->comments); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $com): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    username - <?php echo e($com->username); ?> , comment - <?php echo e($com->comment); ?><br>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </td>
-                                @if ($ne->status == 1)
+                                <?php if($ne->status == 1): ?>
                                     <td>available</td>
-                                @endif
-                                @if ($ne->status == 0)
+                                <?php endif; ?>
+                                <?php if($ne->status == 0): ?>
                                     <td>sold out</td>
-                                @endif
+                                <?php endif; ?>
                                 <td>
 
-                                        @csrf
-                                        <button type="button" onclick="deleteConfirm({{$ne->id}})" data-toggle="modal" data-target="#myModalDelete" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                                        <?php echo csrf_field(); ?>
+                                        <button type="button" onclick="deleteConfirm(<?php echo e($ne->id); ?>)" data-toggle="modal" data-target="#myModalDelete" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
 
                                 </td>
                             </tr>
                             </tbody>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </table>
                 </div>
             </div>
@@ -79,23 +73,23 @@
 
     </div>
     <!-- Container-fluid Ends-->
-@endsection
-@section('scripts')
-    <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
-    <script src="{{ asset('assets/js/chart/chartist/chartist.js') }}"></script>
-    <script src="{{ asset('assets/js/chart/knob/knob.min.js') }}"></script>
-    <script src="{{ asset('assets/js/chart/knob/knob-chart.js') }}"></script>
-    <script src="{{ asset('assets/js/prism/prism.min.js') }}"></script>
-    <script src="{{ asset('assets/js/clipboard/clipboard.min.js') }}"></script>
-    <script src="{{ asset('assets/js/counter/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset('assets/js/counter/jquery.counterup.min.js') }}"></script>
-    <script src="{{ asset('assets/js/counter/counter-custom.js') }}"></script>
-    <script src="{{ asset('assets/js/custom-card/custom-card.js') }}"></script>
-    <script src="{{ asset('assets/js/notify/bootstrap-notify.min.js') }}"></script>
-    <script src="{{ asset('assets/js/dashboard/default.js') }}"></script>
-    <script src="{{ asset('assets/js/notify/index.js') }}"></script>
-    <script src="{{ asset('assets/js/height-equal.js') }}"></script>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('scripts'); ?>
+    <script src="<?php echo e(asset('assets/js/datatable/datatables/jquery.dataTables.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/datatable/datatables/datatable.custom.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/chart/chartist/chartist.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/chart/knob/knob.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/chart/knob/knob-chart.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/prism/prism.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/clipboard/clipboard.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/counter/jquery.waypoints.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/counter/jquery.counterup.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/counter/counter-custom.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/custom-card/custom-card.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/notify/bootstrap-notify.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/dashboard/default.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/notify/index.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/height-equal.js')); ?>"></script>
 
     <script>
 	$(document).ready(function() {
@@ -108,7 +102,7 @@
         }
     </script>
 
-    {{-- start group add modal --}}
+    
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -120,7 +114,7 @@
                 </div>
                 <div class="modal-body">
                     <form enctype="multipart/form-data" method="POST" action="/addNewGroup">
-                        @csrf
+                        <?php echo csrf_field(); ?>
                         <div class="form-group">
                             <label for="name" class="cols-sm-2 control-label">Group Name</label>
                             <div class="cols-sm-10">
@@ -173,10 +167,10 @@
             </div>
         </div>
     </div>
-    {{-- end group add modal --}}
+    
 
 
-    {{-- start group edit modal --}}
+    
     <div id="myModale" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -188,7 +182,7 @@
                 </div>
                 <div class="modal-body">
                     <form enctype="multipart/form-data" method="POST" action="/editGroup">
-                        @csrf
+                        <?php echo csrf_field(); ?>
                         <div class="form-group">
                             <label for="name" class="cols-sm-2 control-label">Group Name</label>
                             <div class="cols-sm-10">
@@ -245,9 +239,9 @@
             </div>
         </div>
     </div>
-    {{-- end group edit modal --}}
+    
 
-            {{-- start delete modal popup --}}
+            
     <!-- Modal HTML -->
 <div id="myModalDelete" class="modal fade">
 	<div class="modal-dialog modal-confirm">
@@ -265,7 +259,7 @@
 			<div class="modal-footer justify-content-center">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 <form action="/deleteBlock" method="POST">
-                    @csrf
+                    <?php echo csrf_field(); ?>
                     <input type="hidden" name="bid" id="bid">
 				<button type="submit" class="btn btn-danger">Delete</button>
                 </form>
@@ -273,6 +267,8 @@
 		</div>
 	</div>
 </div>
-    {{-- end delete model popup --}}
-@endsection
+    
+<?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\Fiverr Projects\Dilshan\web\Lahiru\kitaAppBackend\resources\views/kita/block_boards.blade.php ENDPATH**/ ?>
