@@ -19,12 +19,9 @@
     <!-- Container-fluid starts-->
     <div class="container-fluid">
 
-        <div class="add-kids-event-section">
+        <div>
             <div class="row">
-                <div class="col-sm-2 add-new-event-topic" style="text-align: left">
-                    Add New Event
-                </div>
-                <div class="col-sm-10" style="text-align: right">
+                <div class="col-sm-12" style="text-align: right">
                     <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModale"
                         style="color: white !important;border: 2px solid #2494d3 !important;background-color: #2596d3 !important;">
                         Add New Event</button>
@@ -32,46 +29,12 @@
             </div>
             <br>
 
-            <div class="row" style="text-align: center;">
-                <div class="col-sm-12">
-                    <h2 style="color: #2696d3;">Add Kids</h2>
-                    <form method="POST" action="/addKidstoTable">
-                        @csrf
-                        <select name="kid_id" class="drop-down-events" required>
-                            <option value="0">select kid</option>
-                            @foreach ($kids as $kid)
-                                <option value="{{ $kid->id }}">{{ $kid->first_name }} {{ $kid->last_name }}
-                                </option>
-                            @endforeach
-                        </select>
-                        <input class="drop-down-add-btn" type="submit" value="Add">
-                    </form>
-                    <br>
 
-                    <table id="example2" class="display" style="width:100%;height:250px;overflow: auto;">
-                        <thead>
-                            <tr>
-                                <td>Name</td>
-                            </tr>
-                        </thead>
-                        @foreach ($kidDataArray as $ka)
-                            <tbody>
-                                <tr>
-                                    <td>{{ $ka['kid_name'] }}</td>
-                                </tr>
-                            </tbody>
-                        @endforeach
-                    </table>
-                </div>
-            </div>
         </div>
 
         <br>
 
-        <div class="row add-kids-event-section">
-            <div class="col-sm-12 add-new-event-topic" style="text-align: left;    padding-bottom: 1rem;">
-                Existing Event List
-            </div>
+        <div class="row">
             <div class="col-sm-12">
                 {{-- <div class="col-sm-1"><button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal"><i
                 class="fa fa-plus" aria-hidden="true"></i> Add New</button></div> --}}
@@ -259,7 +222,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <select name="kid_id" class="drop-down-events" required onchange="selectType(this.value)">
+                    <select name="kid_id" class="drop-down-events" required onchange="selectType(this.value)" style="margin-bottom:1rem">
                         <option value="0">Select Type</option>
                         <option value="1">Add By Group</option>
                         <option value="2">Add By Kid</option>
@@ -305,8 +268,7 @@
                             <label for="email" class="cols-sm-2 control-label">Date</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-envelope fa"
-                                            aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/schedule.png')}}" alt=""></span>
                                     <input class="form-control modal-input" type="date" id="mydate" name="mydate"
                                         placeholder="Select date" required >
                                         <input type="hidden" id="kidsArray" name="kidsArray">
@@ -318,8 +280,7 @@
                             <label for="email" class="cols-sm-2 control-label">Start Time</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-envelope fa"
-                                            aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/clock.png')}}" alt=""></span>
                                     <input class="form-control modal-input" type="time" id="startTime" name="startTime"
                                         placeholder="Select Start Time" required >
                                 </div>
@@ -330,8 +291,7 @@
                             <label for="email" class="cols-sm-2 control-label">End Time</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-envelope fa"
-                                            aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/clock.png')}}" alt=""></span>
                                     <input class="form-control modal-input" type="time" id="endTime" name="endTime"
                                         placeholder="Select End Time" required >
                                 </div>
@@ -342,8 +302,7 @@
                             <label for="name" class="cols-sm-2 control-label">Title</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa"
-                                            aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/tag.png')}}" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="title" id="title"
                                         placeholder="Enter Title" required />
                                 </div>
@@ -354,8 +313,7 @@
                             <label for="name" class="cols-sm-2 control-label">Description</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa"
-                                            aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/policy.png')}}" alt=""></span>
                                     <input type="text" class="form-control modal-input" name="des" id="des"
                                         placeholder="Enter Description" required />
                                 </div>
@@ -366,8 +324,7 @@
                             <label for="name" class="cols-sm-2 control-label">Group</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa"
-                                            aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/group.png')}}" alt=""></span>
                                     <select name="group_id" id="group_id" class="form-control modal-input" required >
                                         <option value="0">select group</option>
                                         @foreach ($groups as $gp)
@@ -383,8 +340,7 @@
                             <label for="name" class="cols-sm-2 control-label">Event Type</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa"
-                                            aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/chatting.png')}}" alt=""></i></span>
                                     <select class="form-control modal-input" name="types" id="types"
                                         onchange="SendSelfNoti()" required >
                                         <option value="0">select type</option>
@@ -399,33 +355,14 @@
                             <label for="name" class="cols-sm-2 control-label">Images</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa"
-                                            aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/image.png')}}" alt=""></span>
                                     <input accept=".jpg, .png, .jpeg" type="file" class="form-control modal-input"
                                         id="photos[]" name="photos[]" multiple required >
                                 </div>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="name" class="cols-sm-2 control-label">Users</label>
-                            <div class="cols-sm-10">
-                                <div class="input-group" style="max-height:150px;overflow:auto;">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa"
-                                            aria-hidden="true"></i></span>
-                                    <table border="1" style="width:80%;">
-                                        <tr>
-                                            <td class="addevent-inner-table-header">Name</td>
-                                        </tr>
-                                        @foreach ($kidDataArray as $ka)
-                                            <tr>
-                                                <td>{{ $ka['kid_name'] }}</td>
-                                            </tr>
-                                        @endforeach
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+
 
                         <div class="form-group register-button">
                             <button class="btn btn-success" type="submit">Add </button>
@@ -443,16 +380,12 @@
 <div id="myModalDelete" class="modal fade">
 	<div class="modal-dialog modal-confirm">
 		<div class="modal-content">
-			<div class="modal-header flex-column">
-				<div class="icon-box">
-					<i class="material-icons">&#xE5CD;</i>
-				</div>
-				<h4 class="modal-title w-100">Are you sure?</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			</div>
-			<div class="modal-body">
-				<p>Do you really want to delete these records? This process cannot be undone.</p>
-			</div>
+            			<div class="modal-header flex-column delet-modal-header">
+            				<h4 class="modal-title w-100 delete-modal-header-text">Are you sure?</h4>
+            			</div>
+            			<div class="modal-body">
+            				<p class="delete-modal-header-body">Do you really want to delete these records? This process cannot be undone.</p>
+            			</div>
 			<div class="modal-footer justify-content-center">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 <form action="/deleteEvent" method="POST">

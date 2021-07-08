@@ -21,54 +21,54 @@
 
 
 
-        <div class="add-kids-event-section">
-            <div class="col-sm-2 add-new-event-topic" style="text-align: left">
-                Add Meal Items
-            </div>
-            <div class="row">
-                <div class="col-sm-12" style="text-align: right">
-                    <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModale"
-                        style="color: white !important;border: 2px solid #2494d3 !important;background-color: #2596d3 !important;">
-                        Add New</button>
-                </div>
-            </div>
+         <div class="row">
+                        <div class="col-sm-12" style="text-align: right">
+                            <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModale"
+                                style="color: white !important;border: 2px solid #2494d3 !important;background-color: #2596d3 !important;">
+                                Add New</button>
+                        </div>
+                    </div>
 
-            <div class="row" style="text-align: center;">
+                    <div class="row" style="text-align: center;">
 
-                {{-- <div class="col-sm-12">
-                    <h2 style="color: #2696d3;">Add New Meal</h2>
-                    <form action="/addItems" method="POST">
-                        @csrf
-                        <input type="text" name="itemName" class="modal-input">
-                        <button type="submit" class="drop-down-add-btn">Add Items</button>
-                    </form>
-                    <br>
+                        {{-- <div class="col-sm-12">
+                    Add New Meal
+        <h2 style="color: #2696d3;">Add New Meal</h2>
+                            <form action="/addItems" method="POST">
+                                @csrf
+                                <input type="text" name="itemName" class="modal-input">
+                                <button type="submit" class="drop-down-add-btn">Add Items</button>
+                            </form>
+                            <br>
 
-                    <table id="example2" class="display" style="width:100%">
-                        <thead>
-                            <tr>
-                                <td>item name</td>
-                            </tr>
-                        </thead>
-                        @foreach ($itemDataArray as $it)
-                            <tbody>
-                                <tr>
-                                    <td>{{ $it['name'] }}</td>
-                                </tr>
-                            </tbody>
-                        @endforeach
-                    </table>
-                </div> --}}
-            </div>
-        </div>
+                            <table id="example2" class="display" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <td>item name</td>
+                                    </tr>
+                                </thead>
+                                @foreach ($itemDataArray as $it)
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                             @foreach ($it as $dt)
+                                             <div>
+                                             {{ $dt['name'] }}
+                                             </div>
+                                              @endforeach
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                @endforeach
+                            </table>
+                        </div> --}}
+                    </div>
 
 
         <br>
 
-        <div class="row add-kids-event-section">
-            <div class="col-sm-12 add-new-event-topic" style="text-align: left;    padding-bottom: 1rem;">
-                Existing Meal List
-            </div>
+        <div class="row">
+
             <div class="col-sm-12">
                 {{-- <div class="col-sm-1"><button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal"><i
                 class="fa fa-plus" aria-hidden="true"></i> Add New</button></div> --}}
@@ -274,7 +274,7 @@
                 <div class="modal-body">
                     <div class="col-sm-12" style="text-align: center;">
                         {{-- <h2 style="color: #2696d3;">Add New Meal</h2> --}}
-                        <input type="text" name="itemName" id="itemName" class="modal-input">
+                        <input type="text" name="itemName" id="itemName" class="modal-input meal-plan-add-items">
                         <button type="submit" class="drop-down-add-btn" onclick="add_element_to_array()">Add Items</button>
                         <br>
                         <br>
@@ -285,9 +285,8 @@
                             <label for="email" class="cols-sm-2 control-label">Date</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-envelope fa"
-                                            aria-hidden="true"></i></span>
-                                    <input class="form-control modal-input" type="date" id="mydate" name="mydate"
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/schedule.png')}}" alt=""></span>
+                                    <input class="form-control modal-input meal-plan-add-items" type="date" id="mydate" name="mydate"
                                         placeholder="Select date">
                                     <input type="hidden" id="itemArray" name="itemArray">
                                 </div>
@@ -298,9 +297,8 @@
                             <label for="name" class="cols-sm-2 control-label">Items</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa"
-                                            aria-hidden="true"></i></span>
-                                    <div style="color: black;font-weight: bold; width: 90%;" id="newInput">
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/fast-food.png')}}" alt=""></span>
+                                    <div class="meal-plan-item-list" id="newInput">
                                         <div id="Result" style="text-align: left;"></div>
                                     </div>
                                 </div>
@@ -323,13 +321,13 @@
         <div class="modal-dialog">
 
             <!-- Modal content-->
-            <div class="modal-content">
+            <div class="modal-content" style="border-radius: 1rem;width: 650px;">
                 <div class="modal-header">
                     <h3>Update Meal</h3>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <input type="text" name="itemNameB" id="itemNameB" class="modal-input">
+                    <input type="text" name="itemNameB" id="itemNameB" class="modal-input meal-plan-add-items" style="margin-left: 20%;">
                     <button type="submit" class="drop-down-add-btn" onclick="add_element_to_array_two()">Add Items</button>
                     <br>
                     <br>
@@ -339,8 +337,7 @@
                             <label for="email" class="cols-sm-2 control-label">Date</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-envelope fa"
-                                            aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/schedule.png')}}" alt=""></span>
                                     <input class="form-control" type="date" id="mydateu" name="mydateu"
                                         placeholder="Select date" required>
                                     <input type="hidden" id="me_id" name="me_id">
@@ -353,8 +350,8 @@
                             <label for="name" class="cols-sm-2 control-label">Items</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <div style="color: black;font-weight: bold;" id="newInput">
+                                    <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/fast-food.png')}}" alt=""></span>
+                                    <div class="meal-plan-item-list" id="newInput">
                                         <div id="mealResult"></div>
                                         {{-- <table border="1">
                                             <tr>
@@ -371,7 +368,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group ">
+                        <div class="form-group " style="float:right">
                             <button class="btn btn-success" type="submit">Update </button>
                         </div>
 
@@ -384,6 +381,7 @@
 
     {{-- start delete modal popup --}}
     <!-- Modal HTML -->
+<<<<<<< HEAD
     <div id="myModalDelete" class="modal fade">
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">
@@ -408,5 +406,28 @@
             </div>
         </div>
     </div>
+=======
+<div id="myModalDelete" class="modal fade">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+            			<div class="modal-header flex-column delet-modal-header">
+            				<h4 class="modal-title w-100 delete-modal-header-text">Are you sure?</h4>
+            			</div>
+            			<div class="modal-body">
+            				<p class="delete-modal-header-body">Do you really want to delete these records? This process cannot be undone.</p>
+            			</div>
+			<div class="modal-footer justify-content-center">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <form action="/deleteMeal" method="POST">
+                    @csrf
+                    <input type="hidden" name="meal_id" id="meal_id"
+                        value="{{ $ne->id }}">
+				<button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+			</div>
+		</div>
+	</div>
+</div>
+>>>>>>> 8ac0ca102cfa48c57e7f1bc1c0fcd7f7945037e7
     {{-- end delete model popup --}}
 @endsection
