@@ -44,11 +44,13 @@
 }
 
 .drop-down-events {
-    width: 300px;
-    height: 30px;
+    width: 60%;
+    background-color: #eaeaeaab;
+    height: 2rem;
     border-radius: 0.4rem;
     font-size: 1.2rem;
     color: black;
+    border: 1px solid #ced4da;
 }
 
 .drop-down-add-btn {
@@ -116,4 +118,34 @@ thead {
 
 .custormize-table tr{
     background-color: transparent !important;
+}
+
+.delet-modal-header {
+    text-align: center;
+}
+
+.delete-modal-header-text {
+    font-weight: bold;
+    color: #ed596f;
+}
+
+.delete-modal-header-body {
+    font-size: 1.1rem;
+    color: black;
+}
+
+.meal-plan-add-items {
+    width: 50%;
+    height: 2rem;
+    border: 1px solid #ced4da;
+}
+
+.meal-plan-item-list {
+    color: #606060;
+    font-weight: bold;
+    font-size: 1.2rem;
+    height: 4rem;
+    overflow: auto;
+    border: 1px solid #ced4da;
+    width: 50%;
 }
