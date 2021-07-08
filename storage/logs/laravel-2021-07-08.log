@@ -1,0 +1,12 @@
+[2021-07-08 03:53:21] local.ERROR: Uncaught ReflectionException: Class Illuminate\Auth\Middleware\RequirePassword does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionMethod->__construct('Illuminate\\Auth...', 'handle')
+#1 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class Illuminate\\Auth\\Middleware\\RequirePassword does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionMethod->__construct('Illuminate\\\\Auth...', 'handle')
+#1 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 

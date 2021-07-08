@@ -102,8 +102,8 @@
                                                         @csrf
                                                         <input type="hidden" name="meal_id" id="meal_id"
                                                             value="{{ $ne->id }}">
-                                                        <button onclick="deleteConfirm({{$ne->id}})" data-toggle="modal"
-                                                        data-target="#myModalDelete" type="button"
+                                                        <button onclick="deleteConfirm({{ $ne->id }})"
+                                                            data-toggle="modal" data-target="#myModalDelete" type="button"
                                                             class="btn btn-danger btn-sm"><i class="fa fa-trash"
                                                                 aria-hidden="true"></i>
                                                             Delete</button>
@@ -384,30 +384,29 @@
 
     {{-- start delete modal popup --}}
     <!-- Modal HTML -->
-<div id="myModalDelete" class="modal fade">
-	<div class="modal-dialog modal-confirm">
-		<div class="modal-content">
-			<div class="modal-header flex-column">
-				<div class="icon-box">
-					<i class="material-icons">&#xE5CD;</i>
-				</div>
-				<h4 class="modal-title w-100">Are you sure?</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			</div>
-			<div class="modal-body">
-				<p>Do you really want to delete these records? This process cannot be undone.</p>
-			</div>
-			<div class="modal-footer justify-content-center">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <form action="/deleteMeal" method="POST">
-                    @csrf
-                    <input type="hidden" name="meal_id" id="meal_id"
-                        value="{{ $ne->id }}">
-				<button type="submit" class="btn btn-danger">Delete</button>
-                </form>
-			</div>
-		</div>
-	</div>
-</div>
+    <div id="myModalDelete" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header flex-column">
+                    <div class="icon-box">
+                        <i class="material-icons">&#xE5CD;</i>
+                    </div>
+                    <h4 class="modal-title w-100">Are you sure?</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Do you really want to delete these records? This process cannot be undone.</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <form action="/deleteMeal" method="POST">
+                        @csrf
+                        <input type="hidden" name="meal_id" id="meal_id" value="{{ $ne->id }}">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     {{-- end delete model popup --}}
 @endsection
