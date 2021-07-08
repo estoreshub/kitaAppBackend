@@ -197,7 +197,7 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/calendar.png')}}" alt=""></span>
-                                    <input type="text" class="form-control modal-input" name="year" id="year"
+                                    <input type="number" class="form-control modal-input" name="year" id="year"
                                         placeholder="Enter Year" required />
                                 </div>
                             </div>
@@ -300,7 +300,7 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/calendar.png')}}" alt=""></span>
-                                    <input type="text" class="form-control modal-input" name="years" id="years"
+                                    <input type="number" class="form-control modal-input" name="years" id="years"
                                         placeholder="Enter Year" required />
                                 </div>
                             </div>

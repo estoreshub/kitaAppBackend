@@ -20,31 +20,24 @@
 
 
 
-        <div class="add-kids-event-section">
-            <div class="col-sm-2 add-new-event-topic" style="text-align: left">
-                Add Meal Items
+        <div class="row">
+            <div class="col-sm-12" style="text-align: right">
+                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModale"
+                    style="color: white !important;border: 2px solid #2494d3 !important;background-color: #2596d3 !important;">
+                    Add New</button>
             </div>
-            <div class="row">
-                <div class="col-sm-12" style="text-align: right">
-                    <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModale"
-                        style="color: white !important;border: 2px solid #2494d3 !important;background-color: #2596d3 !important;">
-                        Add New</button>
-                </div>
-            </div>
+        </div>
 
-            <div class="row" style="text-align: center;">
+        <div class="row" style="text-align: center;">
 
-                
-            </div>
+            
         </div>
 
 
         <br>
 
-        <div class="row add-kids-event-section">
-            <div class="col-sm-12 add-new-event-topic" style="text-align: left;    padding-bottom: 1rem;">
-                Existing Meal List
-            </div>
+        <div class="row">
+
             <div class="col-sm-12">
                 
                 <div class="col-sm-12">
@@ -135,7 +128,7 @@
         var x = 0;
         var array = Array();
 
-        function add_element_to_array() {
+        function add_element_to_arrays() {
             var value = document.getElementById('itemName').value;
             if (value.length == 0) {
                 alert('plese enter a value'); // keep form from submitting
@@ -161,9 +154,10 @@
             };
             obj.push(meal);
             var newObj = JSON.stringify(obj);
-            console.log('meal object = ' + newObj);
-            document.getElementById("itemArray").value = newObj;
-            display_array(newObj);
+            const unique = uniqueElements(newObj);
+            console.log('meal object = ' + unique);
+            document.getElementById("itemArray").value = JSON.stringify(unique);
+            display_array(unique);
         }
 
         function addItemsToKidArrayTwo(val) {
@@ -172,13 +166,14 @@
             };
             obj.push(meal);
             var newObj = JSON.stringify(obj);
-            console.log('meal object = ' + newObj);
-            document.getElementById("itemArrayU").value = newObj;
-            display_array_two(newObj);
+            const unique = uniqueElements(newObj);
+            console.log('meal object = ' + unique);
+            document.getElementById("itemArrayU").value = JSON.stringify(unique);
+            display_array_two(unique);
         }
 
         function display_array(jsonObj) {
-            var json = JSON.parse(jsonObj);
+            var json = jsonObj;
             var res = "";
             for (var key in json) {
                 if (json.hasOwnProperty(key)) {
@@ -186,11 +181,23 @@
                     res += json[key].name + "<br>";
                 }
             }
+
             document.getElementById("Result").innerHTML = res;
         }
 
+        function uniqueElements(array) {
+            var json = JSON.parse(array);
+            jsonObject = json.map(JSON.stringify);
+
+            uniqueSet = new Set(jsonObject);
+            uniqueArray = Array.from(uniqueSet).map(JSON.parse);
+
+            console.log('unique array = ' + uniqueArray);
+            return uniqueArray;
+        }
+
         function display_array_two(jsonObj) {
-            var json = JSON.parse(jsonObj);
+            var json = jsonObj;
             var res = "";
             for (var key in json) {
                 if (json.hasOwnProperty(key)) {
@@ -250,8 +257,8 @@
                 <div class="modal-body">
                     <div class="col-sm-12" style="text-align: center;">
                         
-                        <input type="text" name="itemName" id="itemName" class="modal-input">
-                        <button type="submit" class="drop-down-add-btn" onclick="add_element_to_array()">Add Items</button>
+                        <input type="text" name="itemName" id="itemName" class="modal-input meal-plan-add-items">
+                        <button type="submit" class="drop-down-add-btn" onclick="add_element_to_arrays()">Add Items</button>
                         <br>
                         <br>
                     </div>
@@ -261,10 +268,10 @@
                             <label for="email" class="cols-sm-2 control-label">Date</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-envelope fa"
-                                            aria-hidden="true"></i></span>
-                                    <input class="form-control modal-input" type="date" id="mydate" name="mydate"
-                                        placeholder="Select date">
+                                    <span class="input-group-addon modal-icon"><img style="width: 2rem;"
+                                            src="<?php echo e(asset('assets/images/auto-modal/schedule.png')); ?>" alt=""></span>
+                                    <input class="form-control modal-input meal-plan-add-items" type="date" id="mydate"
+                                        name="mydate" placeholder="Select date">
                                     <input type="hidden" id="itemArray" name="itemArray">
                                 </div>
                             </div>
@@ -274,9 +281,9 @@
                             <label for="name" class="cols-sm-2 control-label">Items</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon modal-icon"><i class="fa fa-user fa"
-                                            aria-hidden="true"></i></span>
-                                    <div style="color: black;font-weight: bold; width: 90%;" id="newInput">
+                                    <span class="input-group-addon modal-icon"><img style="width: 2rem;"
+                                            src="<?php echo e(asset('assets/images/auto-modal/fast-food.png')); ?>" alt=""></span>
+                                    <div class="meal-plan-item-list" id="newInput">
                                         <div id="Result" style="text-align: left;"></div>
                                     </div>
                                 </div>
@@ -299,13 +306,14 @@
         <div class="modal-dialog">
 
             <!-- Modal content-->
-            <div class="modal-content">
+            <div class="modal-content" style="border-radius: 1rem;width: 650px;">
                 <div class="modal-header">
                     <h3>Update Meal</h3>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <input type="text" name="itemNameB" id="itemNameB" class="modal-input">
+                    <input type="text" name="itemNameB" id="itemNameB" class="modal-input meal-plan-add-items"
+                        style="margin-left: 20%;">
                     <button type="submit" class="drop-down-add-btn" onclick="add_element_to_array_two()">Add Items</button>
                     <br>
                     <br>
@@ -315,8 +323,8 @@
                             <label for="email" class="cols-sm-2 control-label">Date</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-envelope fa"
-                                            aria-hidden="true"></i></span>
+                                    <span class="input-group-addon modal-icon"><img style="width: 2rem;"
+                                            src="<?php echo e(asset('assets/images/auto-modal/schedule.png')); ?>" alt=""></span>
                                     <input class="form-control" type="date" id="mydateu" name="mydateu"
                                         placeholder="Select date" required>
                                     <input type="hidden" id="me_id" name="me_id">
@@ -329,8 +337,9 @@
                             <label for="name" class="cols-sm-2 control-label">Items</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <div style="color: black;font-weight: bold;" id="newInput">
+                                    <span class="input-group-addon modal-icon"><img style="width: 2rem;"
+                                            src="<?php echo e(asset('assets/images/auto-modal/fast-food.png')); ?>" alt=""></span>
+                                    <div class="meal-plan-item-list" id="newInput">
                                         <div id="mealResult"></div>
                                         
                                     </div>
@@ -338,7 +347,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group ">
+                        <div class="form-group " style="float:right">
                             <button class="btn btn-success" type="submit">Update </button>
                         </div>
 
@@ -351,7 +360,7 @@
 
     
     <!-- Modal HTML -->
-    <div id="myModalDelete" class="modal fade">
+    <<<<<<< HEAD <div id="myModalDelete" class="modal fade">
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">
                 <div class="modal-header flex-column">
@@ -374,8 +383,31 @@
                 </div>
             </div>
         </div>
-    </div>
-    
-<?php $__env->stopSection(); ?>
+        </div>
+        =======
+        <div id="myModalDelete" class="modal fade">
+            <div class="modal-dialog modal-confirm">
+                <div class="modal-content">
+                    <div class="modal-header flex-column delet-modal-header">
+                        <h4 class="modal-title w-100 delete-modal-header-text">Are you sure?</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p class="delete-modal-header-body">Do you really want to delete these records? This process cannot
+                            be undone.</p>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <form action="/deleteMeal" method="POST">
+                            <?php echo csrf_field(); ?>
+                            <input type="hidden" name="meal_id" id="meal_id" value="<?php echo e($ne->id); ?>">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        >>>>>>> 8ac0ca102cfa48c57e7f1bc1c0fcd7f7945037e7
+        
+    <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\Fiverr Projects\Dilshan\web\Lahiru\kitaAppBackend\resources\views/kita/meal_add.blade.php ENDPATH**/ ?>

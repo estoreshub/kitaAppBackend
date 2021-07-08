@@ -71,6 +71,7 @@ class UserController extends Controller
                 return redirect('/admin-dashboard');
             } else if ($userType == 2) {
                 Session::put('userLoginErrorMsg', '');
+                Session::put('user_logo',$userData->image);
                 return redirect('/kita-dashboard');
             }
         } else if (!$user) {
@@ -176,50 +177,52 @@ class UserController extends Controller
                     }
                 }
             }
-        } else if (!$request->hasFile('photos')) {
-            $cDate = date('YHi');
-            $username = $request->fname . '' . $cDate;
-            $cDates = date('YmdHi');
-            $password = $cDates;
-
-            $usr = new allUsers();
-            $usr->first_name = $request->fname;
-            $usr->last_name = $request->lname;
-            $usr->email = $request->email;
-            $usr->password = md5($password);
-            $usr->telephone = $request->tele;
-            $usr->user_type_id = 2;
-            $usr->username = $username;
-            $usr->kindergarden_name = $request->kiname;
-            $usr->city = $request->city;
-            $usr->postal_code = $request->zip;
-            $usr->state = $request->state;
-            $usr->address = $request->address;
-            $usr->image = NULL;
-            $status = $usr->save();
-            if ($status) {
-                // start email
-                $from = 'superadmin@mail.com';
-                $to = $request->email;
-
-                Session::put('htmlEmailFrom', $from);
-                Session::put('htmlEmailTo', $to);
-
-                $data = array(
-                    'name' => $request->fname,
-                    'username' => $username,
-                    'password' => $password,
-                );
-
-                Mail::send('mail/credentials', $data, function ($message) {
-                    $message->to(Session::get('htmlEmailTo'), 'Tutorials Point')->subject('Login Credentials');
-                    $message->from(Session::get('htmlEmailFrom'), 'www.kitaproject.com');
-                });
-                // end email
-
-                return redirect('/admin-dashboard');
-            }
         }
+        // else
+        // if (!$request->hasFile('photos')) {
+        //     $cDate = date('YHi');
+        //     $username = $request->fname . '' . $cDate;
+        //     $cDates = date('YmdHi');
+        //     $password = $cDates;
+
+        //     $usr = new allUsers();
+        //     $usr->first_name = $request->fname;
+        //     $usr->last_name = $request->lname;
+        //     $usr->email = $request->email;
+        //     $usr->password = md5($password);
+        //     $usr->telephone = $request->tele;
+        //     $usr->user_type_id = 2;
+        //     $usr->username = $username;
+        //     $usr->kindergarden_name = $request->kiname;
+        //     $usr->city = $request->city;
+        //     $usr->postal_code = $request->zip;
+        //     $usr->state = $request->state;
+        //     $usr->address = $request->address;
+        //     $usr->image = NULL;
+        //     $status = $usr->save();
+        //     if ($status) {
+        //         // start email
+        //         $from = 'superadmin@mail.com';
+        //         $to = $request->email;
+
+        //         Session::put('htmlEmailFrom', $from);
+        //         Session::put('htmlEmailTo', $to);
+
+        //         $data = array(
+        //             'name' => $request->fname,
+        //             'username' => $username,
+        //             'password' => $password,
+        //         );
+
+        //         Mail::send('mail/credentials', $data, function ($message) {
+        //             $message->to(Session::get('htmlEmailTo'), 'Tutorials Point')->subject('Login Credentials');
+        //             $message->from(Session::get('htmlEmailFrom'), 'www.kitaproject.com');
+        //         });
+        //         // end email
+
+        //         return redirect('/admin-dashboard');
+        //     }
+        // }
     }
 
     public function logout()
@@ -295,56 +298,43 @@ class UserController extends Controller
 
     public function add_new_group(Request $request)
     {
-        //echo "hello";
-        //exit();
         $photos = $request->file('photos');
 
-        if ($request->hasFile('photos')) {
-            $allowedfileExtension = ['jpg', 'png', 'jpeg'];
-            foreach ($photos as $photo) {
-                $filename = $photo->getClientOriginalName();
-                $new_file_name = md5($photo->getClientOriginalName());
-                $extension = $photo->getClientOriginalExtension();
-                $disk = 'public';
-                $check = in_array($extension, $allowedfileExtension);
-                if ($check) {
-                    $folder = '/uploads/photos/';
-                    $filePath = $folder . md5($photo->getClientOriginalName()) . '.' . $photo->getClientOriginalExtension();
-                    $file = $photo->storeAs($folder, $new_file_name . '.' . $photo->getClientOriginalExtension(), $disk);
+        $groups = DB::table('groups')
+            ->where('name', $request->name)
+            ->first();
+        if ($groups) {
+            echo "<h1>group name already taken...</h1><br><a href='/'>back to dashboard</a>";
+        } else if (!$groups) {
+            if ($request->hasFile('photos')) {
+                $allowedfileExtension = ['jpg', 'png', 'jpeg'];
+                foreach ($photos as $photo) {
+                    $filename = $photo->getClientOriginalName();
+                    $new_file_name = md5($photo->getClientOriginalName());
+                    $extension = $photo->getClientOriginalExtension();
+                    $disk = 'public';
+                    $check = in_array($extension, $allowedfileExtension);
+                    if ($check) {
+                        $folder = '/uploads/photos/';
+                        $filePath = $folder . md5($photo->getClientOriginalName()) . '.' . $photo->getClientOriginalExtension();
+                        $file = $photo->storeAs($folder, $new_file_name . '.' . $photo->getClientOriginalExtension(), $disk);
 
-                    $group = new Groups();
-                    $group->name = $request->name;
-                    $group->description = $request->des;
-                    $group->image = $filePath;
-                    $group->color = $request->color;
-                    $group->kita_admin_id = Session::get('loggedUserId');
-                    $status = $group->save();
+                        $group = new Groups();
+                        $group->name = $request->name;
+                        $group->description = $request->des;
+                        $group->image = $filePath;
+                        $group->color = $request->color;
+                        $group->kita_admin_id = Session::get('loggedUserId');
+                        $status = $group->save();
 
-                    return redirect('/new-group');
-
-                    //echo $status;
-                    //exit();
-
-                    // to access uploaded file
-                    // http://127.0.0.1:8000/storage/uploads/photos/f42df5d430ec29737942483719ab5232.jpg
-
-                    //if ($status) {
-                    //    return redirect('/new-group');
-                    // } else if (!$status) {
-                    //   echo "<h1>something went wrong</h1><br><a href='/'>back to dashboard</a>";
-                    // }
+                        if ($status) {
+                            return redirect('/new-group');
+                        } else if (!$status) {
+                            echo "<h1>something went wrong</h1><br><a href='/'>back to dashboard</a>";
+                        }
+                    }
                 }
             }
-        } else if (!$request->hasFile('photos')) {
-            $group = new Groups();
-            $group->name = $request->name;
-            $group->description = $request->des;
-            $group->image = NULL;
-            $group->color = $request->color;
-            $group->kita_admin_id = Session::get('loggedUserId');
-            $status = $group->save();
-
-            return redirect('/new-group');
         }
     }
 
@@ -369,43 +359,51 @@ class UserController extends Controller
             $eml = 0;
         }
 
-        $par = new Parents();
-        $par->email = $request->email;
-        $par->telephone = $request->tele;
-        $par->first_name = $request->fname;
-        $par->last_name = $request->lname;
-        $par->usercode = $userCode;
-        $par->username = $request->fname . "_" . $userCode;
-        $par->password = md5($cPass);
-        $par->notification_access = $notif;
-        $par->email_allow = $eml;
-        $par->status = 1;
-        $par->parent_type = $request->types;
-        $par->kita_admin_id = Session::get('loggedUserId');
-        $status = $par->save();
-        if ($status == 1) {
-            // start email
-            $from = 'superadmin@mail.com';
-            $to = $request->email;
+        $parents = DB::table('parents')
+            ->where('email', $request->email)
+            ->first();
 
-            Session::put('htmlEmailFrom', $from);
-            Session::put('htmlEmailTo', $to);
+        if ($parents) {
+            echo "<h1>this email already exists</h1><br><a href='/'>back to dashboard</a>";
+        } else if (!$parents) {
+            $par = new Parents();
+            $par->email = $request->email;
+            $par->telephone = $request->tele;
+            $par->first_name = $request->fname;
+            $par->last_name = $request->lname;
+            $par->usercode = $userCode;
+            $par->username = $request->fname . "_" . $userCode;
+            $par->password = md5($cPass);
+            $par->notification_access = $notif;
+            $par->email_allow = $eml;
+            $par->status = 1;
+            $par->parent_type = $request->types;
+            $par->kita_admin_id = Session::get('loggedUserId');
+            $status = $par->save();
+            if ($status == 1) {
+                // start email
+                $from = 'superadmin@mail.com';
+                $to = $request->email;
 
-            $data = array(
-                'name' => $request->fname,
-                'username' => $request->fname . "_" . $userCode,
-                'password' => $cPass,
-                'code' => $userCode,
-            );
+                Session::put('htmlEmailFrom', $from);
+                Session::put('htmlEmailTo', $to);
 
-            Mail::send('mail/parent_code', $data, function ($message) {
-                $message->to(Session::get('htmlEmailTo'), 'Tutorials Point')->subject('Login Credentials');
-                $message->from(Session::get('htmlEmailFrom'), 'www.kitaproject.com');
-            });
-            // end email
-            return redirect('/new-parent');
-        } else if ($status == 0) {
-            echo "<h1>something went wrong</h1><br><a href='/'>back to dashboard</a>";
+                $data = array(
+                    'name' => $request->fname,
+                    'username' => $request->fname . "_" . $userCode,
+                    'password' => $cPass,
+                    'code' => $userCode,
+                );
+
+                Mail::send('mail/parent_code', $data, function ($message) {
+                    $message->to(Session::get('htmlEmailTo'), 'Tutorials Point')->subject('Login Credentials');
+                    $message->from(Session::get('htmlEmailFrom'), 'www.kitaproject.com');
+                });
+                // end email
+                return redirect('/new-parent');
+            } else if ($status == 0) {
+                echo "<h1>something went wrong</h1><br><a href='/'>back to dashboard</a>";
+            }
         }
     }
 
@@ -427,8 +425,6 @@ class UserController extends Controller
         $kid->status = 0;
         $status = $kid->save();
         $kidId = $kid->id;
-        // echo $kidId;
-        // exit();
         $userCode = $cDate . '' . $kidId;
 
         $parentEmail = DB::table('parents')->where('id', $request->parents)->value('email');
@@ -1003,21 +999,22 @@ class UserController extends Controller
                     }
                 }
             }
-        } else if (!$request->hasFile('photoss')) {
-            $status = DB::table('news')
-                ->where('id', $request->new_id)
-                ->where('kita_admin_id', Session::get('loggedUserId'))
-                ->update([
-                    'title' => $request->titles, 'description' => $request->dess, 'added_date' => $request->mydates,
-                    'image' => NULL,
-                ]);
-
-            if ($status) {
-                return redirect('/new-news');
-            } else if (!$status) {
-                echo "<h1>nothing to update</h1><br><a href='/'>back to dashboard</a>";
-            }
         }
+        // else if (!$request->hasFile('photoss')) {
+        //     $status = DB::table('news')
+        //         ->where('id', $request->new_id)
+        //         ->where('kita_admin_id', Session::get('loggedUserId'))
+        //         ->update([
+        //             'title' => $request->titles, 'description' => $request->dess, 'added_date' => $request->mydates,
+        //             'image' => NULL,
+        //         ]);
+
+        //     if ($status) {
+        //         return redirect('/new-news');
+        //     } else if (!$status) {
+        //         echo "<h1>nothing to update</h1><br><a href='/'>back to dashboard</a>";
+        //     }
+        // }
     }
 
     public function editGroup(Request $request)
@@ -1051,21 +1048,22 @@ class UserController extends Controller
                     }
                 }
             }
-        } else if (!$request->hasFile('photoss')) {
-            $status = DB::table('groups')
-                ->where('id', $request->gr_id)
-                ->where('kita_admin_id', Session::get('loggedUserId'))
-                ->update([
-                    'name' => $request->names, 'description' => $request->dess, 'color' => $request->colors,
-                    'image' => NULL,
-                ]);
-
-            if ($status) {
-                return redirect('/new-group');
-            } else if (!$status) {
-                echo "<h1>nothing to update</h1><br><a href='/'>back to dashboard</a>";
-            }
         }
+        // else if (!$request->hasFile('photoss')) {
+        //     $status = DB::table('groups')
+        //         ->where('id', $request->gr_id)
+        //         ->where('kita_admin_id', Session::get('loggedUserId'))
+        //         ->update([
+        //             'name' => $request->names, 'description' => $request->dess, 'color' => $request->colors,
+        //             'image' => NULL,
+        //         ]);
+
+        //     if ($status) {
+        //         return redirect('/new-group');
+        //     } else if (!$status) {
+        //         echo "<h1>nothing to update</h1><br><a href='/'>back to dashboard</a>";
+        //     }
+        // }
     }
 
     public function editKita(Request $request)
@@ -1099,21 +1097,22 @@ class UserController extends Controller
                     }
                 }
             }
-        } else if (!$request->hasFile('photoss')) {
-            $status = DB::table('all_users')
-                ->where('id', $request->kit_id)
-                ->update([
-                    'first_name' => $request->fnameU, 'last_name' => $request->lnameU, 'kindergarden_name' => $request->kinameU,
-                    'city' => $request->cityU, 'state' => $request->stateU, 'postal_code' => $request->zipU, 'address' => $request->addressU,
-                    'image' => NULL, 'email' => $request->emailU, 'telephone' => $request->teleU
-                ]);
-
-            if ($status) {
-                return redirect('/admin-dashboard');
-            } else if (!$status) {
-                echo "<h1>nothing to update</h1><br><a href='/'>back to dashboard</a>";
-            }
         }
+        // else if (!$request->hasFile('photoss')) {
+        //     $status = DB::table('all_users')
+        //         ->where('id', $request->kit_id)
+        //         ->update([
+        //             'first_name' => $request->fnameU, 'last_name' => $request->lnameU, 'kindergarden_name' => $request->kinameU,
+        //             'city' => $request->cityU, 'state' => $request->stateU, 'postal_code' => $request->zipU, 'address' => $request->addressU,
+        //             'image' => NULL, 'email' => $request->emailU, 'telephone' => $request->teleU
+        //         ]);
+
+        //     if ($status) {
+        //         return redirect('/admin-dashboard');
+        //     } else if (!$status) {
+        //         echo "<h1>nothing to update</h1><br><a href='/'>back to dashboard</a>";
+        //     }
+        // }
     }
 
     public function editParent(Request $request)

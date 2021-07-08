@@ -15,9 +15,11 @@
                 <li><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i
                             data-feather="maximize"></i></a></li>
                 <li class="onhover-dropdown">
-                    <div class="media align-items-center"><img
+                    <div class="media align-items-center">
+                        <img
                             class="align-self-center pull-right img-50 rounded-circle"
-                            src="<?php echo e(asset('assets/images/dashboard/user.png')); ?>" alt="header-user">
+                            src="<?php echo e(Session::get('user_logo')); ?>" alt="header-user">
+
                         <div class="dotted-animation"><span class="animate-circle"></span><span
                                 class="main-circle"></span></div>
                     </div>

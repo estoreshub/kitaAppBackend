@@ -211,7 +211,7 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/gmail.png')}}" alt=""></span>
-                                    <input type="text" class="form-control modal-input" name="email" id="email"
+                                    <input type="email" class="form-control modal-input" name="email" id="email"
                                         placeholder="Enter your Email" required />
                                 </div>
                             </div>
@@ -221,8 +221,8 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/telephone.png')}}" alt=""></span>
-                                    <input type="text" class="form-control modal-input" name="tele" id="tele"
-                                        placeholder="Enter your Telephone" required />
+                                    <input type="tel" class="form-control modal-input" name="tele" id="tele"
+                                    placeholder="Ex: 012-345-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
                                 </div>
                             </div>
                         </div>
@@ -303,7 +303,7 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/gmail.png')}}" alt=""></span>
-                                    <input type="text" class="form-control modal-input" name="emails" id="emails"
+                                    <input type="email" class="form-control modal-input" name="emails" id="emails"
                                         placeholder="Enter your Email" required />
                                 </div>
                             </div>
@@ -314,8 +314,8 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon modal-icon"><img  style="width: 2rem;" src="{{asset('assets/images/auto-modal/telephone.png')}}" alt=""></span>
-                                    <input type="text" class="form-control modal-input" name="teles" id="teles"
-                                        placeholder="Enter your Telephone" required />
+                                    <input type="tel" class="form-control modal-input" name="teles" id="teles"
+                                    placeholder="Ex: 012-345-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
                                 </div>
                             </div>
                         </div>

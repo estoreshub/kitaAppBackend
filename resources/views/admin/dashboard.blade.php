@@ -294,7 +294,7 @@
                                 <div class="input-group form-data-field">
                                     <span class="input-group-addon modal-icon"><i class="fa fa-envelope fa"
                                             aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control modal-input" name="email" id="email"
+                                    <input type="email" class="form-control modal-input" name="email" id="email"
                                         placeholder="Enter your Email" required />
                                 </div>
                             </div>
@@ -305,8 +305,8 @@
                                 <div class="input-group form-data-field">
                                     <span class="input-group-addon modal-icon"><i class="fa fa-phone"
                                             aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control modal-input" name="tele" id="tele"
-                                        placeholder="Enter your Telephone" required />
+                                    <input type="tel" class="form-control modal-input" name="tele" id="tele"
+                                    placeholder="Ex: 012-345-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
                                 </div>
                             </div>
                         </div>
@@ -430,7 +430,7 @@
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-envelope fa"
                                             aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="emailU" id="emailU"
+                                    <input type="email" class="form-control" name="emailU" id="emailU"
                                         placeholder="Enter your Email" required />
                                 </div>
                             </div>
@@ -441,8 +441,8 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="teleU" id="teleU"
-                                        placeholder="Enter your Telephone" required />
+                                    <input type="tel" class="form-control" name="teleU" id="teleU"
+                                    placeholder="Ex: 012-345-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
                                 </div>
                             </div>
                         </div>
