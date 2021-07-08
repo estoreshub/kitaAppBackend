@@ -236,31 +236,33 @@
                         @endforeach
                     </select> --}}
 
-                    <table class="table table-bordered" id="kidSelect">
-                        <thead>
-                            <tr>
-                                <th scope="col">Id</th>
-                                <th scope="col">Kid Name</th>
-                            </tr>
-                        </thead>
-                        @foreach ($kids as $kd)
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="custom-control custom-checkbox">
-                                            {{-- <input type="checkbox" name="favorite_pet" class="custom-control-input"> --}}
-                                            <input type="checkbox" onclick="addItemsToKidArray(this.value)"
-                                                name="favorite_pet"
-                                                value="{{ $kd->id }},{{ $kd->first_name }} {{ $kd->last_name }}">
-                                            {{ $kd->id }}<br>
-                                            {{-- <label class="custom-control-label" for="customCheck1">{{$kd->id}}</label> --}}
-                                        </div>
-                                    </td>
-                                    <td>{{ $kd->first_name }} {{ $kd->last_name }}</td>
-                                </tr>
-                            </tbody>
-                        @endforeach
-                    </table>
+                    <div class="add-event-modal-table" id="kidSelect">
+                    <table class="table table-bordered" >
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Id</th>
+                                                    <th scope="col">Kid Name</th>
+                                                </tr>
+                                            </thead>
+                                            @foreach ($kids as $kd)
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="custom-control custom-checkbox">
+                                                                {{-- <input type="checkbox" name="favorite_pet" class="custom-control-input"> --}}
+                                                                <input type="checkbox" onclick="addItemsToKidArray(this.value)"
+                                                                    name="favorite_pet"
+                                                                    value="{{ $kd->id }},{{ $kd->first_name }} {{ $kd->last_name }}">
+                                                                {{ $kd->id }}<br>
+                                                                {{-- <label class="custom-control-label" for="customCheck1">{{$kd->id}}</label> --}}
+                                                            </div>
+                                                        </td>
+                                                        <td>{{ $kd->first_name }} {{ $kd->last_name }}</td>
+                                                    </tr>
+                                                </tbody>
+                                            @endforeach
+                                        </table>
+                    </div>
 
                     <form enctype="multipart/form-data" method="POST" action="/addNewEvent">
                         @csrf

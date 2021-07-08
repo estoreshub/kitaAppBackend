@@ -149,3 +149,10 @@ thead {
     border: 1px solid #ced4da;
     width: 50%;
 }
+
+.add-event-modal-table {
+    height: 15rem;
+    overflow: auto;
+    border: 1px solid #ced4da;
+    border-radius: 0.7rem;
+}
